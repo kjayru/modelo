@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','front\HomeController@index')->name('front.admin');
 
 Auth::routes();
 
