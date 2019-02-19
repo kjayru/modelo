@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesProfileTable extends Migration
+class CreateServiceProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateServicesProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('services_profile', function (Blueprint $table) {
+        Schema::create('service_profile', function (Blueprint $table) {
            
             $table->unsignedInteger('profile_id');
             $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->unsignedInteger('characteristic_id');
-            $table->foreign('characteristic_id')->references('id')->on('characteristics');
+            $table->unsignedInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services');
            
         });
     }
@@ -30,6 +30,6 @@ class CreateServicesProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services_profile');
+        Schema::dropIfExists('service_profile');
     }
 }
