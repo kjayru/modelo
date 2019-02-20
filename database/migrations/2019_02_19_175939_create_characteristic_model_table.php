@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCharacteristicProfileTable extends Migration
+class CreateCharacteristicModelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCharacteristicProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('characteristic_profile', function (Blueprint $table) {
+        Schema::create('characteristic_model', function (Blueprint $table) {
             
-            $table->unsignedInteger('profile_id');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->unsignedInteger('model_id');
+            $table->foreign('model_id')->references('id')->on('models');
             $table->unsignedInteger('characteristic_id');
             $table->foreign('characteristic_id')->references('id')->on('characteristics');
            
@@ -30,6 +30,6 @@ class CreateCharacteristicProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('characteristic_profile');
+        Schema::dropIfExists('characteristic_model');
     }
 }

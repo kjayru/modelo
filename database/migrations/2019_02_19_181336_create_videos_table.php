@@ -15,8 +15,8 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('profile_id');
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->unsignedInteger('model_id');
+            $table->foreign('model_id')->references('id')->on('model');
             $table->string('path');
             $table->timestamps();
         });
