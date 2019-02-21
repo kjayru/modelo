@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Scort;
 class ScortController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
