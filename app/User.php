@@ -40,6 +40,10 @@ class User extends Authenticatable
     public function scort(){
         return $this->hasOne('App\Scort');
     }
+
+    public function client(){
+        return $this->hasOne('App\Client');
+    }
     
 
 }

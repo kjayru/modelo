@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    //
+    public function scort(){
+        return $this->belongsTo('App\Scort');
+    }
 }
