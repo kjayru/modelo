@@ -2,13 +2,18 @@
 
 namespace App;
 
+
+
+use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, ShinobiTrait;
+
+
 
     /**
      * The attributes that are mass assignable.
@@ -27,4 +32,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function navigation(){
+
+        return auth()->check() ? auth()->user()->roles[0]->slug : 'guest';
+    }
+    public function scort(){
+        return $this->hasOne('App\Scort');
+    }
+
 }
+

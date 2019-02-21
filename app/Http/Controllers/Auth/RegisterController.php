@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Scort;
+use App\RoleUser;
 
 class RegisterController extends Controller
 {
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -69,4 +72,20 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function registered(Request $request, $user)
+    {
+            $scort = new Scort();
+
+            $scort->user_id = $user->id;
+            $scort->save();
+
+            $role = new RoleUser();
+            $role->user_id = $user->id;
+            $role->role_id = '2';
+            $role->save();
+
+            return redirect('/admin');
+    }
+
 }

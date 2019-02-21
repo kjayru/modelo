@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScheduleModelTable extends Migration
+class CreateScheduleScortTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateScheduleModelTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedule_model', function (Blueprint $table) {
+        Schema::create('schedule_scort', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('model_id');
-            $table->foreign('model_id')->references('id')->on('models');
+            $table->unsignedInteger('scort_id');
+            $table->foreign('scort_id')->references('id')->on('scorts');
             $table->unsignedInteger('schedule_id');
             $table->foreign('schedule_id')->references('id')->on('schedules');
             $table->string('inicio');
@@ -32,6 +32,6 @@ class CreateScheduleModelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedule_model');
+        Schema::dropIfExists('schedule_scort');
     }
 }
