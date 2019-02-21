@@ -7,29 +7,50 @@
 
         </li>
 <li>
-    <a href="/admin">
+      <a href="/admin/roles">
+        <i class="fa fa-dashboard"></i> <span>Roles</span>
+      </a>
+</li>
+<li>
+  <a href="/admin/packages">
+    <i class="fa fa-dashboard"></i> <span>Paquetes</span>
+
+  </a>
+</li>
+<li>
+    <a href="/admin/scorts">
       <i class="fa fa-dashboard"></i> <span>Scorts</span>
 
     </a>
 </li>
 <li>
-    <a href="/admin">
-      <i class="fa fa-dashboard"></i> <span>Paquetes</span>
+  <a href="/admin/galleries">
+    <i class="fa fa-dashboard"></i> <span>Galerias</span>
 
-    </a>
+  </a>
 </li>
 <li>
-    <a href="/admin">
+  <a href="/admin/videos">
+    <i class="fa fa-dashboard"></i> <span>Videos</span>
+  </a>
+</li>
+
+<li>
+    <a href="/admin/configurations">
       <i class="fa fa-dashboard"></i> <span>Configuración</span>
-
     </a>
 </li>
 
 <li>
-    <a href="/admin">
-      <i class="fa fa-dashboard"></i> <span>Notificaciones</span>
-
+    <a href="/admin/comments">
+      <i class="fa fa-dashboard"></i> <span>Comentarios</span>
     </a>
+</li>
+
+<li>
+  <a href="/admin/messages">
+    <i class="fa fa-dashboard"></i> <span>Mensajes</span>
+  </a>
 </li>
 
 

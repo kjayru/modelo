@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Gallery;
 class GalleryController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galerias = Gallery::orderBy('id','desc')->get();
+        
+        return view('admin.galerias.index',['galleries'=>$galerias]);
     }
 
     /**

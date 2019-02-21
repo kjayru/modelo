@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Video;
 class VideoController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::orderBy('id','desc')->get();
+        
+        return view('admin.videos.index',['videos'=>$videos]);
     }
 
     /**

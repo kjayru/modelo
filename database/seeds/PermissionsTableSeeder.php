@@ -301,7 +301,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name' => 'ver detalle video',
             'slug' => 'videos.show',
-            'description' => 'ver detalle notificación',
+            'description' => 'ver detalle video',
         ]);
 
         Permission::create([
@@ -321,6 +321,41 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'videos.destroy',
             'description' => 'Elimnar video',
         ]);
+
+
+        //videos
+        Permission::create([
+            'name' => 'Navegar mensaje',
+            'slug' => 'messages.index',
+            'description' => 'Lista y navega mensaje',
+        ]);
+
+        Permission::create([
+            'name' => 'ver detalle mensaje',
+            'slug' => 'messages.show',
+            'description' => 'ver detalle mensaje',
+        ]);
+
+        Permission::create([
+            'name' => 'crear  mensaje',
+            'slug' => 'messages.create',
+            'description' => 'ver detalle mensaje',
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion mensaje',
+            'slug' => 'messages.edit',
+            'description' => 'editar detalle mensaje',
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar mensaje',
+            'slug' => 'messages.destroy',
+            'description' => 'Elimnar mensaje',
+        ]);
+
+
+
 
 
     }

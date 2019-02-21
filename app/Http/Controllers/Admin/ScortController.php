@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Scort;
 class ScortController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ScortController extends Controller
      */
     public function index()
     {
-        //
+        $scorts =  Scort::all();
+        return view('admin.scorts.index',['scorts'=>$scorts]);
     }
 
     /**

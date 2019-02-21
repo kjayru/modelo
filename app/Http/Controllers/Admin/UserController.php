@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\scort;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ScortController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
