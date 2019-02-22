@@ -26,20 +26,6 @@
         </div>
 
 
-        <div class="form-group">
-                <label for="estado" class="col-sm-2 control-label" ></label>
-
-            <div class="col-sm-10">
-                
-                <label for="state">
-                    <input type="checkbox" name="state" id="state" value="2"  @if(@$role->state==2) checked @endif>
-                    Oculto
-                    
-                </label>
-            </div>
-        </div>
-
-
         <hr>
         <h3 clas="text-center">Permiso especial</h3>
 

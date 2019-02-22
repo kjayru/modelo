@@ -5,6 +5,15 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Scort;
+use App\Region;
+use App\Service;
+use App\Schedule;
+use App\Characteristic;
+use App\Gallery;
+use App\Video;
+use App\Package;
+use App\User;
+
 class ScortController extends Controller
 {
     public function __construct()
@@ -18,7 +27,7 @@ class ScortController extends Controller
      */
     public function index()
     {
-        $scorts =  Scort::all();
+        $scorts =  Scort::OrderBy('id','desc')->get();
         return view('admin.scorts.index',['scorts'=>$scorts]);
     }
 
@@ -29,7 +38,11 @@ class ScortController extends Controller
      */
     public function create()
     {
-        //
+        $regions = Region::all();
+        $services = Service::all();
+        $caracteristicas = Characteristic::all();
+        $paquetes = Package::all();
+        return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas]);
     }
 
     /**
@@ -40,7 +53,34 @@ class ScortController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>\Hash::make($request->password)
+            ]);
+
+        $scort = Scort::create([
+            'user_id' => $user->id,
+            'package_id'=>$request->package_id,
+            'region_id'=> $request->region_id,
+            'name' => $request->name,
+            'telefono' => $request->telefono,
+            'nacionalidad' => $request->nacionalidad,
+            'etnia' => $request->etnia,
+            'edad' => $request->edad,
+            'talla' => $request->talla,
+            'peso' => $request->peso,
+            'medidas' => $request->medidas,
+            'description' => $request->description
+            ]);
+       
+
+        $scort->services()->sync($request->get('services'));
+
+        $scort->characteristics()->sync($request->get('characteristics'));
+
+        
+        return redirect()->route('scorts.index');
     }
 
     /**
@@ -51,7 +91,7 @@ class ScortController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -62,7 +102,43 @@ class ScortController extends Controller
      */
     public function edit($id)
     {
-        //
+        $scort = Scort::find($id);
+        $regions = Region::all();
+        $services = Service::all();
+        $caracteristicas = Characteristic::all();
+        $paquetes = Package::all();
+
+        $servicios=[];
+            foreach($scort->services as $service){
+            $servicios[] =  $service->id;
+            }
+            if(count($servicios)>0){
+                $sv = $servicios;
+            }else{
+                $sv = 0;
+            }
+
+        $caracters=[];
+            foreach($scort->characteristics as $caracter){
+            $caracters[] =  $caracter->id;
+            }
+            if(count($caracters)>0){
+                $cr = $caracters;
+            }else{
+                $cr = 0;
+            }
+
+
+
+        return view('admin.scorts.edit',[
+            'scort'=>$scort,
+            'paquetes'=>$paquetes,
+            'regions'=>$regions,
+            'services'=>$services,
+            'caracteristicas'=>$caracteristicas,
+            'sv'=>$sv,
+            'cr'=>$cr
+            ]);
     }
 
     /**
@@ -74,7 +150,41 @@ class ScortController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(isset($request->password)){
+            $user =  User::where('id',$request->user_id)->update(['name'=>$request->name,
+                          'email'=>$request->email,
+                          'password'=>\Hash::make($request->password)]);
+        }else{
+            $user =  User::where('id',$request->user_id)->update(['name'=>$request->name,
+                          'email'=>$request->email ]);
+        }
+        
+
+        $scort = Scort::where('id',$id)->update([
+            'user_id' => $request->user_id,
+            'package_id'=>$request->package_id,
+            'region_id'=> $request->region_id,
+            'name' => $request->name,
+            'telefono' => $request->telefono,
+            'nacionalidad' => $request->nacionalidad,
+            'etnia' => $request->etnia,
+            'edad' => $request->edad,
+            'talla' => $request->talla,
+            'peso' => $request->peso,
+            'medidas' => $request->medidas,
+            'description' => $request->description
+            ]);
+        
+            
+        $scort = Scort::find($id);
+      
+
+        $scort->services()->sync($request->get('services'));
+
+        $scort->characteristics()->sync($request->get('characteristics'));
+
+        
+        return redirect()->route('scorts.index');
     }
 
     /**
@@ -85,6 +195,11 @@ class ScortController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $scort = Scort::find($id);
+        
+
+        User::where('id',$scort->user_id)->delete();
+
+        return redirect()->route('scorts.index');
     }
 }

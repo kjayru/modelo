@@ -29,7 +29,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.paquetes.create');
     }
 
     /**
@@ -40,7 +40,9 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Package::create($request->all());
+
+        return redirect('/admin/packages');
     }
 
     /**
@@ -62,7 +64,10 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paquete = Package::find($id);
+
+        return view('admin.paquetes.edit',['paquete'=>$paquete]);
+       
     }
 
     /**
@@ -74,7 +79,8 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       Package::where('id',$id)->update(['name'=>$request->name,'description'=>$request->description]);
+       return redirect('/admin/packages');
     }
 
     /**
@@ -85,6 +91,7 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Package::find($id)->delete();
+        return redirect('/admin/packages');
     }
 }

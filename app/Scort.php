@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Scort extends Model
 {
+    protected $fillable = [
+        'user_id','package_id','region_id','name','telefono','nacionalidad','etnia','edad','talla','peso','medidas','description'
+    ];
     public function user(){
         return $this->belongsTo('App\User');
     }
@@ -17,7 +20,7 @@ class Scort extends Model
         return $this->hasMany('App\Video');
     }
 
-    public function packages(){
+    public function package(){
         return $this->belongsTo('App\Package');
     }
 
@@ -30,6 +33,10 @@ class Scort extends Model
 
     public function characteristics(){
         return $this->belongsToMany('App\Characteristic');
+    }
+
+    public function region(){
+        return $this->belongsTo('App\Region');
     }
 }
 

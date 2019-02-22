@@ -52,13 +52,17 @@
                   </div>
               @endif
           <div class="box-body">
-                  
+            @can('scorts.create')
+              <a href="{{route('scorts.create')}}" class="btn btn-primary pull-right">Crear</a>
+            @endcan
               <table class="table table-striped table-hover" id="tb-role">
                   <thead>
                       <th width="10">ID</th>
                       <th>Name</th>
-                      <th>Slug</th>
-                      <th>Descripción</th>
+                      <th>Paquete</th>
+                      <th>Region</th>
+                      <th>E-mail</th>
+                      <th>Teléfono</th>
                       <th></th>
                       <th></th>
 
@@ -67,8 +71,12 @@
                       @foreach($scorts as $key => $scort)
                           <tr>
                               <td>{{$key+1}}</td>
+                              
                               <td>{{ $scort->name }}</td>
-                              <td></td>
+                              <td>{{$scort->package->name}}</td>
+                              <td>{{ $scort->region->name }}</td>
+                              <td>{{ $scort->user->email}}</td>
+                              <td>{{ $scort->telefono }}</td>
                               <td></td>
 
 
@@ -103,7 +111,7 @@
     <div class="modal-content">
 
 
-          <form class="deleterole" action="/admin/roles/delete" method="POST">
+          <form class="deleterole" action="{{ route('scorts.destroy',$scort->id )}}" method="POST">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span></button>
@@ -115,7 +123,7 @@
 
                         @csrf
                         <input type="hidden" name="id" id="id">
-                        <p>¿Esta seguro de eliminar este item?</p>
+                        <p>¿Esta seguro de eliminar a la scort?</p>
 
                   </div>
                   <div class="modal-footer">

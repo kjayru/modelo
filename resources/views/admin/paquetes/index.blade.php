@@ -52,13 +52,15 @@
                   </div>
               @endif
           <div class="box-body">
-                  
+            @can('packages.create')
+              <a href="{{route('packages.create')}}" class="btn btn-primary pull-right">Crear</a>
+            @endcan
               <table class="table table-striped table-hover" id="tb-role">
                   <thead>
                       <th width="10">ID</th>
                       <th>Name</th>
-                      <th>Slug</th>
                       <th>Descripción</th>
+                      <th>Email</th>
                       <th></th>
                       <th></th>
 
@@ -68,9 +70,8 @@
                           <tr>
                               <td>{{$key+1}}</td>
                               <td>{{ $paquete->name }}</td>
-                              <td></td>
-                              <td></td>
-
+                              <td>{{ $paquete->description }}</td>
+                            
 
                               <td width="15">
                                       @can('packages.edit')
@@ -103,7 +104,7 @@
     <div class="modal-content">
 
 
-          <form class="deleterole" action="/admin/roles/delete" method="POST">
+          <form class="deleterole" action="{{ route('packages.destroy',$paquete->id)}}" method="POST">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span></button>
@@ -129,6 +130,5 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-
   <!-- /.content -->
 @endsection

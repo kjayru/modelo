@@ -52,34 +52,61 @@
                   </div>
               @endif
           <div class="box-body">
-                  
-              <table class="table table-striped table-hover" id="tb-role">
+            <form id="sel-model">
+                <div class="form-group col-md-4">
+                    <select class="form-control" name="scortslist" id="scortslist">
+                      <option value="">Seleccione Scort</option>
+                      @foreach($scorts as $scort)
+                        <option value="{{ $scort->id }}"> {{ $scort->name }} - {{ $scort->region->name }}</option>
+                      @endforeach
+                    </select>
+                </div>
+              </form>   
+            
+              @can('galleries.create')
+              <form method="POST" action="{{route('galleries.create')}}" id="fr-galeria-crear">
+                @csrf
+                <input type="hidden" name="_method" value="GET">
+                <input type="hidden" name="scort_id" value="2" id="scort_id">
+              <button type="submit" class="btn btn-primary pull-right" >Crear</button>
+              </form>
+              @endcan
+              <table class="table table-striped table-hover" id="tb-fotos">
                   <thead>
                       <th width="10">ID</th>
-                      <th>Name</th>
-                      <th>Slug</th>
-                      <th>Descripción</th>
-                      <th></th>
+                      <th class="text-center">Fotografia</th>
+                      <th width="30">fecha</th>
+                      
+                      <th>Publicar</th>
                       <th></th>
 
                   </thead>
                   <tbody>
-                      @foreach($galleries as $key => $gal)
+                      @foreach($galleries as $k => $gal)
                           <tr>
-                              <td>{{$key+1}}</td>
-                              <td>{{ $gal->name }}</td>
-                              <td></td>
-                              <td></td>
+                              <td>{{$k+1}}</td>
+                              <td class="text-center">
+                                  <a href="/storage/{{ @$gal->photo }}" data-toggle="lightbox" >
+                                    <img src="/storage/galeria/thumb/{{ @$gal->thumb }}" width="100">
+                                  </a>
+                              </td>
+                              <td width="120">{{ $gal->created_at }}</td>
+                              
 
 
-                              <td width="15">
+                              <td width="20">
                                       @can('galleries.edit')
-                                      <a href="{{route('packages.edit',$gal->id )}}" class="btn btn-success pull-right">Editar</a>
+                                      <div class="form-group">
+                                          <span class="switch switch-sm">
+                                            <input data-id="{{$gal->id}}" type="checkbox" @if(@$gal->state == 1) checked  @endif  class="switch estado-slider" id="switch-sm-{{$k+1}}">
+                                            <label for="switch-sm-{{$k+1}}"></label>
+                                          </span>
+                                  </div>
                                       @endcan
                               </td>
                               <td width="10">
                                       @can('galleries.destroy')
-                                      <a href="#" data-id="{{$gal->id}}" data-toggle="modal" data-target="#deluser" class="btn btn-danger btn-role-delete">Borrar</a>
+                                      <a href="#" data-id="{{$gal->id}}" data-toggle="modal" data-target="#deluser" class="btn btn-danger btn-gal-delete">Borrar</a>
                                       @endcan
                               </td>
                           </tr>

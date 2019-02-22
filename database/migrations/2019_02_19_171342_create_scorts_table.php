@@ -16,13 +16,14 @@ class CreateScortsTable extends Migration
         Schema::create('scorts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('package_id')->nullable();
             $table->foreign('package_id')->references('id')->on('packages');
             $table->unsignedInteger('region_id')->nullable();
             $table->foreign('region_id')->references('id')->on('regions');
 
             $table->string('name');
+            $table->string('telefono')->nullable();
             $table->string('nacionalidad')->nullable();
             $table->string('etnia')->nullable();
             $table->string('edad')->nullable();
@@ -30,6 +31,7 @@ class CreateScortsTable extends Migration
             $table->string('peso')->nullable();
             $table->string('medidas')->nullable();
             $table->text('description')->nullable();
+            $table->integer('state')->default('1');
 
             $table->timestamps();
         });
