@@ -28,34 +28,138 @@
 <section class="content"> 
 <div class="container-fluid spark-screen">
 <div class="row">
-<div class="col-md-12 ">
 
-<!-- Default box -->
-<div class="box">
-<div class="box-header with-border">
-  <h3 class="box-title">MODULOS</h3>
+    @if(session('info'))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+<div class="col-lg-6 connectedSortable ui-sortable">
+    <div class="box box-info">
+        <div class="box-header ui-sortable-handle" style="cursor: move;">
+          <i class="fa fa-folder"></i>
 
-  <div class="box-tools pull-right">
-    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-      <i class="fa fa-minus"></i></button>
-    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-      <i class="fa fa-times"></i></button>
-  </div>
-          </div>
-          @if ($errors->any())
-                  <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
+          <h3 class="box-title">Regiones</h3>
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th></th>
+              </thead>
+              <tbody>
+              @foreach($regiones as $k => $region) 
+                <tr>
+                  <td>{{ $region->name }}</td>
+                  <td>
+                  <div class="form-group">
+                      <span class="switch switch-sm">
+                        <input data-id="{{$region->id}}" type="checkbox" @if(@$region->status == 2) checked  @endif  class="switch estado-region" id="switch-sm-{{$k+1}}">
+                        <label for="switch-sm-{{$k+1}}"></label>
+                      </span>
                   </div>
-              @endif
-          <div class="box-body">
-                  
-             
+                  </td>
+                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+    </div>
+         <!-- /.box-body -->
 </div>
-<!-- /.box-body -->
+
+<div class="col-lg-6 connectedSortable ui-sortable">
+    <div class="box box-info">
+        <div class="box-header ui-sortable-handle" style="cursor: move;">
+          <i class="fa fa-folder"></i>
+
+          <h3 class="box-title">Servicios</h3>
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+              @foreach($servicios as $k => $servicio) 
+                <tr>
+                  <td>{{ $servicio->name }}</td>
+                  <td>
+                  <div class="form-group">
+                      <span class="switch switch-sm">
+                        <input data-id="{{$servicio->id}}" type="checkbox" @if(@$servicio->status == 2) checked  @endif  class="switch estado-servicio" id="switch-sm-{{$k+1}}">
+                        <label for="switch-sm-{{$k+1}}"></label>
+                      </span>
+                  </div>
+                  </td>
+                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                  <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="box-footer clearfix">
+              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nuevo</a>
+        </div>
+    </div>
+
+
+
+    <div class="box box-info">
+        <div class="box-header ui-sortable-handle" style="cursor: move;">
+          <i class="fa fa-folder"></i>
+
+          <h3 class="box-title">Caracteristicas</h3>
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+              @foreach($characters as $k => $caracter) 
+                <tr>
+                  <td>{{ $caracter->name }}</td>
+                  <td>
+                  <div class="form-group">
+                      <span class="switch switch-sm">
+                        <input data-id="{{$caracter->id}}" type="checkbox" @if(@$caracter->status == 2) checked  @endif  class="switch estado-caracter" id="switch-sm-{{$k+1}}">
+                        <label for="switch-sm-{{$k+1}}"></label>
+                      </span>
+                  </div>
+                  </td>
+                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                  <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="box-footer clearfix">
+            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nuevo</a>
+      </div>
+    </div>
 </div>
 <!-- /.box -->
 

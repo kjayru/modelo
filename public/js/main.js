@@ -25,3 +25,25 @@ $(".btn-gal-delete").on('click',function(){
 	var id = $(this).data('id');
 	$("#deluser form").attr('action','/admin/galleries/'+id);
 });
+
+
+$("#scortslist").on('change',function(){
+	let valor = $(this).val();
+   
+		let opcion = '';
+		$.ajax({
+			url:'/admin/catalogs/hijos/'+valor,
+			type:'GET',
+			dataType:'json',
+			success:function(response){
+				
+			$.each(response,function(i,e){
+				console.log(e.name);
+				opcion+='<option value="'+e.id+'">'+e.name+'</option>';
+			})
+			
+			$("#valortipo").html(opcion);
+			}
+		});
+
+});

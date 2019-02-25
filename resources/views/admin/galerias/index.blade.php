@@ -96,11 +96,11 @@
 
                               <td width="20">
                                       @can('galleries.edit')
-                                      <div class="form-group">
-                                          <span class="switch switch-sm">
-                                            <input data-id="{{$gal->id}}" type="checkbox" @if(@$gal->state == 1) checked  @endif  class="switch estado-slider" id="switch-sm-{{$k+1}}">
-                                            <label for="switch-sm-{{$k+1}}"></label>
-                                          </span>
+                                  <div class="form-group">
+                                      <span class="switch switch-sm">
+                                        <input data-id="{{$gal->id}}" type="checkbox" @if(@$gal->state == 2) checked  @endif  class="switch estado-slider" id="switch-sm-{{$k+1}}">
+                                        <label for="switch-sm-{{$k+1}}"></label>
+                                      </span>
                                   </div>
                                       @endcan
                               </td>

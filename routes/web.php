@@ -364,4 +364,9 @@ Route::group(['prefix' => 'admin'],function(){
    
        Route::delete('messages/{mensaje}','admin\MessageController@destroy')->name('message.destroy')
        ->middleware('permission:messages.destroy');
+
+
+       Route::get('messages/detail/{id}','admin\MessageController@detail')->name('message.detail')
+       ->middleware('permission:messages.edit');
+       
 });

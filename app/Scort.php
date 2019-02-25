@@ -38,5 +38,9 @@ class Scort extends Model
     public function region(){
         return $this->belongsTo('App\Region');
     }
+
+    public function convesations(){
+        return $this->hasMany('App\Conversation');
+    }
 }
 

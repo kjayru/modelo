@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Region;
+use App\Service;
+use App\Characteristic;
 
 class ConfigurationController extends Controller
 {
@@ -18,7 +21,10 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        return view('admin.configuracion.index');
+        $regiones = Region::OrderBy('name','asc')->get();
+        $servicios = Service::OrderBy('name','asc')->get();
+        $characters = Characteristic::OrderBy('name','asc')->get();
+        return view('admin.configuracion.index',['regiones'=>$regiones,'servicios'=>$servicios,'characters'=>$characters]);
     }
 
     /**

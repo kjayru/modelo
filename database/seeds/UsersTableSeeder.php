@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'description' => 'Modelo',
         ]);
         Role::create([
-            'name' => 'usario',
+            'name' => 'usuario',
             'slug' => 'usuario',
             'description' => 'usuario registrado',
         ]);    

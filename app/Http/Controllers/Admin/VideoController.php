@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Video;
+use App\Scort;
 class VideoController extends Controller
 {
     public function __construct()
@@ -19,8 +20,9 @@ class VideoController extends Controller
     public function index()
     {
         $videos = Video::orderBy('id','desc')->get();
-        
-        return view('admin.videos.index',['videos'=>$videos]);
+        $scorts = Scort::OrderBy('name','desc')->get();
+
+        return view('admin.videos.index',['videos'=>$videos,'scorts'=>$scorts]);
     }
 
     /**
@@ -28,9 +30,10 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {  
+        $scort_id = $request->scort_id;
+        return view('admin.videos.create',['scort_id'=>$scort_id]);
     }
 
     /**
@@ -41,7 +44,23 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $files = $request->file('video');
+            if($request->hasFile('video'))
+            {
+                foreach ($files as $file) {
+                    
+                    $video = $file->store('videos');
+            
+                    Video::create([
+                        'scort_id' => $request->scort_id,
+                        'path' => $video,
+                        
+                    ]);
+                }
+                
+            }
+        return redirect()->route('videos.index');
     }
 
     /**
@@ -63,7 +82,10 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $video = Video::find($id);
+        $paquete = $video->scort->package_id;
+        return view('admin.videos.edit',['video'=>$video,'scort_id'=>$video->scort->id,'paquete'=>$paquete]);
     }
 
     /**

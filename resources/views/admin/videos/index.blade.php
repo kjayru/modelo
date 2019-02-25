@@ -3,15 +3,13 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-      Galerias
+      Videos
   </h1>
   <ol class="breadcrumb">
       <li><a href="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Galerias</li>
+      <li class="active">Video</li>
       
   </ol>
-
-
       @if(session('info'))
           <div class="container">
               <div class="row">
@@ -52,14 +50,31 @@
                   </div>
               @endif
           <div class="box-body">
-                  
+            <form id="sel-model">
+              <div class="form-group col-md-4">
+                  <select class="form-control" name="scortslist" id="scortslist">
+                    <option value="">Seleccione Scort</option>
+                    @foreach($scorts as $scort)
+                      <option value="{{ $scort->id }}"> {{ $scort->name }} - {{ $scort->region->name }}</option>
+                    @endforeach
+                  </select>
+              </div>
+            </form>   
+          
+            @can('galleries.create')
+            <form method="POST" action="{{route('videos.create')}}" id="fr-video-crear">
+              @csrf
+              <input type="hidden" name="_method" value="GET">
+              <input type="hidden" name="scort_id" value="2" id="scort_id">
+            <button type="submit" class="btn btn-primary pull-right" >Crear</button>
+            </form>
+            @endcan
+
               <table class="table table-striped table-hover" id="tb-role">
                   <thead>
                       <th width="10">ID</th>
-                      <th>Name</th>
-                      <th>Slug</th>
-                      <th>Descripción</th>
-                      <th></th>
+                      <th>Path</th>
+                      
                       <th></th>
 
                   </thead>
@@ -67,16 +82,16 @@
                       @foreach($videos as $key => $vid)
                           <tr>
                               <td>{{$key+1}}</td>
-                              <td>{{ $vid->name }}</td>
-                              <td></td>
-                              <td></td>
-
-
-                              <td width="15">
-                                      @can('videos.edit')
-                                      <a href="{{route('videos.edit',$vid->id )}}" class="btn btn-success pull-right">Editar</a>
-                                      @endcan
+                              <td>
+                                <video width="200" controls>
+                                <source src="/{{ $vid->path }}" type="video/mp4">
+                                </video>
                               </td>
+                              <td></td>
+                              <td></td>
+
+
+                             
                               <td width="10">
                                       @can('videos.destroy')
                                       <a href="#" data-id="{{$vid->id}}" data-toggle="modal" data-target="#deluser" class="btn btn-danger btn-role-delete">Borrar</a>

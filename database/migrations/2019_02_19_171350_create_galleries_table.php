@@ -19,6 +19,7 @@ class CreateGalleriesTable extends Migration
             $table->foreign('scort_id')->references('id')->on('scorts');
             $table->string('photo');
             $table->string('thumb');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

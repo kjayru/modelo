@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Message;
+use App\Conversation;
+
 class MessageController extends Controller
 {
     public function __construct()
@@ -18,7 +20,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $mensajes = Message::OrderBy('id','desc')->get();
+        $mensajes = \DB::table('conversations')->get();
+        
         return view('admin.mensajes.index',['mensajes'=>$mensajes]);
     }
 
@@ -86,5 +89,12 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function detail($id){
+
+        $conversation = Conversation::where('id',$id)->first();
+        return view('admin.mensajes.detalle',['conversation'=>$conversation]);
     }
 }

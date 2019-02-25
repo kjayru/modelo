@@ -31,7 +31,7 @@ class CreateScortsTable extends Migration
             $table->string('peso')->nullable();
             $table->string('medidas')->nullable();
             $table->text('description')->nullable();
-            $table->integer('state')->default('1');
+            $table->integer('status')->default('1');
 
             $table->timestamps();
         });
