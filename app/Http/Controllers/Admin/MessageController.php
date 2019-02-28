@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Message;
 use App\Conversation;
 
+
 class MessageController extends Controller
 {
     public function __construct()

@@ -111,7 +111,7 @@
     <div class="modal-content">
 
 
-          <form class="deleterole" action="{{ route('scorts.destroy',$scort->id )}}" method="POST">
+          <form class="deleterole" action="{{ route('scorts.destroy',@$scort->id )}}" method="POST">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span></button>
