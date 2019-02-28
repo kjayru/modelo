@@ -50,7 +50,7 @@
                 <div class="row margin-bottom">
                   @foreach($galerias as $gal)
                   <div class="col-sm-3">
-                    <img class="img-responsive" src="/{{ $gal->photo }}" alt="Photo">
+                    <img class="img-responsive" src="/storage/{{ $gal->photo }}" alt="Photo">
                   </div>
                   @endforeach
                   <!-- /.col -->
