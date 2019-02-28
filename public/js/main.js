@@ -26,23 +26,26 @@ $(".btn-gal-delete").on('click',function(){
 	$("#deluser form").attr('action','/admin/galleries/'+id);
 });
 
-
 $("#scortslist").on('change',function(){
 	let valor = $(this).val();
    
 		let opcion = '';
 		$.ajax({
-			url:'/admin/catalogs/hijos/'+valor,
+			url:'/admin/galleries/getalldata/'+valor,
 			type:'GET',
 			dataType:'json',
 			success:function(response){
+				if(response){
+					$.each(response,function(i,e){
+					
+						opcion+='';
+					})
+					
+					$("#valortipo").html(opcion);
+				}else{
+					
+				}
 				
-			$.each(response,function(i,e){
-				console.log(e.name);
-				opcion+='<option value="'+e.id+'">'+e.name+'</option>';
-			})
-			
-			$("#valortipo").html(opcion);
 			}
 		});
 

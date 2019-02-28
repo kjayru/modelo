@@ -24,7 +24,16 @@
                     </div>
                 @endif
 
-</section>              
+</section>      
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif        
 <section class="content"> 
 	<div class="container-fluid spark-screen">
 		<div class="row">
@@ -44,15 +53,7 @@
 					</div>
 					<div class="box-body">
                         <div class="box box-info">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                       
                             <!-- /.box-header -->
                             <!-- form start -->
                             <form class="form-horizontal" action="{{ route('scorts.store')}}" method="POST">

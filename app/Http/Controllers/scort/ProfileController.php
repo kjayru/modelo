@@ -4,6 +4,11 @@ namespace App\Http\Controllers\scort;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Region;
+use App\Scort;
+use App\Characteristic;
+use App\Service;
 
 class ProfileController extends Controller
 {
@@ -18,72 +23,57 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('scort.perfil.index');
-    }
+        $id = Auth::id();
+        $scort = Scort::where('user_id',$id)->first();
+        $regions = Region::all();
+        $caracteristicas = Characteristic::all();
+        $services = Service::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $servicios=[];
+            foreach($scort->services as $service){
+            $servicios[] =  $service->id;
+            }
+            if(count($servicios)>0){
+                $sv = $servicios;
+            }else{
+                $sv = 0;
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+        $caracters=[];
+            foreach($scort->characteristics as $caracter){
+            $caracters[] =  $caracter->id;
+            }
+            if(count($caracters)>0){
+                $cr = $caracters;
+            }else{
+                $cr = 0;
+            }
        
+        return view('scort.perfil.index',['scort'=>$scort,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'sv'=>$sv,'cr'=>$cr]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        
+        $scort = Scort::where('id',$id)->update([
+            
+            
+            'region_id'=> $request->region_id,
+            'name' => $request->name,
+            'telefono' => $request->telefono,
+            'nacionalidad' => $request->nacionalidad,
+            'etnia' => $request->etnia,
+            'edad' => $request->edad,
+            'talla' => $request->talla,
+            'peso' => $request->peso,
+            'medidas' => $request->medidas,
+            'description' => $request->description
+            ]);
+                
+        $scort = Scort::find($id);
+        $scort->services()->sync($request->get('services'));
+        $scort->characteristics()->sync($request->get('characteristics'));  
+        return redirect()->route('profiles.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

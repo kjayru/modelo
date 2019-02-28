@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Characteristic;
 class CharacteristicController extends Controller
 {
     public function __construct()
@@ -39,7 +39,11 @@ class CharacteristicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $caracter = new Characteristic();
+        $caracter->name = $request->name;
+        $caracter->save();
+
+        return redirect()->route('configurations.index');
     }
 
     /**

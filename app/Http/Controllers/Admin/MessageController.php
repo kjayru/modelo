@@ -97,4 +97,7 @@ class MessageController extends Controller
         $conversation = Conversation::where('id',$id)->first();
         return view('admin.mensajes.detalle',['conversation'=>$conversation]);
     }
+
+
+    
 }

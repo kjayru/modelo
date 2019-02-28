@@ -60,7 +60,7 @@
                   <td>
                   <div class="form-group">
                       <span class="switch switch-sm">
-                        <input data-id="{{$region->id}}" type="checkbox" @if(@$region->status == 2) checked  @endif  class="switch estado-region" id="switch-sm-{{$k+1}}">
+                        <input data-id="{{$region->id}}" data-status="{{@$region->status }}" type="checkbox" @if(@$region->status == 2) checked  @endif  class="switch estado-region" id="switch-sm-{{$k+1}}">
                         <label for="switch-sm-{{$k+1}}"></label>
                       </span>
                   </div>
@@ -101,12 +101,12 @@
                   <td>
                   <div class="form-group">
                       <span class="switch switch-sm">
-                        <input data-id="{{$servicio->id}}" type="checkbox" @if(@$servicio->status == 2) checked  @endif  class="switch estado-servicio" id="switch-sm-{{$k+1}}">
-                        <label for="switch-sm-{{$k+1}}"></label>
+                        <input data-id="{{$servicio->id}}" data-status="{{@$servicio->status }}" type="checkbox" @if(@$servicio->status == 2) checked  @endif  class="switch estado-servicio" id="switch-sm-s{{$k+1}}">
+                        <label for="switch-sm-s{{$k+1}}"></label>
                       </span>
                   </div>
                   </td>
-                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                  <td width="10"><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
                   <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
                 </tr>
               @endforeach
@@ -115,7 +115,7 @@
           </div>
         </div>
         <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nuevo</a>
+              <a href="#" class="btn btn-sm btn-info btn-new-servicio btn-flat pull-left" data-toggle="modal" data-target="#modal-nuevo">Nuevo</a>
         </div>
     </div>
 
@@ -143,12 +143,12 @@
                   <td>
                   <div class="form-group">
                       <span class="switch switch-sm">
-                        <input data-id="{{$caracter->id}}" type="checkbox" @if(@$caracter->status == 2) checked  @endif  class="switch estado-caracter" id="switch-sm-{{$k+1}}">
-                        <label for="switch-sm-{{$k+1}}"></label>
+                        <input data-id="{{$caracter->id}}" data-status="{{@$caracter->status }}" type="checkbox" @if(@$caracter->status == 2) checked  @endif  class="switch estado-caracter" id="switch-sm-c{{$k+1}}">
+                        <label for="switch-sm-c{{$k+1}}"></label>
                       </span>
                   </div>
                   </td>
-                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                  <td width="10"><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
                   <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
                 </tr>
               @endforeach
@@ -157,7 +157,8 @@
           </div>
         </div>
         <div class="box-footer clearfix">
-            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nuevo</a>
+            
+            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-new-caracter btn-flat pull-left" data-toggle="modal" data-target="#modal-nuevo">Nuevo</a>
       </div>
     </div>
 </div>
@@ -175,31 +176,62 @@
 
 
           <form class="deleterole" action="/admin/roles/delete" method="POST">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Confirmar Eliminación</h4>
-                  </div>
-                  <div class="modal-body text-center">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Confirmar Eliminación</h4>
+              </div>
+              <div class="modal-body text-center">
 
-                        <input type="hidden" name="_method" value="delete" >
+                    <input type="hidden" name="_method" value="delete" >
 
-                        @csrf
-                        <input type="hidden" name="id" id="id">
-                        <p>¿Esta seguro de eliminar este item?</p>
+                    @csrf
+                    <input type="hidden" name="id" id="id">
+                    <p>¿Esta seguro de eliminar este item?</p>
 
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-outline" >Eliminar</button>
-                  </div>
-                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-outline" >Eliminar</button>
+              </div>
+          </form>
 
     </div>
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+
+<!--- modal nuevo-->
+<div class="modal  fade in" id="modal-nuevo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="" class="form-horizontal" method="POST">
+          @csrf
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span></button>
+            <h4 class="modal-title">Default Modal</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label class="col-md-2" for="name">Nombre</label>
+                <div class="col-md-10">
+                   <input  class=" form-control"type="text" name="name" id="name" required>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+      </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
   <!-- /.content -->
 @endsection

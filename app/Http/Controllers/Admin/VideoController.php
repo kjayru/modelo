@@ -19,9 +19,17 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::orderBy('id','desc')->get();
+        $lastgal = Video::orderBy('id','desc')->first();
+        
+        if($lastgal){
+            $videos = Video::where('scort_id',$lastgal->scort_id)->orderBy('id','desc')->get();
+            
+        }else{
+            $videos=[]; 
+            
+        }
         $scorts = Scort::OrderBy('name','desc')->get();
-
+       
         return view('admin.videos.index',['videos'=>$videos,'scorts'=>$scorts]);
     }
 
@@ -33,7 +41,11 @@ class VideoController extends Controller
     public function create(Request $request)
     {  
         $scort_id = $request->scort_id;
-        return view('admin.videos.create',['scort_id'=>$scort_id]);
+        $scorts = Scort::where('id',$scort_id)->OrderBy('name','desc')->get();
+
+        $contador = Video::where('scort_id',$scort_id)->count();
+       
+        return view('admin.videos.create',['scort_id'=>$scort_id,'scorts'=>$scorts,'contador'=>$contador]);
     }
 
     /**
@@ -97,7 +109,11 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $video = Video::find($id);
+        $video->status  = $request->status;
+        $video->save();
+
+        return response()->json($video);
     }
 
     /**

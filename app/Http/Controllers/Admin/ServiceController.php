@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Service;
 
 class ServiceController extends Controller
 {
@@ -39,9 +40,13 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        
+        $service = new Service();
+        $service->name = $request->name;
+        $service->save();
 
+        return redirect()->route('configurations.index');
+    }
     /**
      * Display the specified resource.
      *

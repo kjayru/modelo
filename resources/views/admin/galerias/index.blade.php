@@ -67,10 +67,13 @@
               <form method="POST" action="{{route('galleries.create')}}" id="fr-galeria-crear">
                 @csrf
                 <input type="hidden" name="_method" value="GET">
-                <input type="hidden" name="scort_id" value="2" id="scort_id">
-              <button type="submit" class="btn btn-primary pull-right" >Crear</button>
+                <input type="hidden" name="scort_id" value="" id="scort_id">
+              <button type="submit" class="btn btn-primary pull-right btn-new-gallery" style="display:none">Crear</button>
               </form>
               @endcan
+            <div class="col-md-12">
+              <h3 class="scort_title">Galeria: {{ @$galleries[0]->scort->name }}</h3>
+            </div>
               <table class="table table-striped table-hover" id="tb-fotos">
                   <thead>
                       <th width="10">ID</th>
@@ -81,7 +84,7 @@
                       <th></th>
 
                   </thead>
-                  <tbody>
+                  <tbody class="tb-galeriabody">
                       @foreach($galleries as $k => $gal)
                           <tr>
                               <td>{{$k+1}}</td>
@@ -91,14 +94,12 @@
                                   </a>
                               </td>
                               <td width="120">{{ $gal->created_at }}</td>
-                              
-
-
+                            
                               <td width="20">
                                       @can('galleries.edit')
                                   <div class="form-group">
                                       <span class="switch switch-sm">
-                                        <input data-id="{{$gal->id}}" type="checkbox" @if(@$gal->state == 2) checked  @endif  class="switch estado-slider" id="switch-sm-{{$k+1}}">
+                                        <input data-id="{{$gal->id}}" data-status="{{$gal->status }}" type="checkbox" @if(@$gal->status == 2) checked  @endif  class="switch estado-galeria" id="switch-sm-{{$k+1}}">
                                         <label for="switch-sm-{{$k+1}}"></label>
                                       </span>
                                   </div>

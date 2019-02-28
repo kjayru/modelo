@@ -22,7 +22,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galerias = Gallery::orderBy('id','desc')->get();
+        $lastgal = Gallery::orderBy('id','desc')->first();
+        $galerias = Gallery::where('scort_id',$lastgal->scort_id)->orderBy('id','desc')->get();
+
         $scorts = Scort::OrderBy('name','desc')->get();
         return view('admin.galerias.index',['galleries'=>$galerias,'scorts'=>$scorts]);
     }
@@ -48,10 +50,6 @@ class GalleryController extends Controller
     {
         
         $files = $request->file('photos');
-
-       
-        
-
             if($request->hasFile('photos'))
             {
                 foreach ($files as $file) {
@@ -110,7 +108,13 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $galeria = Gallery::find($id);
+        
+        $galeria->status = $request->status;
+        $galeria->save();
+
+        return response()->json($galeria);
     }
 
     /**
@@ -122,7 +126,15 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         Gallery::find($id)->delete();
-
         return redirect()->route('galleries.index');
     }
+
+    public function getalldata($id){
+
+        $fotos = Gallery::where('scort_id',$id)->get();
+
+        return response()->json($fotos);
+    }
+
+    
 }

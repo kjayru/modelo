@@ -12,9 +12,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable, ShinobiTrait;
-
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -34,7 +31,6 @@ class User extends Authenticatable
     ];
 
     public static function navigation(){
-
         return auth()->check() ? auth()->user()->roles[0]->slug : 'guest';
     }
     public function scort(){

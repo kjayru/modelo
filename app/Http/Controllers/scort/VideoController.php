@@ -4,6 +4,12 @@ namespace App\Http\Controllers\scort;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Video;
+use App\User;
+use App\Scort;
+use App\Package;
 
 class VideoController extends Controller
 {
@@ -18,7 +24,23 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('scort.videos.index');
+        $id = Auth::id();  
+        $user = User::find($id);
+        $videos = Video::Where('scort_id',$user->scort->id)->OrderBy('id','desc')->get();
+
+        $paquete = $user->scort->package->id;
+
+        if($user->scort->package->id == 1 ){
+            $limite = 5;
+        }
+        if( $user->scort->package->id == 2 ){
+            $limite = 0;
+        }
+        
+        $conteo = Video::Where('scort_id',$user->scort->id)->count();
+
+        return view('scort.videos.index',['videos'=>$videos,'paquete'=>$paquete,'limite'=>$limite,'conteo'=>$conteo]);
+
     }
 
     /**

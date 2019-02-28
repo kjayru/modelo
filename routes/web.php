@@ -88,7 +88,15 @@ Route::group(['prefix' => 'admin'],function(){
     Route::delete('configurations/{config}','admin\ConfigurationController@destroy')->name('configurations.destroy')
     ->middleware('permission:configurations.destroy');
 
+    //updateRegion
+    Route::put('configurations/updateRegion/{config}','admin\ConfigurationController@updateRegion')->name('configurations.updateregion')
+    ->middleware('permission:configurations.edit');
+    //updateCaracter
+    Route::put('configurations/updateCaracter/{config}','admin\ConfigurationController@updateCaracter')->name('configurations.updatercaracter')
+    ->middleware('permission:configurations.edit');
 
+    Route::put('configurations/updateServicio/{config}','admin\ConfigurationController@updateServicio')->name('configurations.updateservice')
+    ->middleware('permission:configurations.edit');
     //scorts
     Route::post('scorts/store','admin\ScortController@store')->name('scorts.store')
     ->middleware('permission:scorts.create');
@@ -179,7 +187,10 @@ Route::group(['prefix' => 'admin'],function(){
      Route::delete('galleries/{coment}','admin\GalleryController@destroy')->name('galleries.destroy')
      ->middleware('permission:galleries.destroy');
 
+     Route::get('galleries/getalldata/{coment}','admin\GalleryController@getalldata')->name('galleries.getalldata')
+     ->middleware('permission:galleries.edit');
 
+     
      //videos
      Route::post('videos/store','admin\VideoController@store')->name('videos.store')
      ->middleware('permission:videos.create');

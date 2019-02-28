@@ -92,4 +92,28 @@ class ConfigurationController extends Controller
     {
         //
     }
+
+    public function updateRegion(Request $request, $id){
+        $region = Region::find($id);
+        $region->status  = $request->status;
+        $region->save();
+
+        return response()->json($region);
+    }
+
+    public function updateCaracter(Request $request, $id){
+        $caracter = Characteristic::find($id);
+        $caracter->status  = $request->status;
+        $caracter->save();
+
+        return response()->json($caracter);
+    }
+
+    public function updateServicio(Request $request, $id){
+        $servicio = Service::find($id);
+        $servicio->status  = $request->status;
+        $servicio->save();
+
+        return response()->json($servicio);
+    }
 }

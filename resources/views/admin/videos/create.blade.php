@@ -28,6 +28,15 @@
 <section class="content"> 
 	<div class="container-fluid spark-screen">
 		<div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 			<div class="col-md-12 ">
 
 				<!-- Default box -->
@@ -44,15 +53,7 @@
 					</div>
 					<div class="box-body">
                         <div class="box box-info">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        
                             <!-- /.box-header -->
                             <!-- form start -->
                             <form class="form-horizontal" action="{{ route('videos.store')}}" method="POST" enctype="multipart/form-data">

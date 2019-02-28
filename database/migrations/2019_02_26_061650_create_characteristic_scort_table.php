@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class CreateCharacteristicScortTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('characteristic_scort', function (Blueprint $table) {
             $table->unsignedInteger('scort_id');
             $table->foreign('scort_id')->references('id')->on('scorts');
-            $table->string('path');
-            $table->integer('status')->default(1);
-            $table->timestamps();
+            $table->unsignedInteger('characteristic_id');
+            $table->foreign('characteristic_id')->references('id')->on('characteristics');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('characteristic_scort');
     }
 }

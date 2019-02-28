@@ -37,7 +37,7 @@
             <select name="package_id" class="form-control" id="package">
                 <option value="">Seleccione</option>
                 @foreach($paquetes as $paquete)
-                <option value="{{$paquete->id}}"  {{ ($scort->id == $paquete->id) ? 'selected' : '' }}>{{$paquete->name}}</option>
+                <option value="{{$paquete->id}}"  {{ (@$scort->id == $paquete->id) ? 'selected' : '' }}>{{$paquete->name}}</option>
                 @endforeach
             </select>
         </div>
@@ -50,7 +50,7 @@
             <select name="region_id" class="form-control" id="region">
                 <option value="">Seleccione</option>
                 @foreach($regions as $region)
-                    <option value="{{$region->id}}"  {{ ($scort->id == $region->id) ? 'selected' : '' }}>{{$region->name}}</option>
+                    <option value="{{$region->id}}"  {{ (@$scort->id == $region->id) ? 'selected' : '' }}>{{$region->name}}</option>
                 @endforeach
             </select>
         </div>

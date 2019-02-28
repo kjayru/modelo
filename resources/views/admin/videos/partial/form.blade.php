@@ -1,6 +1,6 @@
 @csrf
 <div class="box-body">
-    
+@if($scorts[0]->package_id == 2 && $contador<1)  
     <div class="form-group">
         <label for="photo" class="col-sm-2 control-label" >Carga Video 1</label>
         <div class="col-sm-10">
@@ -8,36 +8,21 @@
             <small id="photolabel" class="form-text text-muted">El formato para el video debe ser mp4.</small>
         </div>
     </div>
-    @if($paquete == 1)
-    <div class="form-group">
-        <label for="photo" class="col-sm-2 control-label" >Carga Video 2</label>
+@else
+    <p>Usted llego a su limite de carga</p>
+ @endif   
+@if($scorts[0]->package_id == 1 & $contador<5)
+  @for($i=0;$i<5-$contador;$i++)
+    <div class="form-group">    
+        <label for="photo" class="col-sm-2 control-label" >Carga Video {{ $i+1 }}</label>
         <div class="col-sm-10">
-            <input type="file" accept="video/*" name="video[]" class="form-control preimages" id="video2" value="" placeholder="Cover" >
-            <small id="photolabel" class="form-text text-muted">El formato para el video debe ser mp4.</small>
-    </div>
-    </div>
-    <div class="form-group">
-        <label for="photo" class="col-sm-2 control-label" >Carga Video 3</label>
-        <div class="col-sm-10">
-            <input type="file" accept="video/*" name="video[]" class="form-control preimages" id="video3" value="" placeholder="Cover"  >
+            <input type="file" accept="video/*" name="video[]" class="form-control preimages" id="video{{ $i+1 }}" value="{{ @$video->path  }}" placeholder="Cover" @if($i==0) required @endif>
             <small id="photolabel" class="form-text text-muted">El formato para el video debe ser mp4.</small>
         </div>
     </div>
-    <div class="form-group">
-        <label for="photo" class="col-sm-2 control-label" >Carga Video 4</label>
-        <div class="col-sm-10">
-            <input type="file" accept="video/*" name="video[]" class="form-control preimages" id="video4" value="" placeholder="Cover"  >
-            <small id="photolabel" class="form-text text-muted">El formato para el video debe ser mp4.</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="photo" class="col-sm-2 control-label" >Carga Video 5</label>
-        <div class="col-sm-10">
-            <input type="file" accept="video/*" name="video[]" class="form-control preimages" id="video5" value="" placeholder="Cover" >
-            <small id="photolabel" class="form-text text-muted">El formato para el video debe ser mp4.</small>
-        </div>
-    </div>
-    @endif
+@endfor
+
+@endif
 </div>
 <!-- /.box-body -->
 <div class="box-footer">

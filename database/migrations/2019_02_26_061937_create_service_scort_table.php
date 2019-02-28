@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class CreateServiceScortTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('service_scort', function (Blueprint $table) {
             $table->unsignedInteger('scort_id');
             $table->foreign('scort_id')->references('id')->on('scorts');
-            $table->string('path');
-            $table->integer('status')->default(1);
-            $table->timestamps();
+            $table->unsignedInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('service_scort');
     }
 }

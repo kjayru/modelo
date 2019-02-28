@@ -42,6 +42,7 @@ class ScortController extends Controller
         $services = Service::all();
         $caracteristicas = Characteristic::all();
         $paquetes = Package::all();
+       
         return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas]);
     }
 
@@ -159,7 +160,6 @@ class ScortController extends Controller
                           'email'=>$request->email ]);
         }
         
-
         $scort = Scort::where('id',$id)->update([
             'user_id' => $request->user_id,
             'package_id'=>$request->package_id,
@@ -174,16 +174,11 @@ class ScortController extends Controller
             'medidas' => $request->medidas,
             'description' => $request->description
             ]);
-        
-            
+          
         $scort = Scort::find($id);
-      
-
         $scort->services()->sync($request->get('services'));
-
         $scort->characteristics()->sync($request->get('characteristics'));
 
-        
         return redirect()->route('scorts.index');
     }
 
