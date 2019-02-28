@@ -23,7 +23,11 @@ class GalleryController extends Controller
     public function index()
     {
         $lastgal = Gallery::orderBy('id','desc')->first();
+        if($lastgal){
         $galerias = Gallery::where('scort_id',$lastgal->scort_id)->orderBy('id','desc')->get();
+        }else{
+            $galerias=[];  
+        }
 
         $scorts = Scort::OrderBy('name','desc')->get();
         return view('admin.galerias.index',['galleries'=>$galerias,'scorts'=>$scorts]);
