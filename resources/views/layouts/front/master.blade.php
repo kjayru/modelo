@@ -5,7 +5,7 @@
     <meta name="charset" content="utf-8">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">   
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/app.css?v={{uniqid()}}">
     <link rel="stylesheet" href="/css/main.css?v={{uniqid()}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -70,7 +70,7 @@
                                 <div class="cities" id="selectorInterior">
                                     <ul>
 
-                                        <li class="locator"> <span>Lima</span>
+                                        <li class="locator"> <span>{{$region->name}}</span>
                                             <ul>
                                                 @foreach($regions as $region)
                                                 <li> <a class="select-city" href="/{{ $region->name }}">{{$region->name}}</a></li>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="menu">
                                     <ul>
-                                        <li class="hightlight"><a href="/login">Ingresar</a></li>
+                                        <li class="hightlight"><a href="/{{ @$lugar }}/anunciate">Anunciate</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,13 +99,15 @@
                             <div class="col-md-9 col-menu">
                                 <div class="menu text-right">
                                     <ul>
-                                        <li class="current first"> <a href="">INICIO</a></li>
-                                        
+                                        <li class=""> <a href="/">INICIO</a></li>
+                                        @foreach($packages as $pack)
+                                        <li class=""> <a href="/{{ @$lugar }}/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="cities" id="selectorInterior">
                                     <ul>
-                                        <li> <span>Lima</span>
+                                        <li> <span>{{ @$lugar }}</span>
                                             <ul>
                                                 <li class="city-active"> <a class="select-city" href="">Ciudad</a></li>
                                                 
@@ -154,14 +156,30 @@
                         <div class="menus">
                             <div class="menu">
                                 <ul>
-                                    <li><a href="">Inicio</a></li>
+                                    <li><a href="/">Inicio</a></li>
+                                    <li><a href="#">Foro</a></li>
+                                    <li><a href="/{{ @$lugar }}/contacto">Contacto</a></li>
+                                    <li><a href="/{{ @$lugar }}/anunciate">Anunciate</a></li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="menu">
+                                <ul>
+                                    @foreach($packages as $pack)
+                                    <li> <a href="/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
+                                    @endforeach 
                                     
                                 </ul>
                             </div>
                             
                         </div>
                         <div class="text">
-                            <p> Ipsum lorem</p>
+                            <p> Portal sobre escorts y masajistas para mayores de 18 años. Todas las anunciantes han sido entrevistadas
+                                 personalmente.<br> No poseemos vinculación laboral con las anunciantes y nos limitamos exclusivamente
+                                  a brindar un servicio publicitario. Somos un medio publicitario legalmente constituido.<br>
+                                   Nos reservamos el derecho a publicación.<br> Queda prohibida la copia o reproducción,
+                                    total o parcial.</p>
                         </div>
                     </div>
                 </div>

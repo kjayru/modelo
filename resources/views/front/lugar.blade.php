@@ -3,7 +3,7 @@
 
 <section class="section is-search" id="introduce">
         <div class="section-background bg">
-            <div class="image background-image-loaded image-loaded" style="background-image: url(&quot;https://vinadelmar.elsilencio.cl/images/bg-introduce.jpg&quot;);"> <img src="https://vinadelmar.elsilencio.cl/images/bg-introduce.jpg" alt=""></div>
+            <div class="image background-image-loaded image-loaded" style="background-image: url(&quot;/images/bg-introduce.jpg&quot;);"> <img src="/images/bg-introduce.jpg" alt=""></div>
         </div>
         <div class="section-content">
             <div class="container">
@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="search-box">
                             <h1 class="line"> Encuentra tu <strong>experiencia perfecta</strong></h1>
-                            <form id="form-search" data-autocomplete="https://vinadelmar.elsilencio.cl/api/searchtags">
+                            <form id="form-search" data-autocomplete="/api/searchtags">
                                 <div class="input-box">
                                     <div class="placeholder">
                                         <p>Escribe lo que buscas, servicio, ubicación, contextura, apariencia, etc...</p>

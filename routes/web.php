@@ -382,5 +382,9 @@ Route::group(['prefix' => 'admin'],function(){
 });
 Route::get('/','Front\HomeController@index')->name('front.admin');
 
+Route::get('/{lugar}/contacto','Front\HomeController@contacto')->name('front.contacto');
+Route::get('/{lugar}/anunciate','Front\HomeController@anunciate')->name('front.anunciate');
+
 Route::get('/{lugar}','Front\HomeController@lugar')->name('front.lugar');
 Route::get('/{lugar}/{id}/{name}','Front\HomeController@detalle')->name('front.detail');
+Route::get('/{lugar}/{packete}','Front\HomeController@filtropack')->name('front.filtro');
