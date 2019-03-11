@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/','Front\HomeController@index')->name('front.admin');
 
 Auth::routes();
 
@@ -381,3 +380,7 @@ Route::group(['prefix' => 'admin'],function(){
        ->middleware('permission:messages.edit');
        
 });
+Route::get('/','Front\HomeController@index')->name('front.admin');
+
+Route::get('/{lugar}','Front\HomeController@lugar')->name('front.lugar');
+Route::get('/{lugar}/{id}/{name}','Front\HomeController@detalle')->name('front.detail');

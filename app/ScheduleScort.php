@@ -15,4 +15,9 @@ class ScheduleScort extends Model
         return $this->belongsTo('App\Schedule');
     }
 
+    public static function valores($id){
+        $horas = \App\ScheduleScort::where('schedule_id',$id)->first();
+        $valor = ["inicio"=>$horas->inicio, "final"=>$horas->final];
+        return $valor;
+    }
 }

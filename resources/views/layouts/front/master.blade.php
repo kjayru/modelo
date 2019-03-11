@@ -5,12 +5,13 @@
     <meta name="charset" content="utf-8">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">   
-    <link rel="stylesheet" href="/css/app.css?id=eaa7c66cb47919e3b35c">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/main.css?v={{uniqid()}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="body body-index">
-   
+  
     <div id="floating-button">
         <p class="plus"> <span class="box"> <span class="bar top"></span> <span class="bar middle"></span> <span class="bar bottom"></span> </span>
         </p> <span class="face" style="background-image: url(/images/isotipo.svg);"></span></div>
@@ -40,7 +41,7 @@
         </div>
     </div>
    
-    <div id="wrapper">
+    <div id="wrapper" {{{ (Request::is('/') ? 'class=capablur' : '') }}}>
         <header id="header-site">
             <div class="wrapper">
                 <div class="header-top">
@@ -68,10 +69,12 @@
                                 </div>
                                 <div class="cities" id="selectorInterior">
                                     <ul>
-                                        <li> <span>Lima</span>
+
+                                        <li class="locator"> <span>Lima</span>
                                             <ul>
-                                                <li class="city-active"> <a class="select-city" href="">ciudad</a></li>
-                                                
+                                                @foreach($regions as $region)
+                                                <li> <a class="select-city" href="/{{ $region->name }}">{{$region->name}}</a></li>
+                                                @endforeach   
                                         </li>
                                     </ul>
                                 </div>
@@ -177,9 +180,13 @@
             </div>
         </footer>
     </div>
+
+    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     
     <script src="/js/app.js?id=306adf279acaeb786185"></script>
+    <script src="/js/actions.js?id={{ uniqid() }}"></script>
 </body>
 
 </html>

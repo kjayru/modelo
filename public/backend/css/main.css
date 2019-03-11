@@ -110,3 +110,11 @@
   .switch + .switch {
     margin-left: 1rem;
   }
+
+  .listhorario{
+    display: inline-block;
+  }
+  li.hlist {
+    display: inline-block;
+    padding: 17px;
+}

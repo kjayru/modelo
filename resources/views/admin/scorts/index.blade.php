@@ -72,11 +72,11 @@
                           <tr>
                               <td>{{$key+1}}</td>
                               
-                              <td>{{ $scort->name }}</td>
-                              <td>{{$scort->package->name}}</td>
-                              <td>{{ $scort->region->name }}</td>
-                              <td>{{ $scort->user->email}}</td>
-                              <td>{{ $scort->telefono }}</td>
+                              <td>{{ @$scort->name }}</td>
+                              <td>{{ @$scort->package->name}}</td>
+                              <td>{{ @$scort->region->name }}</td>
+                              <td>{{ @$scort->user->email}}</td>
+                              <td>{{ @$scort->telefono }}</td>
                               <td></td>
 
 

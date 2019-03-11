@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+      
         /*
          * Application Service Providers...
          */

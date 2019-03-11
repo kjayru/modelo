@@ -13,6 +13,7 @@ use App\Gallery;
 use App\Video;
 use App\Package;
 use App\User;
+use App\ScheduleScort;
 
 class ScortController extends Controller
 {
@@ -42,8 +43,9 @@ class ScortController extends Controller
         $services = Service::all();
         $caracteristicas = Characteristic::all();
         $paquetes = Package::all();
+        $horarios = Schedule::all();
        
-        return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas]);
+        return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'horarios'=>$horarios]);
     }
 
     /**
@@ -75,11 +77,31 @@ class ScortController extends Controller
             'description' => $request->description
             ]);
        
-
         $scort->services()->sync($request->get('services'));
-
         $scort->characteristics()->sync($request->get('characteristics'));
+        
+        $dias = count($request->get('schedule_id'));
+        for($i=0; $i<$dias; $i++){
+                $posid = $request->schedule_id[$i];
+                $horario = new ScheduleScort();
+                $horario->scort_id = $id;
+                $horario->schedule_id = $posid;
+                $horario->save();   
+        }
 
+        $dias = count($request->get('inicio'));
+       
+       for($i=0; $i<$dias; $i++){
+        if(isset($request->schedule_id[$i])){
+            $posid = $request->schedule_id[$i];
+            $horario = new ScheduleScort();
+            $horario->scort_id = $id;
+            $horario->schedule_id = $posid;
+            $horario->inicio = $request->inicio[$i];
+            $horario->final = $request->final[$i];
+            $horario->save();
+        }  
+    }
         
         return redirect()->route('scorts.index');
     }
@@ -90,17 +112,7 @@ class ScortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         $scort = Scort::find($id);
@@ -129,7 +141,20 @@ class ScortController extends Controller
                 $cr = 0;
             }
 
+        $horarios = Schedule::all();
 
+
+        $schedulers=[];
+        
+
+            foreach($scort->schedulescorts as $scheduler){
+            $schedulers[] =  $scheduler->schedule_id;
+            }
+            if(count($schedulers)>0){
+                $sc = $schedulers;
+            }else{
+                $sc = 0;
+            }
 
         return view('admin.scorts.edit',[
             'scort'=>$scort,
@@ -138,7 +163,9 @@ class ScortController extends Controller
             'services'=>$services,
             'caracteristicas'=>$caracteristicas,
             'sv'=>$sv,
-            'cr'=>$cr
+            'cr'=>$cr,
+            'horarios'=>$horarios,
+            'sc'=>$sc 
             ]);
     }
 
@@ -151,6 +178,7 @@ class ScortController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         if(isset($request->password)){
             $user =  User::where('id',$request->user_id)->update(['name'=>$request->name,
                           'email'=>$request->email,
@@ -178,6 +206,27 @@ class ScortController extends Controller
         $scort = Scort::find($id);
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));
+        
+        $dias = count($request->get('inicio'));
+        
+        ScheduleScort::where('scort_id',$id)->delete();
+
+        for($i=0; $i<7; $i++){
+            
+            if(isset($request->schedule_id[$i])){
+                $idem = $request->schedule_id[$i];
+                $key = $idem-1;
+
+                $horario = new ScheduleScort();
+                $horario->scort_id = $id;             
+                $horario->schedule_id = $request->schedule_id[$i];               
+                $horario->inicio = $request->inicio[$key];
+                $horario->final = $request->final[$key];
+                $horario->save();
+            }
+           
+        }
+      
 
         return redirect()->route('scorts.index');
     }

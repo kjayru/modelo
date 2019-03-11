@@ -27,7 +27,7 @@ class Scort extends Model
     public function services(){
         return $this->belongsToMany('App\Service');
     }
-    public function scheduleScorts(){
+    public function schedulescorts(){
         return $this->hasMany('App\ScheduleScort');
     }
 
