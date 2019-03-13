@@ -213,8 +213,8 @@
 
     <script src="/js/app.js?id=306adf279acaeb786185"></script>
     <script src="/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
-    <script src="/bower_components/lg-thumbnail/lg-thumbnail.min.js"></script>
-    <script src="/bower_components/lg-fullscreen/lg-fullscreen.min.js"></script>
+    <script src="/bower_components/lg-thumbnail/dist/lg-thumbnail.min.js"></script>
+    <script src="/bower_components/lg-fullscreen/dist/lg-fullscreen.min.js"></script>
 
     <script src="/js/actions.js?id={{ uniqid() }}"></script>
 </body>
