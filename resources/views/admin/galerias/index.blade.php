@@ -131,7 +131,7 @@
     <div class="modal-content">
 
 
-          <form class="deleterole" action="/admin/roles/delete" method="POST">
+          <form class="deletegal" action="/admin/galleries/delete" method="POST">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span></button>

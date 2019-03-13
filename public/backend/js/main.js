@@ -244,6 +244,10 @@ $(document).on('change','.estado-servicio',function(){
     });
 });
 
+$(document).on('click','.btn-gal-delete',function(){
+    let id = $(this).data('id');
+    $(".deletegal $id").val($id);
+});
 //btn-new-caracter
 $(".btn-new-caracter").on('click',function(){
     $("#modal-nuevo .modal-title").html("Nueva Caracteristica");
