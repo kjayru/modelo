@@ -27,7 +27,9 @@
                 <div class="container">
                     <article class="article-profile is-big animate animate-in">
                         <figure class="bg">
-                            <div class="image background-image-loaded image-loaded" style="background-image: url(&quot;/storage/{{$scort->galleries[0]->photo}}&quot;);"> <img src="/storage/{{$scort->galleries[0]->photo}}" title="{{$scort->name}}" alt="{{$scort->name}}"></div>
+                            <div class="image background-image-loaded image-loaded" style="background-image: url(&quot;/storage/{{$scort->galleries[0]->photo}}&quot;);"> 
+                                <img src="/storage/{{$scort->galleries[0]->photo}}" title="{{$scort->name}}" alt="{{$scort->name}}" style="opacity:0">
+                            </div>
                         </figure>
                         <div class="info">
                             <h1 class="info__title line"> {{ $scort->name }} <i class="fa fa-check-circle tooltipstered" data-toggle="tooltip"></i> <span class="info__category">| {{ $scort->package->name }} </span></h1>
@@ -241,19 +243,23 @@
                                     </div>
                                 </div>
                                 <div class="photoswipe" id="lightgallery">
-                                    @foreach($scort->galleries as $gal)
-                                   
-
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-src="/storage/galeria/thumb/{{ $gal->photo }}">
-                                        <article class="article-media animate animate-in" style="animation-delay: 0.2s;">
-                                            <figure itemprop="associatedMedia" itemtype="http://schema.org/ImageObject">
-                                                <a class="image fancybox magnific-popup box" href="/storage/{{$gal->photo}}" rel="gallery" itemprop="contentUrl" data-fancybox-group="gallery">
-                                                    <picture> <img src="/storage/galeria/thumb/{{ $gal->thumb }}" alt="{{$scort->name}}"> </picture> <span class="box-inner"> <i class="fa fa-search-plus"></i> <small>Ampliar imagen</small> </span> </a>
-                                            </figure>
-                                        </article>
-                                    </div>
-                                    @endforeach
-                                    
+                                    @foreach($scort->galleries as $gal)                                
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-src="/storage/{{$gal->photo}}" >
+                                            <article class="article-media animate animate-in"   style="animation-delay: 0.2s;">
+                                                <figure itemprop="associatedMedia"  itemtype="http://schema.org/ImageObject">
+                                                    <a class="image fancybox magnific-popup box" href="/storage/{{$gal->photo}}"  itemprop="contentUrl" data-fancybox-group="gallery">
+                                                       
+                                                            <img src="/storage/galeria/thumb/{{ $gal->thumb }}" alt="{{$scort->name}}"> 
+                                                       
+                                                        <span class="box-inner"> 
+                                                            <i class="fa fa-search-plus"></i> 
+                                                            <small>Ampliar imagen</small> 
+                                                        </span> 
+                                                    </a>
+                                                </figure>
+                                            </article>
+                                        </div>
+                                    @endforeach   
                                 </div>
                                <!-- <div class="videos">
 

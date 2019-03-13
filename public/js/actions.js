@@ -5,3 +5,14 @@ $("#form-selector").on('submit',function(e){
     
     window.location.href='/'+lugar;
 });
+
+
+
+  $("#lightgallery").lightGallery(); 
+  $('.grid').isotope({
+    
+    itemSelector: '.grid-item',
+    masonry: {
+      columnWidth: 200
+    }
+  });

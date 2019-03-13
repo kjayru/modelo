@@ -64,26 +64,33 @@
             <div class="section-content">
                 <div class="container">
                     <div id="grid-data" class="row">
-                        <!---->
                         <div class="grid isotope">
-                            
                             @foreach($scorts as $key => $scort)
-
-                            <article data-order="131" class="article-escort grid-item isotope-item is-big is-load">
-                                <figure>
-                                    <div class="inner">
-                                        <div class="girl bg">
-                                            <a href="{{ $region->name }}/{{$scort->id}}/{{$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:('/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}')">
-                                                <picture><img role="image" src="/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}" alt="Jade"></picture>
-                                            </a> <i aria-hidden="true" class="fa fa-video-camera video"></i></div>
-                                        <figcaption>
-                                            <p></p>
-                                            <p><a href="#"><i aria-hidden="true" class="fa fa-circle" style="display: none;"></i><span><span class="brown">{{ $scort->name }}</span> <span class="brown number">{{ $scort->edad }}</span>, Escort Gold de Apariencia {{ $scort->etnia}}, Ubicada en {{ $region->name }}. Servicio de 1:00 hora por <span class="brown number">${{ $scort->costohora }}</span></span></a></p>
-                                            <p></p>
-                                        </figcaption>
-                                    </div>
-                                </figure>
-                            </article>
+                                <article data-order="131" class="article-escort grid-item isotope-item is-big is-load">
+                                    <figure>
+                                        <div class="inner">
+                                            <div class="girl bg">
+                                                <a href="{{ $region->name }}/{{$scort->id}}/{{$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:('/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}')">
+                                                    <picture><img role="image" src="/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}" alt="{{$scort->name}}"></picture>
+                                                </a> <i aria-hidden="true" class="fa fa-video-camera video"></i></div>
+                                            <figcaption>
+                                                <p></p>
+                                                    <p>
+                                                        <a href="#">
+                                                            <i aria-hidden="true" class="fa fa-circle" style="display: none;"></i>
+                                                            <span>
+                                                                <span class="brown">{{ $scort->name }}</span> 
+                                                                <span class="brown number">{{ $scort->edad }},</span>
+                                                                Escort Gold de Apariencia {{ $scort->etnia}}, Ubicada en {{ $region->name }}. Servicio de 1:00 hora por 
+                                                                <span class="brown number">${{ $scort->costohora }}</span>
+                                                            </span>
+                                                        </a>
+                                                    </p>
+                                                <p></p>
+                                            </figcaption>
+                                        </div>
+                                    </figure>
+                                </article>
                             @endforeach
                         </div>
                     </div>

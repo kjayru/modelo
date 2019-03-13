@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">   
     <link rel="stylesheet" href="/css/app.css?v={{uniqid()}}">
     <link rel="stylesheet" href="/css/main.css?v={{uniqid()}}">
+    <link type="text/css" rel="stylesheet" href="/bower_components/lightgallery/dist/css/lightgallery.min.css" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -202,13 +203,19 @@
                 </div>
             </div>
         </footer>
-    </div>
-
+    </div>  
     
-
+     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-    
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+   
+
     <script src="/js/app.js?id=306adf279acaeb786185"></script>
+    <script src="/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
+    <script src="/bower_components/lg-thumbnail/dist/lg-thumbnail.min.js"></script>
+    <script src="/bower_components/lg-fullscreen/dist/lg-fullscreen.min.js"></script>
+
     <script src="/js/actions.js?id={{ uniqid() }}"></script>
 </body>
 
