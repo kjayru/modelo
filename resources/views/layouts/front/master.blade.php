@@ -70,11 +70,13 @@
                                 <div class="cities" id="selectorInterior">
                                     <ul>
 
-                                        <li class="locator"> <span>{{$region->name}}</span>
+                                        <li class="locator"> <span>{{@$region->name}}</span>
                                             <ul>
-                                                @foreach($regions as $region)
-                                                <li> <a class="select-city" href="/{{ $region->name }}">{{$region->name}}</a></li>
-                                                @endforeach   
+                                                @if(!empty($region))
+                                                @foreach(@$regions as $region)
+                                                <li> <a class="select-city" href="/{{ $region->name }}">{{@$region->name}}</a></li>
+                                                @endforeach  
+                                                @endif 
                                         </li>
                                     </ul>
                                 </div>
@@ -100,9 +102,11 @@
                                 <div class="menu text-right">
                                     <ul>
                                         <li class=""> <a href="/">INICIO</a></li>
+                                        @if(!empty($packages))
                                         @foreach($packages as $pack)
                                         <li class=""> <a href="/{{ @$lugar }}/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
                                         @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="cities" id="selectorInterior">
@@ -166,10 +170,11 @@
 
                             <div class="menu">
                                 <ul>
+                                    @if(!empty($packages))
                                     @foreach($packages as $pack)
                                     <li> <a href="/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
                                     @endforeach 
-                                    
+                                    @endif
                                 </ul>
                             </div>
                             
