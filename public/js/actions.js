@@ -9,6 +9,7 @@ $("#form-selector").on('submit',function(e){
 
 
   $("#lightgallery").lightGallery(); 
+  
   $('.grid').isotope({
     
     itemSelector: '.grid-item',
