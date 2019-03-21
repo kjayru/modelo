@@ -13,7 +13,7 @@
 <div class="wrapper">
 
 @include('layouts.admin.partials.header')
-  
+{{ dd(\App\User::navigation()) }}
 @include('layouts.admin.partials.sidebar')
  
   <div class="content-wrapper">
