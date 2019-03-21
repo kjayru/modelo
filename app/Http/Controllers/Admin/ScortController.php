@@ -80,18 +80,16 @@ class ScortController extends Controller
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));
         
-        $dias = count($request->get('schedule_id'));
+      /*  $dias = count($request->get('schedule_id'));
         for($i=0; $i<$dias; $i++){
                 $posid = $request->schedule_id[$i];
                 $horario = new ScheduleScort();
                 $horario->scort_id = $scort->id;
                 $horario->schedule_id = $posid;
                 $horario->save();   
-        }
+        }*/
 
-        $dias = count($request->get('inicio'));
-       
-    
+      
 
     for($i=0; $i<7; $i++){
             
