@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Modelos</title>
+    <title>{{ env('APP_NAME')}}</title>
     <meta name="charset" content="utf-8">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">   
