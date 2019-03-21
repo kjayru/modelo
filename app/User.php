@@ -32,6 +32,7 @@ class User extends Authenticatable
     ];
 
     public static function navigation(){
+        dd(auth()->check());
         return auth()->check() ? auth()->user()->roles[0]->slug : 'guest';
     }
     public function scort(){
