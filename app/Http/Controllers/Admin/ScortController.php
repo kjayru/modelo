@@ -84,7 +84,7 @@ class ScortController extends Controller
         for($i=0; $i<$dias; $i++){
                 $posid = $request->schedule_id[$i];
                 $horario = new ScheduleScort();
-                $horario->scort_id = $id;
+                $horario->scort_id = $scort->id;
                 $horario->schedule_id = $posid;
                 $horario->save();   
         }
@@ -95,7 +95,7 @@ class ScortController extends Controller
         if(isset($request->schedule_id[$i])){
             $posid = $request->schedule_id[$i];
             $horario = new ScheduleScort();
-            $horario->scort_id = $id;
+            $horario->scort_id = $scort->id;
             $horario->schedule_id = $posid;
             $horario->inicio = $request->inicio[$i];
             $horario->final = $request->final[$i];
