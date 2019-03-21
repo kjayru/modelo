@@ -1,3 +1,11 @@
+$(window).load(function(){
+   
+    $("#selector").addClass('is-active');
+ });
+ 
+$(document).ready(function(){
+
+
 $("#form-selector").on('submit',function(e){
     e.preventDefault();
     
@@ -17,3 +25,5 @@ $("#form-selector").on('submit',function(e){
       columnWidth: 200
     }
   });
+
+});

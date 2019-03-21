@@ -205,13 +205,13 @@
         </footer>
     </div>  
     
-     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="//unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
    
 
-    <script src="/js/app.js?id=306adf279acaeb786185"></script>
+    
     <script src="/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
     <script src="/bower_components/lg-thumbnail/dist/lg-thumbnail.min.js"></script>
     <script src="/bower_components/lg-fullscreen/dist/lg-fullscreen.min.js"></script>

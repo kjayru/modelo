@@ -1,3 +1,9 @@
+$(window).load(function(){
+	alert("abierto");
+	 $("#selector").addClass('is-active');
+});
+
+
 $(document).on('change','.preimage',function(e){
 	var output = $(this).parent().parent().children('.preview').children('img');
 	
