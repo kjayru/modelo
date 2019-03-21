@@ -15,9 +15,9 @@ class CreateServiceScortTable extends Migration
     {
         Schema::create('service_scort', function (Blueprint $table) {
             $table->unsignedInteger('scort_id');
-            $table->foreign('scort_id')->references('id')->on('scorts');
+            $table->foreign('scort_id')->references('id')->on('scorts')->onDelete('cascade');
             $table->unsignedInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

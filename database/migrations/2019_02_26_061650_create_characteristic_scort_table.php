@@ -15,9 +15,9 @@ class CreateCharacteristicScortTable extends Migration
     {
         Schema::create('characteristic_scort', function (Blueprint $table) {
             $table->unsignedInteger('scort_id');
-            $table->foreign('scort_id')->references('id')->on('scorts');
+            $table->foreign('scort_id')->references('id')->on('scorts')->onDelete('cascade');
             $table->unsignedInteger('characteristic_id');
-            $table->foreign('characteristic_id')->references('id')->on('characteristics');
+            $table->foreign('characteristic_id')->references('id')->on('characteristics')->onDelete('cascade');
         });
     }
 

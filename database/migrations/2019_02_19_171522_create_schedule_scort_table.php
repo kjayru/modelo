@@ -16,11 +16,11 @@ class CreateScheduleScortTable extends Migration
         Schema::create('schedule_scort', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('scort_id');
-            $table->foreign('scort_id')->references('id')->on('scorts');
+            $table->foreign('scort_id')->references('id')->on('scorts')->onDelete('cascade');
             $table->unsignedInteger('schedule_id');
-            $table->foreign('schedule_id')->references('id')->on('schedules');
-            $table->string('inicio');
-            $table->string('final');
+            $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
+            $table->string('inicio')->nullable();
+            $table->string('final')->nullable();
             $table->timestamps();
         });
     }
