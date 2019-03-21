@@ -16,7 +16,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
 
-
+        {{ dd(\App\User::navigation()) }}
         @include('layouts.admin.partials.navigations.'.\App\User::navigation())
 
       </ul>
