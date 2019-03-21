@@ -17,7 +17,8 @@
       <ul class="sidebar-menu" data-widget="tree">
 
         
-        
+        @include('layouts.admin.partials.navigations.'.\App\User::navigation())
+
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -7,6 +7,7 @@ namespace App;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
