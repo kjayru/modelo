@@ -8,7 +8,7 @@
 <div id="selector" class="is-active">
         <div class="selector-box">
                 <div class="box-logo"> 
-                    <img src="/assets/logo.svg" alt="El Silencio">
+                    <img src="/assets/logo.png" alt="El Silencio">
                 </div>
             <div class="box-text">
                 <p>Encuentra las mejores Escorts, Damas de Compañía y Masajes Eróticos en Santiago y Las Regiones de Chile.

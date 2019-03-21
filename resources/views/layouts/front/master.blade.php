@@ -19,7 +19,7 @@
     <div id="container-floating">
         <div class="container-floating-overview"></div>
         <div class="container-floating-background">
-            <a href="" class="logo"> <img src="/assets/logo-white.svg" alt=""> </a>
+            <a href="" class="logo"> <img src="/assets/logo.png" alt=""> </a>
             <ul>
                 <li class="current first"> <a href="">INICIO</a></li>
                 
@@ -95,8 +95,8 @@
                         <div class="row">
                             <div class="col-md-3 col-logo">
                                 <div class="logo">
-                                    <a href="" class="desktop"> <img src="/assets/logo.svg" alt=""> </a>
-                                    <a href="" class="mobile"> <img src="/assets/logo.svg" alt=""> </a>
+                                    <a href="" class="desktop"> <img src="/assets/logo.png" alt="" class="img-responsive"> </a>
+                                    <a href="" class="mobile"> <img src="/assets/logo.png" alt=""> </a>
                                 </div>
                             </div>
                             <div class="col-md-9 col-menu">
@@ -156,7 +156,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="logo">
-                            <a href=""> <img src="/assets/logo-footer.svg" alt="f"> </a>
+                            <a href=""> <img src="/assets/logo-footer.png" alt="f"> </a>
                         </div>
                         <div class="menus">
                             <div class="menu">
