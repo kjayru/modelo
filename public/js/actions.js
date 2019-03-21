@@ -4,7 +4,7 @@ $(window).load(function(){
  });
  
 $(document).ready(function(){
-
+debugger
 
 $("#form-selector").on('submit',function(e){
     e.preventDefault();
