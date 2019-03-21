@@ -1,10 +1,11 @@
+debugger
 $(window).load(function(){
    
     $("#selector").addClass('is-active');
  });
  
 $(document).ready(function(){
-debugger
+
 
 $("#form-selector").on('submit',function(e){
     e.preventDefault();
