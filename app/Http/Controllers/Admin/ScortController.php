@@ -250,7 +250,7 @@ class ScortController extends Controller
         //Characteristic::where('scort_id',$id)->delete();
         //Service::where('scort_id',$id)->delete();
 
-        User::where('id',$scort->user_id)->delete();
+        User::where('id',$id)->delete();
 
         return redirect()->route('scorts.index');
     }
