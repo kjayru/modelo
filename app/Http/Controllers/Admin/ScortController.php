@@ -91,7 +91,7 @@ class ScortController extends Controller
 
         $dias = count($request->get('inicio'));
        
-       for($i=0; $i<$dias; $i++){
+    /*for($i=0; $i<$dias; $i++){
         if(isset($request->schedule_id[$i])){
             $posid = $request->schedule_id[$i];
             $horario = new ScheduleScort();
@@ -101,6 +101,22 @@ class ScortController extends Controller
             $horario->final = $request->final[$i];
             $horario->save();
         }  
+    }*/
+
+    for($i=0; $i<7; $i++){
+            
+        if(isset($request->schedule_id[$i])){
+            $idem = $request->schedule_id[$i];
+            $key = $idem-1;
+
+            $horario = new ScheduleScort();
+            $horario->scort_id = $scort->id;             
+            $horario->schedule_id = $request->schedule_id[$i];               
+            $horario->inicio = $request->inicio[$key];
+            $horario->final = $request->final[$key];
+            $horario->save();
+        }
+       
     }
         
         return redirect()->route('scorts.index');
