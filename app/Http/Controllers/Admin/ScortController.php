@@ -247,8 +247,8 @@ class ScortController extends Controller
     {
         
         ScheduleScort::where('scort_id',$id)->delete();
-        Characteristic::where('scort_id',$id)->delete();
-        Service::where('scort_id',$id)->delete();
+        //Characteristic::where('scort_id',$id)->delete();
+        //Service::where('scort_id',$id)->delete();
 
         User::where('id',$scort->user_id)->delete();
 
