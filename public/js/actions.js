@@ -1,7 +1,7 @@
 debugger
 $(window).load(function(){
    
-    $("#selector").addClass('is-active');
+    $("#selector").addClass('is-active').show();
  });
  
 $(document).ready(function(){
