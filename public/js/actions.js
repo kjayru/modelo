@@ -1,4 +1,4 @@
-debugger
+
 $(window).load(function(){
    
     $("#selector").addClass('is-active').show();

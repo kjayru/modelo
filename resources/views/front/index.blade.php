@@ -5,7 +5,7 @@
       
  
 @endsection
-<div id="selector" class="" css="display:none;">
+<div id="selector" class="" style="display:none;">
         <div class="selector-box">
                 <div class="box-logo"> 
                     <img src="/assets/logo.png" alt="El Silencio">
