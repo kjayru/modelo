@@ -41,7 +41,7 @@ class GalleryController extends Controller
     public function create(Request $request)
     {
         $scort_id = $request->scort_id;
-       return view('admin.galerias.create',['scort_id'=>$scort_id]);
+        return view('admin.galerias.create',['scort_id'=>$scort_id]);
     }
 
     /**
@@ -52,8 +52,29 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
+        $scort = Scort::find($request->scort_id);
+
+        //contamos numero de imagenes 
+        $num_photos = Gallery::where('scort_id',$request->scort_id)->count();
         
-        $files = $request->file('photos');
+        $carga = false;
+
+        switch ($scort->package->id) {
+            case 1:
+            //carga ilimitada
+               $carga = true;
+            break;
+            case 2:
+            //solo 5 imagenes
+            if($num_photos<5){
+                $carga = true;
+            }
+            break;
+            
+        }
+
+        if($carga){
+           $files = $request->file('photos');
             if($request->hasFile('photos'))
             {
                 foreach ($files as $file) {
@@ -78,7 +99,13 @@ class GalleryController extends Controller
                 }
                 
             }
-         return  redirect()->route('galleries.index'); 
+        }else{
+            return  redirect()->route('galleries.index')
+                    ->with('info','Ha superado la carga permitido por su paquete');    
+        }
+         return  redirect()->route('galleries.index')
+                 ->with('info','Imagen(es) cargada(s) con exito');
+                   
     }
 
     /**
