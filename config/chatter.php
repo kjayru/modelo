@@ -13,7 +13,7 @@ return [
     */
 
     'routes' => [
-        'home'       => 'forums',
+        'home'       => 'foro',
         'discussion' => 'discussion',
         'category'   => 'category',
         'post'       => 'posts',
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'master_file_extend' => 'layouts.app',
+    'master_file_extend' => 'layouts.front.master',
 
     /*
     |--------------------------------------------------------------------------
@@ -164,7 +164,9 @@ return [
     |
     */
 
-    'editor' => 'tinymce',
+
+    'editor' => 'simplemde',
+
 
     /*
     |--------------------------------------------------------------------------

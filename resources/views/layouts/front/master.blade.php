@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/main.css?v={{uniqid()}}">
     <link type="text/css" rel="stylesheet" href="/bower_components/lightgallery/dist/css/lightgallery.min.css" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @yield('css')
 </head>
 
 <body class="body body-index">
@@ -217,6 +218,7 @@
     <script src="/bower_components/lg-fullscreen/dist/lg-fullscreen.min.js"></script>
 
     <script src="/js/actions.js?id={{ uniqid() }}"></script>
+    @yield('js')
 </body>
 
 </html>
