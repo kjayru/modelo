@@ -75,8 +75,14 @@ class HomeController extends Controller
 
     //peticiones asincronas
 
-    public function getFiltro(){
+    public function getFiltro(Request $request){
         
+        $ciudad = Region::where('name',$request->lugar)->first();
+       
+        
+        $result = Scort::where('region_id',$ciudad->id)->get();
+        echo $result[0]->filters;
+        //$result->filter
     }
 
     public function getBuscar(Request $request){

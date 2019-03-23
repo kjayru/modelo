@@ -388,3 +388,7 @@ Route::get('/{lugar}/anunciate','Front\HomeController@anunciate')->name('front.a
 Route::get('/{lugar}','Front\HomeController@lugar')->name('front.lugar');
 Route::get('/{lugar}/{id}/{name}','Front\HomeController@detalle')->name('front.detail');
 Route::get('/{lugar}/{packete}','Front\HomeController@filtropack')->name('front.filtro');
+
+Route::post('/getfiltro','front\HomeController@getFiltro');
+
+Route::post('/getbuscar','front\HomeController@getBuscar');

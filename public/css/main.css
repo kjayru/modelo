@@ -18,3 +18,8 @@ section.section#media .section-content .photoswipe>div {
     overflow: hidden;
     margin-bottom: 10px;
 }
+
+div.tagsinput div {
+    display: block;
+    float: none;
+}
