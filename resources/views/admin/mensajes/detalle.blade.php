@@ -47,13 +47,13 @@
                   <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{ $mensaje->created_at }}</span>
       
-                    <h3 class="timeline-header"><a href="#">{{ $mensaje->user->name }}</a> Envio un mensaje</h3>
+                    <h3 class="timeline-header"><a href="#">{{ $mensaje->user->name }} </a> Envio un mensaje</h3>
       
                     <div class="timeline-body">
                       {{ $mensaje->body }}
                     </div>
                     <div class="timeline-footer">
-                      <a class="btn btn-primary btn-xs">Responder</a>
+                      <!--<a class="btn btn-primary btn-xs">Responder</a>-->
                     
                     </div>
                   </div>

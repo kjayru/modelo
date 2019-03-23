@@ -23,24 +23,25 @@
             <h3 class="box-title">Enviar Mensaje al Administrador</h3>
           </div>
           <!-- /.box-header -->
-          <form role="form">
+          <form role="form" action="{{ route('mensajes.store')}}" method="POST">
+            @csrf
           <div class="box-body">
             <div class="col-md-7">
              
                 <!-- text input -->
                 <div class="form-group">
                   <label>Asunto</label>
-                  <input type="text" class="form-control" placeholder="Enter ...">
+                  <input type="text" name="asunto" class="form-control" placeholder="Enter ...">
                 </div>
                 
 
                 <!-- textarea -->
                 <div class="form-group">
                   <label>Mensaje</label>
-                  <textarea class="form-control" rows="10" placeholder="Enter ..."></textarea>
+                  <textarea class="form-control" name="mensaje" rows="10" placeholder="Enter ..."></textarea>
                 </div>
   
-
+                <input type="hidden" name="scort_id" value="{{ \Auth::user()->scort->id }}">
              
             </div>
           </div>

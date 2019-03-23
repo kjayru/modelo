@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conversation extends Model
 {
+    protected $fillable = [
+        'user_id','scort_id','time','status'
+    ];
     public function user(){
         return $this->belongsTo('App\User');
     }

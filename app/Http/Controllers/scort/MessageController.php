@@ -4,6 +4,8 @@ namespace App\Http\Controllers\scort;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Conversation;
+use App\Message;
 
 class MessageController extends Controller
 {
@@ -39,8 +41,15 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+         
+
+         $nconversa = Conversation::create(['user_id'=>1,'scort_id'=>$request->scort_id,'time'=>date('h:m:s')]);
+        
+         Message::create(['body'=>$request->mensaje,'attach'=>'','asunto'=>$request->asunto,'user_id'=>'1','conversation_id'=>$nconversa->id]);
+    
+         return  redirect()->route('mensajes.index')
+                    ->with('info','tu mensaje se envio con exito, el administrador se contactara en breve');    
+        }
 
     /**
      * Display the specified resource.

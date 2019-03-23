@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    protected $fillable = [
+        'body','attach','asunto','user_id','conversation_id'
+    ];
     public function user(){
         return $this->belongsTo('App\User');
     }
@@ -15,7 +18,7 @@ class Message extends Model
     }
 
     public static function numMessages($id){
-        $mensajes = \DB::table('conversations')->where('user_id',$id)->count();
+        $mensajes = \DB::table('conversations')->where('scort_id',$id)->count();
 
         return $mensajes;
     }
