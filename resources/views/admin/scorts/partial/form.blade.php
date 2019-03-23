@@ -134,7 +134,7 @@
 
         <div class="col-sm-10">
                 <div class="checkbox">
-                    <input type="checkbox" name="entrevista" id="entrevista" value="si" @if($scort->entrevista==2) checked @endif>
+                    <input type="checkbox" name="entrevista" id="entrevista" value="si" @if(@$scort->entrevista==2) checked @endif>
                 </div>
         </div>
     </div>
@@ -161,7 +161,7 @@
 
         <div class="col-sm-10">
             <div class="checkbox">
-            <input type="checkbox"  name="status" id="status" value="2" @if($scort->status==2) checked @endif>
+            <input type="checkbox"  name="status" id="status" value="2" @if(@$scort->status==2) checked @endif>
             <small>Disponible </small>
             </div>
         </div>
