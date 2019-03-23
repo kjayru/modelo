@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Scort extends Model
 {
     protected $fillable = [
-        'user_id','package_id','region_id','name','telefono','nacionalidad','etnia','edad','talla','peso','medidas','description'
+        'user_id','package_id','region_id','name','telefono','nacionalidad',
+        'etnia','edad','talla','peso','medidas','description','costohora',
+        'entrevista','estacionamiento','experiencia','status'
     ];
     public function user(){
         return $this->belongsTo('App\User');
@@ -33,6 +35,10 @@ class Scort extends Model
 
     public function characteristics(){
         return $this->belongsToMany('App\Characteristic');
+    }
+
+    public function filters(){
+        return $this->belongsToMany('App\Filter');
     }
 
     public function region(){

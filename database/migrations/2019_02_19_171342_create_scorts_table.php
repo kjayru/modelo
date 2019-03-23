@@ -34,7 +34,7 @@ class CreateScortsTable extends Migration
             $table->string('costohora')->nullable();
             $table->integer('entrevista')->nullable();
             $table->string('estacionamiento')->nullable();
-            $table->string('costohora')->nullable();
+            
             $table->integer('experiencia')->nullable();
             $table->integer('status')->default('1');
 

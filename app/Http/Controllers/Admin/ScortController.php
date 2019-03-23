@@ -14,6 +14,7 @@ use App\Video;
 use App\Package;
 use App\User;
 use App\ScheduleScort;
+use App\Filter;
 
 class ScortController extends Controller
 {
@@ -44,8 +45,9 @@ class ScortController extends Controller
         $caracteristicas = Characteristic::all();
         $paquetes = Package::all();
         $horarios = Schedule::all();
+        $filters = Filter::all();
        
-        return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'horarios'=>$horarios]);
+        return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'horarios'=>$horarios,'filters'=>$filters]);
     }
 
     /**
@@ -74,23 +76,20 @@ class ScortController extends Controller
             'talla' => $request->talla,
             'peso' => $request->peso,
             'medidas' => $request->medidas,
-            'description' => $request->description
+            'description' => $request->description,
+            'costohora'=>$request->costohora,
+            'entrevista' =>$request->entrevista,
+            'estacionamiento' =>$request->estacionamiento,
+            'experiencia' => $request->experiencia,
+            'status' => $request->status
+
             ]);
        
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));
+
+        $scort->filters()->sync($request->get('filters'));
         
-      /*  $dias = count($request->get('schedule_id'));
-        for($i=0; $i<$dias; $i++){
-                $posid = $request->schedule_id[$i];
-                $horario = new ScheduleScort();
-                $horario->scort_id = $scort->id;
-                $horario->schedule_id = $posid;
-                $horario->save();   
-        }*/
-
-      
-
     for($i=0; $i<7; $i++){
             
         if(isset($request->schedule_id[$i])){
@@ -124,6 +123,7 @@ class ScortController extends Controller
         $services = Service::all();
         $caracteristicas = Characteristic::all();
         $paquetes = Package::all();
+        $filters = Filter::all();
 
         $servicios=[];
             foreach($scort->services as $service){
@@ -169,7 +169,8 @@ class ScortController extends Controller
             'sv'=>$sv,
             'cr'=>$cr,
             'horarios'=>$horarios,
-            'sc'=>$sc 
+            'sc'=>$sc,
+            'filters'=>$filters
             ]);
     }
 
@@ -204,12 +205,18 @@ class ScortController extends Controller
             'talla' => $request->talla,
             'peso' => $request->peso,
             'medidas' => $request->medidas,
-            'description' => $request->description
+            'description' => $request->description,
+            'costohora'=>$request->costohora,
+            'entrevista' =>$request->entrevista,
+            'estacionamiento' =>$request->estacionamiento,
+            'experiencia' => $request->experiencia,
+            'status' => $request->status
             ]);
           
         $scort = Scort::find($id);
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));
+        $scort->filters()->sync($request->get('filters'));
         
         $dias = count($request->get('inicio'));
         
@@ -252,4 +259,6 @@ class ScortController extends Controller
 
         return redirect()->route('scorts.index');
     }
+
+    
 }

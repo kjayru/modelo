@@ -71,4 +71,15 @@ class HomeController extends Controller
         
         return view('front.anunciate',['regions'=>$regions,'packages'=>$packages,'region'=>$region,'lugar'=>$lugar]);
     }
+
+
+    //peticiones asincronas
+
+    public function getFiltro(){
+        
+    }
+
+    public function getBuscar(Request $request){
+
+    }
 }

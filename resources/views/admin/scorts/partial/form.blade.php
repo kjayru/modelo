@@ -1,7 +1,6 @@
 @csrf
 <div class="box-body">
         
-
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Nombre</label>
 
@@ -120,6 +119,51 @@
 
         <div class="col-sm-10">
             <textarea name="description" class="form-control" id="description">{{ @$scort->description }}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+            <label for="costohora" class="col-sm-2 control-label">Costo x hora</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="costohora" id="costohora" value="{{ @$scort->costohora }}">
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label for="descripcion" class="col-sm-2 control-label">Entrevista</label>
+
+        <div class="col-sm-10">
+                <div class="checkbox">
+                    <input type="checkbox" name="entrevista" id="entrevista" value="si" @if($scort->entrevista==2) checked @endif>
+                </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label for="descripcion" class="col-sm-2 control-label">Estacionamiento</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="estacionamiento" id="estacionamiento" value="{{ @$scort->estacionamiento }}">
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label for="descripcion" class="col-sm-2 control-label">Experiencias</label>
+
+        <div class="col-sm-10">
+                <input type="text"  class="form-control" name="experencia" id="experiencia" value="{{ @$scort->experiencia }}">
+                <small>Ingrese el numero de experiencias </small>
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label for="status" class="col-sm-2 control-label">Estado</label>
+
+        <div class="col-sm-10">
+            <div class="checkbox">
+            <input type="checkbox"  name="status" id="status" value="2" @if($scort->status==2) checked @endif>
+            <small>Disponible </small>
+            </div>
         </div>
     </div>
 
@@ -309,6 +353,35 @@
             </ul>
         </div>
 </div>
+
+    <h3>Filtros</h3>
+
+    <div class="form-group">
+            <label for="nombre" class="col-sm-1 control-label" ></label>
+            <div class="col-sm-10">
+                <ul class="list-unstyled">
+    
+                    @foreach($filters as $k => $fil)
+                        <li>
+                            <label for="">
+                                <input type="checkbox" name="filters[]" value="{{ $fil->id }}" rel=" {{ @$scort->filters[$k]->id }}" @if(@in_array($fil->id ,$cr)) checked @endif>
+                               @if($fil->name=='video')
+                                Con video
+                               @elseif($fil->name=='cara')
+                                Cara visible
+                                @elseif($fil->name=='experiencia')
+                                Con experiencia
+                                @elseif($fil->name=='disponible')
+                                Disponible
+                                @elseif($fil->name=='promocion')
+                                En promoción
+                                @endif
+                            </label>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+    </div>
 
 </div>
 <!-- /.box-body -->

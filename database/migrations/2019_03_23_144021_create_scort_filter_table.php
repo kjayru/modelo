@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceScortTable extends Migration
+class CreateScortFilterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateServiceScortTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_scort', function (Blueprint $table) {
+        Schema::create('scort_filter', function (Blueprint $table) {
             $table->unsignedInteger('scort_id');
             $table->foreign('scort_id')->references('id')->on('scorts')->onDelete('cascade');
-            $table->unsignedInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->unsignedInteger('filter_id');
+            $table->foreign('filter_id')->references('id')->on('filters')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateServiceScortTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_scort');
+        Schema::dropIfExists('scort_filter');
     }
 }
