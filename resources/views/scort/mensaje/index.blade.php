@@ -18,7 +18,38 @@
     <div class="row">
       <div class="col-md-12">
         <!-- small box -->
-       
+        <div class="box box-warning">
+          <div class="box-header with-border">
+            <h3 class="box-title">Enviar Mensaje al Administrador</h3>
+          </div>
+          <!-- /.box-header -->
+          <form role="form">
+          <div class="box-body">
+            <div class="col-md-7">
+             
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Asunto</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+                
+
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>Mensaje</label>
+                  <textarea class="form-control" rows="10" placeholder="Enter ..."></textarea>
+                </div>
+  
+
+             
+            </div>
+          </div>
+          <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+          </div>
+        </form>
+          <!-- /.box-body -->
+        </div>
       </div>    
     </div>
 
