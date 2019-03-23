@@ -159,6 +159,17 @@ class ScortController extends Controller
             }else{
                 $sc = 0;
             }
+        
+
+        $filters=[];
+        foreach($scort->filters as $fill){
+            $filters[] =  $fill->id;
+        }
+        if(count($filters)>0){
+             $fl = $filters;
+        }else{
+            $fl = 0;
+        }
 
         return view('admin.scorts.edit',[
             'scort'=>$scort,
@@ -170,7 +181,8 @@ class ScortController extends Controller
             'cr'=>$cr,
             'horarios'=>$horarios,
             'sc'=>$sc,
-            'filters'=>$filters
+            'filters'=>$filters,
+            'fl'=>$fl
             ]);
     }
 

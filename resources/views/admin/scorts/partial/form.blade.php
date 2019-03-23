@@ -364,7 +364,7 @@
                     @foreach($filters as $k => $fil)
                         <li>
                             <label for="">
-                                <input type="checkbox" name="filters[]" value="{{ $fil->id }}" rel=" {{ @$scort->filters[$k]->id }}" @if(@in_array($fil->id ,$cr)) checked @endif>
+                                <input type="checkbox" name="filters[]" value="{{ $fil->id }}" rel=" {{ @$scort->filters[$k]->id }}" @if(@in_array($fil->id ,$fl)) checked @endif>
                                @if($fil->name=='video')
                                 Con video
                                @elseif($fil->name=='cara')
