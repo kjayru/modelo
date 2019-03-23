@@ -170,7 +170,7 @@ class ScortController extends Controller
         }else{
             $fl = 0;
         }
-
+        dd($filters);
         return view('admin.scorts.edit',[
             'scort'=>$scort,
             'paquetes'=>$paquetes,
