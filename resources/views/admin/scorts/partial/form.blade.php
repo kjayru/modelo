@@ -134,7 +134,7 @@
 
         <div class="col-sm-10">
                 <div class="checkbox">
-                    <input type="checkbox" name="entrevista" id="entrevista" value="si" @if(@$scort->entrevista==2) checked @endif>
+                    <input type="checkbox" name="entrevista" id="entrevista" value="2" @if(@$scort->entrevista==2) checked @endif>
                 </div>
         </div>
     </div>
