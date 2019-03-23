@@ -161,16 +161,16 @@ class ScortController extends Controller
             }
         
 
-        $filters=[];
+        $filtro=[];
         foreach($scort->filters as $fill){
-            $filters[] =  $fill->id;
+            $filtro[] =  $fill->id;
         }
-        if(count($filters)>0){
-             $fl = $filters;
+        if(count($filtro)>0){
+             $fl = $filtro;
         }else{
             $fl = 0;
         }
-        dd($filters);
+       
         return view('admin.scorts.edit',[
             'scort'=>$scort,
             'paquetes'=>$paquetes,
