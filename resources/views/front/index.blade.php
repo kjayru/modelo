@@ -11,7 +11,7 @@
                     <img src="/assets/logo.png" alt="El Silencio">
                 </div>
             <div class="box-text">
-                <p>Encuentra las mejores Escorts, Damas de Compañía y Masajes Eróticos en Santiago y Las Regiones de Chile.
+                <p>Encuentra las mejores Escorts, Damas de Compañía y Masajes Eróticos.
                     <br><br>
                     Declaras ser mayor de 18 años.</p>
             </div>

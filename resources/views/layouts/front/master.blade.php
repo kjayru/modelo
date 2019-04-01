@@ -163,7 +163,7 @@
                             <div class="menu">
                                 <ul>
                                     <li><a href="/">Inicio</a></li>
-                                    <li><a href="#">Foro</a></li>
+                                    <li><a href="/foro">Foro</a></li>
                                     <li><a href="/{{ @$lugar }}/contacto">Contacto</a></li>
                                     <li><a href="/{{ @$lugar }}/anunciate">Anunciate</a></li>
                                     
