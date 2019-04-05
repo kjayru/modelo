@@ -20,13 +20,13 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-            <h3>150</h3>
-            <p>Nuevos Registros</p>
+            <h3>{{ $total }}</h3>
+            <p>Registros</p>
           </div>
           <div class="icon">
-            <i class="ion ion-bag"></i>
+            <i class="ion ion-person"></i>
           </div>
-          <a href="#" class="small-box-footer">Mas<i class="fa fa-arrow-circle-right"></i></a>
+          <a href="/admin/scorts" class="small-box-footer">Mas<i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>    
     </div>

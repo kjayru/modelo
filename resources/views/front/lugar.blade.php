@@ -34,11 +34,11 @@
                                 </div>
                                 <div class="input-options">
                                     <ul>
-                                        <li ><a href="#" data-lugar="{{ $lugar }}" data-value="video" class="filtro" >Con Video</a></li>
-                                        <li ><a href="#" data-lugar="{{ $lugar }}" data-value="cara" class="filtro">Cara Visible</a></li>
-                                        <li ><a href="#" data-lugar="{{ $lugar }}" data-value="experiencia" class="filtro">Con Experiencias</a></li>
-                                        <li ><a href="#" data-lugar="{{ $lugar }}" data-value="disponible" class="filtro">Disponibles</a></li>
-                                        <li ><a href="#" data-lugar="{{ $lugar }}" data-value="promocion" class="filtro">En Promoción</a></li>
+                                        <li ><a href="#" data-lugar="{{ @$lugar }}" data-value="video" class="filtro" >Con Video</a></li>
+                                        <li ><a href="#" data-lugar="{{ @$lugar }}" data-value="cara" class="filtro">Cara Visible</a></li>
+                                        <li ><a href="#" data-lugar="{{ @$lugar }}" data-value="experiencia" class="filtro">Con Experiencias</a></li>
+                                        <li ><a href="#" data-lugar="{{ @$lugar }}" data-value="disponible" class="filtro">Disponibles</a></li>
+                                        <li ><a href="#" data-lugar="{{ @$lugar }}" data-value="promocion" class="filtro">En Promoción</a></li>
                                     </ul>
                                 </div>
                                 
@@ -57,12 +57,18 @@
                     <div id="grid-data" class="row">
                         <div class="grid isotope">
                             @foreach($scorts as $key => $scort)
-                                <article data-order="131" class="article-escort grid-item isotope-item is-big is-load">
+                                <article data-order="{{@$scort->id}}" class="article-escort grid-item isotope-item is-big is-load">
                                     <figure>
                                         <div class="inner">
                                             <div class="girl bg">
-                                                <a href="{{ $region->name }}/{{$scort->id}}/{{$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:('/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}')">
-                                                    <picture><img role="image" src="/storage/galeria/thumb/{{ $scort->galleries[0]->thumb }}" alt="{{$scort->name}}"></picture>
+                                                <a href="{{ @$region->name }}/{{ @$scort->id}}/{{ @$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:(@if(empty($scort->galleries[0]->thumb)) '/assets/no-foto.jpg'  @else '/storage/galeria/thumb/{{@$scort->galleries[0]->thumb }}' @endif)">
+                                                    <picture>
+                                                        @if(empty($scort->galleries[0]->thumb))
+                                                        <img role="image" src="/assets/no-foto.jpg" class="img-responsive" alt="{{@$scort->name}}">
+                                                        @else 
+                                                            <img role="image" src="/storage/galeria/thumb/{{ @$scort->galleries[0]->thumb }}" alt="{{@$scort->name}}">
+                                                        @endif
+                                                    </picture>
                                                 </a> <i aria-hidden="true" class="fa fa-video-camera video"></i></div>
                                             <figcaption>
                                                 <p></p>
@@ -70,10 +76,10 @@
                                                         <a href="#">
                                                             <i aria-hidden="true" class="fa fa-circle" style="display: none;"></i>
                                                             <span>
-                                                                <span class="brown">{{ $scort->name }}</span> 
-                                                                <span class="brown number">{{ $scort->edad }},</span>
-                                                                Escort Gold de Apariencia {{ $scort->etnia}}, Ubicada en {{ $region->name }}. Servicio de 1:00 hora por 
-                                                                <span class="brown number">${{ $scort->costohora }}</span>
+                                                                <span class="brown">{{ @$scort->name }}</span> 
+                                                                <span class="brown number">{{ @$scort->edad }},</span>
+                                                                Escort Gold de Apariencia {{ @$scort->etnia}}, Ubicada en {{ @$region->name }}. Servicio de 1:00 hora por 
+                                                                <span class="brown number">${{ @$scort->costohora }}</span>
                                                             </span>
                                                         </a>
                                                     </p>

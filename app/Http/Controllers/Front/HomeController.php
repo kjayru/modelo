@@ -78,11 +78,47 @@ class HomeController extends Controller
     public function getFiltro(Request $request){
         
         $ciudad = Region::where('name',$request->lugar)->first();
-       
-        
-        $result = Scort::where('region_id',$ciudad->id)->get();
-        echo $result[0]->filters;
-        //$result->filter
+  
+        $filtro = $request->filtro;
+
+        //if($filtro=='video'){
+            $result = Scort::where('region_id',$ciudad->id)
+            ->whereHas('filters',function($query) use ($filtro)
+            {
+                $query->where('name', $filtro); 
+            })->with('galleries')->get();
+        //}
+       /* if($filtro=='cara'){
+            $result = Scort::where('region_id',$ciudad->id)
+            ->whereHas('filters',function($query)
+            {
+                $query->whereIn('filter_id', [2]); 
+            })->get();
+        }
+        if($filtro=='experiencia'){
+            $result = Scort::where('region_id',$ciudad->id)
+            ->whereHas('filters',function($query)
+            {
+                $query->whereIn('filter_id', [3]); 
+            })->get();
+        }
+        if($filtro=='disponible'){
+            $result = Scort::where('region_id',$ciudad->id)
+            ->whereHas('filters',function($query)
+            {
+                $query->whereIn('filter_id', [4]); 
+            })->get();
+        }
+
+        if($filtro=='promocion'){
+            $result = Scort::where('region_id',$ciudad->id)
+            ->whereHas('filters',function($query)
+            {
+                $query->whereIn('filter_id', [5]); 
+            })->get();
+        }*/
+
+        return response()->json($result);
     }
 
     public function getBuscar(Request $request){
