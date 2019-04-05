@@ -15,6 +15,8 @@ use App\Package;
 use App\User;
 use App\ScheduleScort;
 use App\Filter;
+use App\Mail\Register;
+use Illuminate\Support\Facades\Mail;
 
 class ScortController extends Controller
 {
@@ -46,8 +48,8 @@ class ScortController extends Controller
         $paquetes = Package::all();
         $horarios = Schedule::all();
         $filters = Filter::all();
-       
         return view('admin.scorts.create',['paquetes'=>$paquetes,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'horarios'=>$horarios,'filters'=>$filters]);
+    
     }
 
     /**
@@ -90,21 +92,34 @@ class ScortController extends Controller
 
         $scort->filters()->sync($request->get('filters'));
         
-    for($i=0; $i<7; $i++){
-            
-        if(isset($request->schedule_id[$i])){
-            $idem = $request->schedule_id[$i];
-            $key = $idem-1;
+        for($i=0; $i<7; $i++){
+                
+            if(isset($request->schedule_id[$i])){
+                $idem = $request->schedule_id[$i];
+                $key = $idem-1;
 
-            $horario = new ScheduleScort();
-            $horario->scort_id = $scort->id;             
-            $horario->schedule_id = $request->schedule_id[$i];               
-            $horario->inicio = $request->inicio[$key];
-            $horario->final = $request->final[$key];
-            $horario->save();
+                $horario = new ScheduleScort();
+                $horario->scort_id = $scort->id;             
+                $horario->schedule_id = $request->schedule_id[$i];               
+                $horario->inicio = $request->inicio[$key];
+                $horario->final = $request->final[$key];
+                $horario->save();
+            }
+        
         }
-       
-    }
+
+        try {
+            $mensaje = "Bienvenido a modelos Perú, ";
+            $data = ['email'=>'wiltinoco@gmail.com','name'=>$request->name,'password'=>$request->password,'mensaje'=>$mensaje];
+            Mail::to('wiltinoco@gmail.com')
+            ->send(new Register($data));
+           
+            $success = true;
+        } catch ( Swift_TransportException $e) {
+            echo $e->getMessage();
+        $success = false;
+        }
+
         
         return redirect()->route('scorts.index');
     }

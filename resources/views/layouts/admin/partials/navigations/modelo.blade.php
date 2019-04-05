@@ -1,7 +1,4 @@
-<li class="header">MAIN NAVIGATION</li>
-
-
-
+<li class="header">MENU</li>
 <li>
     <a href="/admin/profiles">
       <i class="fa fa-dashboard"></i> <span>Perfil</span>

@@ -1,5 +1,4 @@
-<li class="header">MAIN NAVIGATION</li>
-
+<li class="header">MENU</li>
 <li class="active treeview">
     <a href="/admin/">
       <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -30,17 +29,13 @@
       <i class="fa fa-dashboard"></i> <span>Videos</span>
     </a>
 </li>
-
 <li>
     <a href="/admin/configurations">
       <i class="fa fa-dashboard"></i> <span>Configuración</span>
     </a>
 </li>
-
 <li>
     <a href="/admin/messages">
       <i class="fa fa-dashboard"></i> <span>Mensajes</span>
     </a>
 </li>
-
-

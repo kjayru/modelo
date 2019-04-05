@@ -9,8 +9,7 @@
  @include('layouts.admin.partials.styles')
   
 </head>
-<body class="hold-transition 
-@if(auth()->user()->roles[0]->slug == "admin") skin-green @else skin-red @endif sidebar-mini">
+<body class="hold-transition @if(auth()->user()->roles[0]->slug == "admin") skin-green @else skin-red @endif sidebar-mini">
 <div class="wrapper">
 
 @include('layouts.admin.partials.header')
