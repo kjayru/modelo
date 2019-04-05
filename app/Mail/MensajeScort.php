@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Register extends Mailable
+class MensajeScort extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,22 +26,15 @@ class Register extends Mailable
      *
      * @return $this
      */
-    
     public function build()
     {
-        return $this->markdown('mails.register')
-        ->from("support@modelos.com")
-        ->subject("Alta en el sistema Modelos Perú")
+        return $this->markdown('mails.mensaje')
+        ->from('support@modelos.com')
+        ->subject("Mensaje enviado al administrador")
         ->with([
             'nombre' => $this->data['name'],
-            'empresa' => "Modelo Perú",
-            'mensaje' => $this->data['mensaje'],
-            'password'=> $this->data['password']
+            'email' => $this->data['email'],
+            'mensaje' => $this->data['mensaje']
         ]);
-
-        /*return $this
-                ->subject("Mensaje de Administrador",['admin'=>$this->admin])
-                ->markdown('emails.register')
-                ->with('text_message',$this->text_message);*/
     }
 }

@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bienvenido a modelos Peru</title>
-</head>
+@component('mail::message')
+#Bienvenido a modelos Peru
 
-<body>
- Hola {{ $nombre }}, {{ $mensaje }}, para iniciar  dirijase a esta url para acceder y cargar su información<br>
-    <a href="{{env('APP_URL')}}" class="link">{{env('APP_URL')}}</a><br>
-    Sus credenciales de acceso es su email y su clave de acceso es  <strong>{{ $password }}<strong>.
+Hola {{ $nombre }}, {{ $mensaje }}, para iniciar  dirijase a esta url para acceder y cargar su información<br>
+
+@component('mail::button', ['url' => {{env('APP_URL')}}.'/admin'])
+Ingresar
+@endcomponent
+
+Sus credenciales de acceso es su email y su clave de acceso es  <strong>{{ $password }}<strong>.
 <br/>
 <p> Saludos</p>
-</body>
 
-</html>
+<br>
+{{ config('app.name') }}
+@endcomponent

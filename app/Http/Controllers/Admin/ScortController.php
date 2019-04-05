@@ -87,6 +87,7 @@ class ScortController extends Controller
 
             ]);
        
+        
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));
 
@@ -108,10 +109,15 @@ class ScortController extends Controller
         
         }
 
+        $roleuser = new RoleUser();
+        $roleuser->role_id = '2';
+        $roleuser->user_id = $user->id;
+        $roleuser->save();
+        
         try {
-            $mensaje = "Bienvenido a modelos Perú, ";
-            $data = ['email'=>'wiltinoco@gmail.com','name'=>$request->name,'password'=>$request->password,'mensaje'=>$mensaje];
-            Mail::to('wiltinoco@gmail.com')
+            $mensaje = "bienvenido a modelos Perú, ";
+            $data = ['email'=>$request->email,'name'=>$request->name,'password'=>$request->password,'mensaje'=>$mensaje];
+            Mail::to($request->email)
             ->send(new Register($data));
            
             $success = true;
