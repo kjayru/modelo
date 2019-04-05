@@ -115,7 +115,7 @@ class ScortController extends Controller
         $roleuser->save();
         
         try {
-            $mensaje = "bienvenido a modelos Perú, ";
+            $mensaje = "bienvenido a Escort Perú, ";
             $data = ['email'=>$request->email,'name'=>$request->name,'password'=>$request->password,'mensaje'=>$mensaje];
             Mail::to($request->email)
             ->send(new Register($data));

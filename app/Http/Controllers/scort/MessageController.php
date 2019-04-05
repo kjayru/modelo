@@ -26,15 +26,6 @@ class MessageController extends Controller
         return view('scort.mensaje.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,8 +35,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-         
-
          $nconversa = Conversation::create(['user_id'=>1,'scort_id'=>$request->scort_id,'time'=>date('h:m:s')]);
          Message::create(['body'=>$request->mensaje,'attach'=>'','asunto'=>$request->asunto,'user_id'=>'1','conversation_id'=>$nconversa->id]);
     
@@ -60,8 +49,7 @@ class MessageController extends Controller
                 'asunto'=>$request->asunto,
                 'mensaje'=>$mensaje
             ];
-           // Mail::to('escortpe@gmail.com')
-            Mail::to('wiltinoco@gmail.com')
+            Mail::to('escortpe@gmail.com')
             ->send(new Mensaje($data));
 
             //mensaje Scort
@@ -87,48 +75,5 @@ class MessageController extends Controller
                     ->with('info','tu mensaje se envio con exito, el administrador se contactara en breve');    
         }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
