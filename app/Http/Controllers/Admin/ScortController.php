@@ -17,7 +17,7 @@ use App\ScheduleScort;
 use App\Filter;
 use App\Mail\Register;
 use Illuminate\Support\Facades\Mail;
-
+use App\RoleUser;
 class ScortController extends Controller
 {
     public function __construct()
