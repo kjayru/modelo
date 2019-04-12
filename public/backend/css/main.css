@@ -118,3 +118,8 @@
     display: inline-block;
     padding: 17px;
 }
+
+.user-menu img {
+  width: 17px;
+  height: 17px;
+}

@@ -34,9 +34,10 @@
   <section class="content"> 
     <div class="container-fluid spark-screen">
     <div class="row">
-    <div class="col-md-12 ">
+    <div class="col-md-12">
   
     <!-- Default box -->
+   
     <div class="box">
     <div class="box-header with-border">
       <h3 class="box-title">REGISTROS</h3>
@@ -49,12 +50,32 @@
     </div>          
             <div class="box-body">
                   <div class="col-md-12">
-                      <form class="form-horizontal" action="{{ route('profiles.update',$scort->id)}}" method="POST" enctype="multipart/form-data">
+                      <form class="form-horizontal" action="{{ route('profiles.update',@$scort->id)}}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                           <input type="hidden" name="scort_id" value="{{ @$scort->id}}">
 
                           <div class="box-body">
+
+                                <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label" >Foto panel</label>
+  
+                                    <div class="col-sm-10">
+                                            <input type="file" accept="image/png, image/jpeg" name="fotopanel" class="form-control preimage" id="photos" value="{{ @$scort->cover  }}" placeholder="Cover" multiple required>
+                                            
+                                            <div class="preview col-sm-10 col-sm-offset-2">
+                                                @if(!empty(@$scort->cover))
+                                                    <img src="/storage/{{@$scort->cover}}" width="100">
+                                                @else
+                                                    <img src="" width="100">
+                                                @endif
+                                            </div>
+                                    </div>
+                                    
+                                </div>
+
+                                
+
                               <div class="form-group">
                                       <label for="name" class="col-sm-2 control-label" >Región</label>
 
@@ -143,6 +164,46 @@
                                       <textarea name="description" class="form-control" id="description">{{ @$scort->description }}</textarea>
                                   </div>
                               </div>
+                            
+
+                              <div class="form-group">
+                                    <label for="descripcion" class="col-sm-2 control-label">Entrevista</label>
+                        
+                                <div class="col-sm-10">
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="entrevista" id="entrevista" value="2" @if(@$scort->entrevista==2) checked @endif>
+                                        </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                    <label for="descripcion" class="col-sm-2 control-label">Estacionamiento</label>
+                        
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="estacionamiento" id="estacionamiento" value="{{ @$scort->estacionamiento }}">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                    <label for="descripcion" class="col-sm-2 control-label">Experiencias</label>
+                        
+                                <div class="col-sm-10">
+                                        <input type="text"  class="form-control" name="experencia" id="experiencia" value="{{ @$scort->experiencia }}">
+                                        <small>Ingrese el numero de experiencias </small>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                    <label for="status" class="col-sm-2 control-label">Estado</label>
+                        
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                    <input type="checkbox"  name="status" id="status" value="2" @if(@$scort->status==2) checked @endif>
+                                    <small>Disponible </small>
+                                    </div>
+                                </div>
+                            </div>
+
 
                           </div>
                     <hr>
@@ -184,6 +245,185 @@
                                 </ul>
                             </div>
                     </div>  
+
+
+
+                    <h3>Horario</h3>
+   
+                    <div class="form-group">
+                            <label for="nombre" class="col-sm-1 control-label" ></label>
+                            <div class="col-sm-10">
+                                <ul class="list-unstyled listhorario">
+                
+                                    
+                                <!--/lunes-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[0]->id }}" rel=" {{ @$scort->schedulescorts[0]->id }}" @if(@in_array($horarios[0]->id ,$sc)) checked @endif>
+                                                {{$horarios[0]->name}}
+                                                
+                                            </label>
+                                            @if(@in_array($horarios[0]->id ,$sc))
+                                            @php  $valor = \App\ScheduleScort::valores(1);
+                                            @endphp
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                <!--/martes-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[1]->id }}" rel=" {{ @$scort->schedulescorts[1]->id }}" @if(@in_array($horarios[1]->id ,$sc)) checked @endif>
+                                                {{$horarios[1]->name}}
+                                                
+                                            </label>
+                                            @if(@in_array($horarios[1]->id ,$sc))
+                                            @php  $valor = \App\ScheduleScort::valores(2);
+                                            @endphp
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                <!--/miercoles-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[2]->id }}" rel=" {{ @$scort->schedulescorts[2]->id }}" @if(@in_array($horarios[2]->id ,$sc)) checked @endif>
+                                                {{$horarios[2]->name}}
+                                                
+                                            </label>
+                
+                                            @if(@in_array($horarios[2]->id ,$sc))
+                
+                                            @php  $valor = \App\ScheduleScort::valores(3);
+                                            @endphp
+                
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        
+                                        </li>
+                                <!--/jueves-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[3]->id }}" rel=" {{ @$scort->schedulescorts[3]->id }}" @if(@in_array($horarios[3]->id ,$sc)) checked @endif>
+                                                {{$horarios[3]->name}}
+                                                
+                                            </label>
+                                            @if(@in_array($horarios[3]->id ,$sc))
+                                            @php  $valor = \App\ScheduleScort::valores(4);
+                                            @endphp
+                                            
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                <!--/viernes-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[4]->id }}" rel=" {{ @$scort->schedulescorts[4]->id }}" @if(@in_array($horarios[4]->id ,$sc)) checked @endif>
+                                                {{$horarios[4]->name}}
+                                                
+                                            </label>
+                                            @if(@in_array($horarios[4]->id ,$sc))
+                                            @php  $valor = \App\ScheduleScort::valores(5);
+                                            @endphp
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                <!--/sabado-->
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[5]->id }}" rel=" {{ @$scort->schedulescorts[5]->id }}" @if(@in_array($horarios[5]->id ,$sc)) checked @endif>
+                                                {{$horarios[5]->name}}
+                                                
+                                            </label>
+                                            
+                                            @if(@in_array($horarios[5]->id ,$sc))
+                                            @php  $valor = \App\ScheduleScort::valores(6);
+                                            @endphp
+                                            
+                                            
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                <!--/domingo-->
+                
+                                        <li class="hlist">
+                                            <label for="">
+                                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[6]->id }}" rel=" {{ @$scort->schedulescorts[6]->id }}" @if(@in_array($horarios[6]->id ,$sc)) checked @endif>
+                                                {{$horarios[6]->name}}
+                                                
+                                            </label>
+                                        
+                                            @if(@in_array($horarios[6]->id ,$sc))
+                                        
+                                            
+                                            @php  $valor = \App\ScheduleScort::valores(7);
+                                            @endphp
+                                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                                            @else
+                                            
+                                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                                            @endif
+                                        </li>
+                                
+                                </ul>
+                            </div>
+                    </div>
+                
+                    <h3>Filtros</h3>
+                
+                    <div class="form-group">
+                            <label for="nombre" class="col-sm-1 control-label" ></label>
+                            <div class="col-sm-10">
+                                <ul class="list-unstyled">
+                    
+                                    @foreach($filters as $k => $fil)
+                                        <li>
+                                            <label for="">
+                                                <input type="checkbox" name="filters[]" value="{{ $fil->id }}" rel=" {{ @$scort->filters[$k]->id }}" @if(@in_array($fil->id ,$fl)) checked @endif>
+                                               @if($fil->name=='video')
+                                                Con video
+                                               @elseif($fil->name=='cara')
+                                                Cara visible
+                                                @elseif($fil->name=='experiencia')
+                                                Con experiencia
+                                                @elseif($fil->name=='disponible')
+                                                Disponible
+                                                @elseif($fil->name=='promocion')
+                                                En promoción
+                                                @endif
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    </div>
+
+                    
                           <!-- /.box-body -->
                           <div class="box-footer">
 

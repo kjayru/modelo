@@ -23,3 +23,6 @@ div.tagsinput div {
     display: block;
     float: none;
 }
+a.desktop {
+    padding-top: 20px;
+}

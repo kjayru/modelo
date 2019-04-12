@@ -305,47 +305,8 @@
     <div class="section-content">
         <div class="search-box">
             <h1 class="line"> Encuentra tu <strong>experiencia perfecta</strong></h1>
-            <form id="form-search" data-autocomplete="/api/searchtags">
-                <div class="input-box">
-                    <div class="placeholder">
-                        <p>Escribe lo que buscas, servicio, ubicación, contextura, apariencia, etc...</p>
-                    </div>
-                    <div class="fields">
-                        <div class="search-input">
-                            <input name="q" class="search-object" type="text" place="Nombre, Edad, Ubicación, Color de pelo, etc" data-tagsinput-init="true" style="display: none;" id="tags15522745376770">
-                            <div id="tags15522745376770_tagsinput" class="tagsinput" style="width: 300px; min-height: 62px; height: 62px;">
-                                <div id="tags15522745376770_addTag">
-                                    <input id="tags15522745376770_tag" value="" data-default="" style="color: rgb(102, 102, 102); width: 68px;">
-                                </div>
-                                <div class="tags_clear"></div>
-                            </div>
-                            <button class="remove tooltipstered" data-toggle="tooltip" data-original-title="Limpiar búsqueda"> <i class="fa fa-times"></i> </button>
-                        </div>
-                        <button type="submit" class="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li><a href="Trigueña">Trigueña<span>Apariencia</span></a></li>
-                        <li><a href="Ojos Castaños">Ojos Castaños<span>Apariencia</span></a></li>
-                        <li><a href="Contextura Delgada">Contextura Delgada<span>Apariencia</span></a></li>
-                        <li><a href="Busto Grande">Busto Grande<span>Apariencia</span></a></li>
-                        <li><a href="Cola Grande">Cola Grande<span>Apariencia</span></a></li>
-                        <li><a href="Depilación Full">Depilación Full<span>Apariencia</span></a></li>
-                        <li><a href="No Fuma">No Fuma<span>Varios</span></a></li>
-                        <li><a href="Besos">Besos<span>Servicios</span></a></li>
-                        <li><a href="Oral Natural">Oral Natural<span>Servicios</span></a></li>
-                    </ul>
-                </div>
-                <div class="input-options">
-                    <ul>
-                        <li data-faceting="video_name" data-value="Con Video" class="first"><a href="#">Con Video</a></li>
-                        <li data-faceting="cara_name" data-value="Cara Visible"><a href="#">Cara Visible</a></li>
-                        <li data-faceting="experiencia_name" data-value="Con Experiencias"><a href="#">Con Experiencias</a></li>
-                        <li data-faceting="open_hours" data-value="Disponibles"><a href="#">Disponibles</a></li>
-                        <li data-faceting="promocion_name" data-value="En Promoción" class="last"><a href="#">En Promoción</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="params" value="">
-            </form>
+
+           @include('layouts.front.partials.buscador')
         </div>
     </div>
 </section>

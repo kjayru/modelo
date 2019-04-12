@@ -260,3 +260,72 @@ $(".btn-new-servicio").on('click',function(){
     $("#modal-nuevo .modal-title").html("Nuevo Servicio");
     $("#modal-nuevo form").attr('action','/admin/services/store');
 });
+
+
+$(".btn-servicio-edit").on('click',function(e){
+	e.preventDefault();
+	let id = $(this).data('id');
+	let token = $("#form-search input[name='_token']").val();
+	let datasend = ({'_token':token,'id':id,':method':'GET'});
+	$.ajax({
+		url:"/admin/services/"+id,
+		type:"GET",
+		dataType:"json",
+		success:function(response){
+            console.log(response)
+            $("#fr-editar input[name='id']").val(response.id);
+            $("#fr-editar input[name='name']").val(response.name);
+            
+            $("#modal-editar").modal('show');
+            $("#modal-editar .modal-title").html("Editar Servicio");
+            $("#fr-editar").attr("action","/admin/services/"+id);
+		}
+	});
+});
+
+
+$(".btn-caracter-edit").on('click',function(e){
+	e.preventDefault();
+	let id = $(this).data('id');
+	let token = $("#form-search input[name='_token']").val();
+	let datasend = ({'_token':token,'id':id,':method':'GET'});
+	$.ajax({
+		url:"/admin/characteristics/"+id,
+		type:"GET",
+		dataType:"json",
+		success:function(response){
+            console.log(response)
+            $("#fr-editar input[name='id']").val(response.id);
+            $("#fr-editar input[name='name']").val(response.name);
+            
+            $("#modal-editar").modal('show');
+            $("#modal-editar .modal-title").html("Editar Caracteristica");
+            $("#fr-editar").attr("action","/admin/characteristics/"+id);
+		}
+	});
+});
+
+
+$(document).on('click','.btn-servicio-delete',function(e){
+    e.preventDefault();
+    let id = $(this).data('id');
+    let url = "/admin/services/"+id;
+    $(".deleteconf").attr('action',url);
+    $("#id").val(id);  
+    
+});
+
+$(document).on('click','.btn-caracter-delete',function(e){
+    e.preventDefault();
+    let id = $(this).data('id');
+    let url = "/admin/characteristics/"+id;
+    $(".deleteconf").attr('action',url);
+    $("#id").val(id);  
+   
+});
+
+$(document).on('change','.preimage',function(e){
+    var output = $(this).parent().children('.preview').children('img');
+    console.log(output);
+    output.attr('src',URL.createObjectURL(e.target.files[0]));
+})

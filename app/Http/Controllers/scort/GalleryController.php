@@ -25,7 +25,10 @@ class GalleryController extends Controller
     public function index()
     {
         $id = Auth::id();  
-        $user = User::find($id);
+        $user = User::find($id); 
+        $scort = Scort::where('user_id',$id)->first();
+        $foto_profile = $scort->cover;
+
         $galerias = Gallery::Where('scort_id',$user->scort->id)->OrderBy('id','desc')->get();
 
         $paquete = $user->scort->package->id;
@@ -39,7 +42,7 @@ class GalleryController extends Controller
         
         $conteo = Gallery::Where('scort_id',$user->scort->id)->count();
 
-        return view('scort.galeria.index',['galerias'=>$galerias,'paquete'=>$paquete,'limite'=>$limite,'conteo'=>$conteo]);
+        return view('scort.galeria.index',['galerias'=>$galerias,'paquete'=>$paquete,'limite'=>$limite,'conteo'=>$conteo,'foto_profile'=>$foto_profile]);
     }
 
     /**

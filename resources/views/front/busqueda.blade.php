@@ -24,6 +24,10 @@
     <section class="section" id="gallery">
             <div class="section-content">
                 <div class="container">
+                    <h1>RESULTADO DE BUSQUEDA</h1>
+                    @if(empty($mensaje))
+                    <p>{{$mensaje}}</p>
+                    @endif
                     <div id="grid-data" class="row">
                         <div class="grid isotope">
                             @foreach($scorts as $key => $scort)
