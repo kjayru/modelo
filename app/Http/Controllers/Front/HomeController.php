@@ -75,7 +75,7 @@ class HomeController extends Controller
         }
 
 
-        return view('front.categoria',['region'=>$region,'regions'=>$regions,'packages'=>$packages,'lugar'=>$lugar,'scorts'=>$result]);
+        return view('front.categoria',['paquete'=> $packete ,'region'=>$region,'regions'=>$regions,'packages'=>$packages,'lugar'=>$lugar,'scorts'=>$result]);
     }
 
     public function contacto($lugar){

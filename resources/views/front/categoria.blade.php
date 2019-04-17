@@ -289,7 +289,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title-box">
-                        <h1 class="line">ESCORTS VIP</h1>
+                        <h1 class="line">ESCORTS {{ $paquete }}</h1>
                         <div class="paragraph">
                             <p>Mujeres que ofrecen servicios de compañía 
                         </div>
@@ -336,7 +336,7 @@
             <div id="grid-data" class="row">
                 <!---->
                 <div class="grid isotope">
-
+               @if(!empty(@$scorts )) 
                     @foreach($scorts as $key => $scort)
                         <article data-order="{{@$scort->id}}" class="article-escort grid-item isotope-item is-big is-load">
                             <figure>
@@ -371,7 +371,7 @@
                         </article>
                     @endforeach
                     
-                    
+                @endif
                 </div>
             </div>
         </div>
