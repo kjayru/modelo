@@ -385,7 +385,7 @@ Route::get('/','Front\HomeController@index')->name('front.admin');
 Route::get('/{lugar}/contacto','Front\HomeController@contacto')->name('front.contacto');
 Route::post('/contacto','Front\HomeController@sendcontacto')->name('front.postcontacto');
 Route::get('/{lugar}/anunciate','Front\HomeController@anunciate')->name('front.anunciate');
-
+Route::post('/anunciate','Front\HomeController@solicitud')->name('front.solicitud');
 Route::get('/{lugar}','Front\HomeController@lugar')->name('front.lugar');
 Route::get('/{lugar}/{id}/{name}','Front\HomeController@detalle')->name('front.detail');
 Route::get('/{lugar}/{packete}','Front\HomeController@filtropack')->name('front.filtro');

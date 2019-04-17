@@ -186,4 +186,37 @@ class HomeController extends Controller
 
        return back()->with('info','Mensaje Enviado satisfactoriamente');
     }
+
+
+    public function solicitud(Request $request){
+       
+       
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'message' => 'required'
+        ]);
+
+        try{
+            $data = [
+                'name'   => $request->name,
+                'email'  => $request->email,
+                'phone'  => $request->phone,
+                'message' => $request->message
+            ];
+
+            Mail::to('escortpe@gmail.com')
+            ->send(new Anunciante($data));
+
+            $success = true;
+
+        } catch ( Swift_TransportException $e) {
+            echo $e->getMessage();
+        $success = false;
+        }
+
+    return back()->with('info','Mensaje Enviado satisfactoriamente');
+       
+    }
 }

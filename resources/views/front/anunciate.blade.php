@@ -310,11 +310,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <article class="ad-info animate animate-in">
-                        <h3 class="line">ANUNCIO BRONCE</h3>
+                        <h3 class="line">ANUNCIO PREMIUN</h3>
                         <div class="tags">
-                            <span class="number">30</span> Días <span class="number">$120.000</span><span> | </span>
-                            <span class="number">15</span> Días <span class="number">$90.000</span> <span> | </span>
-                            <span class="number">7</span> Días <span class="number">$60.000</span></div>
+                            <span class="number">30</span> Días <span class="number">$00.000</span><span> | </span>
+                            <span class="number">15</span> Días <span class="number">$00.000</span> <span> | </span>
+                            <span class="number">7</span> Días <span class="number">$00.000</span></div>
                         <ul>
                             <li>Fotografía de portada de tamaño <b>pequeño</b>.</li>
                             <li>Listado en <b><span class="number">3</span>er</b> grupo de portada y categoría.</li>
@@ -330,11 +330,11 @@
                 </div>
                 <div class="col-md-4">
                     <article class="ad-info animate animate-in" style="animation-delay: 0.2s;">
-                        <h3 class="line">ANUNCIO PLATA</h3>
+                        <h3 class="line">ANUNCIO FREE</h3>
                         <div class="tags">
-                            <span class="number">30</span> Días <span class="number">$200.000</span> <span> | </span>
-                            <span class="number">15</span> Días <span class="number">$150.000</span> <span> | </span>
-                            <span class="number">7</span> Días <span class="number">$100.000</span></div>
+                            <span class="number">30</span> Días <span class="number">$00.000</span> <span> | </span>
+                            <span class="number">15</span> Días <span class="number">$00.000</span> <span> | </span>
+                            <span class="number">7</span> Días <span class="number">$00.000</span></div>
                         <ul>
                             <li>Fotografía de portada de tamaño <b>mediano</b>.</li>
                             <li>Listado en <b>2do</b> grupo de portada y categoría.</li>
@@ -348,26 +348,7 @@
                         </ul>
                     </article>
                 </div>
-                <div class="col-md-4">
-                    <article class="ad-info animate animate-in" style="animation-delay: 0.4s;">
-                        <h3 class="line">ANUNCIO ORO</h3>
-                        <div class="tags">
-                            <span class="number">30</span> Días <span class="number">$300.000</span> <span> | </span>
-                            <span class="number">15</span> Días <span class="number">$230.000</span> <span> | </span>
-                            <span class="number">7</span> Días <span class="number">$150.000</span></div>
-                        <ul>
-                            <li>Fotografía de portada de tamaño <b>grande</b>.</li>
-                            <li>Listado en <b>1er</b> grupo de portada y categoría.</li>
-                            <li>Publicación de hasta <b><span class="number">18</span></b> fotografías en book.</li>
-                            <li>Publicación de <b><span class="number">3</span></b> historias al día.</li>
-                            <li>Poner en pausa el anuncio hasta <b>3</b> veces.</li>
-                            <li>Anuncio en pausa hasta por <b><span class="number">90</span></b> días.</li>
-                            <li>Anuncio en promoción hasta por <b><span class="number">30</span></b> días.</li>
-                            <li>Acceso a plataforma de autoservicio <span class="number">24</span>hrs.</li>
-                            <li>Asistencia telefónica en horario de oficina.</li>
-                        </ul>
-                    </article>
-                </div>
+               
             </div>
         </div>
         <div class="hightlight">
@@ -385,15 +366,12 @@
                     <article class="ad-info animate animate-in">
                         <h3 class="line">LAS CATEGORÍAS SE BASAN <br>EN LOS SIGUIENTES CRITERIOS</h3>
                         <ul class="no-style">
-                            <li><b>Escort VIP</b>: Acompañante con una tarifa de <span class="number">$100.000</span> o más por hora.</li>
-                            <li><b>Escort Premium</b>: Acompañante con una tarifa entre <span class="number">$70.000 y $99.000</span> por hora.</li>
-                            <li><b>Escort Gold</b>: Acompañante con una tarifa entre <span class="number">$40.000 y $69.000</span> por hora.</li>
-                            <li><b>Escort Silver</b>: Acompañante con una tarifa por menos de <span class="number">$39.000</span> por hora.</li>
-                            <li><b>Mujer Madura</b>: Mujer con <span class="number">36</span> años o más.</li>
-                            <li><b>Mujer Under</b>: Acompañante que no publica fotografías. (<span class="number">*</span>)</li>
-                            <li><b>Mujer Masajista</b>: Mujer que ofrece servicios de masajes eróticos.</li>
+                           
+                            <li><b>Escort Premium</b>: Acompañante con una tarifa entre <span class="number">$00.000 y $0.000</span> por hora.</li>
+                            <li><b>Escort Free</b>: Acompañante con una tarifa entre <span class="number">$00.000 y $00.000</span> por hora.</li>
+                            
                         </ul>
-                        <blockquote> (<span class="number">*</span>) Categoría disponible solo en anuncio Oro, requisitos especiales en entrevista.</blockquote>
+                        <blockquote> (<span class="number">*</span>) Categoría disponible solo en anuncio Premium, requisitos especiales en entrevista.</blockquote>
                     </article>
                 </div>
                 <div class="col-md-6">
@@ -412,45 +390,50 @@
     <div class="section-content">
         <div class="container">
             <form method="POST" action="/anunciate" accept-charset="UTF-8" name="form" class="form-validate form-ajax" id="registerForm" novalidate="novalidate" role="form">
-                <input name="_token" type="hidden" value="NCeqgYHRJWazZvx1xRruifRYi9El0VkiFfKfAGv1" required="">
+                @csrf
                 <div class="title">
                     <h2 class="line"> Llena el formulario y te asesoraremos <br> para anunciar en elsilencio</h2></div>
                 <div class="row">
                     <div class="col-lg-6 animate animate-in">
                         <div class="form-group">
                             <label for="name" class="control-label required" aria-required="true">Nombres</label>
-                            <input class="form-control" placeholder="Nombre completo" required="" name="name" type="text" value="" id="name">
+                            <input class="form-control" placeholder="Nombre completo"  name="name" value="{{old('name')}}" type="text"  id="name" required>
+                            @if ($errors->has('name'))
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label required" aria-required="true">Email</label>
-                            <input class="form-control" placeholder="Ingresa tu correo electrónico" required="" name="email" type="email" value="" id="email">
+                            <input class="form-control" placeholder="Ingresa tu correo electrónico"  value="{{old('email')}}" name="email" type="email"  id="email" required>
+                            @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="phone" class="control-label required" aria-required="true">Teléfono</label>
-                            <input class="form-control" placeholder="Teléfono fijo o Whatsapp" required="" name="phone" type="text" value="" id="phone">
+                            <input class="form-control" placeholder="Teléfono fijo o Whatsapp"  name="phone" value="{{old('phone')}}" type="text"  id="phone" required>
+                            @if ($errors->has('phone'))
+                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                        @endif
                         </div>
                     </div>
                     <div class="col-lg-6 animate animate-in" style="animation-delay: 0.2s;">
                         <div class="form-group">
                             <label for="message" class="control-label required" aria-required="true">Mensaje</label>
-                            <textarea class="form-control" placeholder="Escribe tu mensaje aquí" required="" name="message" cols="50" rows="10" id="message"></textarea>
+                            <textarea class="form-control" placeholder="Escribe tu mensaje aquí"  name="message"  cols="50" rows="10" id="message" required>{{ old('message')}}</textarea>
+                            @if ($errors->has('message'))
+                            <span class="text-danger">{{ $errors->first('message') }}</span>
+                        @endif
                         </div>
                     </div>
                 </div>
                 <div class="form-error-container">
-                    <ul class="alert alert-danger"></ul>
+                      
                 </div>
                 <div class="text-center">
-                    <div id="gRecaptcha" class="g-recaptcha">
-                        <div style="width: 304px; height: 78px;">
-                            <div>
-                                <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdpwksUAAAAAPkGhM3pjOuhBD-tSLnP-vKU_Im5&amp;co=aHR0cHM6Ly9zYW50aWFnby5lbHNpbGVuY2lvLmNsOjQ0Mw..&amp;hl=es&amp;v=v1551681158638&amp;size=normal&amp;cb=r0fusnji8aak" role="presentation" name="a-gtaqob9yvo6i" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" width="304" height="78" frameborder="0"></iframe>
-                            </div>
-                            <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-                        </div>
-                    </div>
+                  
                     <div class="form-button">
-                        <button type="submit" class="button" disabled="">Enviar</button>
+                        <button type="submit" class="button" >Enviar</button>
                     </div>
                 </div>
             </form>
