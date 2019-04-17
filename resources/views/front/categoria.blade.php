@@ -342,7 +342,7 @@
                             <figure>
                                 <div class="inner">
                                     <div class="girl bg">
-                                        <a href="{{ @$region->name }}/{{ @$scort->id}}/{{ @$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:(@if(empty($scort->galleries[0]->thumb)) '/assets/no-foto.jpg'  @else '/storage/galeria/thumb/{{@$scort->galleries[0]->thumb }}' @endif)">
+                                        <a href="/{{ @$region->name }}/{{ @$scort->id}}/{{ @$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:(@if(empty($scort->galleries[0]->thumb)) '/assets/no-foto.jpg'  @else '/storage/galeria/thumb/{{@$scort->galleries[0]->thumb }}' @endif)">
                                             <picture>
                                                 @if(empty($scort->galleries[0]->thumb))
                                                 <img role="image" src="/assets/no-foto.jpg" class="img-responsive" alt="{{@$scort->name}}">

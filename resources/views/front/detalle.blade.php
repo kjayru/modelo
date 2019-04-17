@@ -266,7 +266,7 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-src="/storage/{{$gal->photo}}" >
                                             <article class="article-media animate animate-in"   style="animation-delay: 0.2s;">
                                                 <figure itemprop="associatedMedia"  itemtype="http://schema.org/ImageObject">
-                                                    <a class="image fancybox magnific-popup box" href="/storage/{{$gal->photo}}"  itemprop="contentUrl" data-fancybox-group="gallery">
+                                                    <a class="image fancybox magnific-popup box" href="/storage/{{$gal->photo}}" id="flowplayer-{{$gal->id}}"  itemprop="contentUrl" data-fancybox-group="gallery">
                                                        
                                                             <img src="/storage/galeria/thumb/{{ $gal->thumb }}" alt="{{$scort->name}}"> 
                                                        
