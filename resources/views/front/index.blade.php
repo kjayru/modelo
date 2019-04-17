@@ -1,8 +1,5 @@
 @extends('layouts.front.master')
 @section('content')
-
-
-      
  
 @endsection
 <div id="selector" class="" style="display:none;">
@@ -22,7 +19,7 @@
                     <select id="select-region" required>
                         <option value="">Seleccione</option>
                         @foreach($regions as $region)
-                        <option value="{{ $region->name }}">{{ $region->name }}</option>
+                        <option value="{{ $region->name }}" @if($region->name=="Lima") selected @endif>{{ $region->name }}</option>
                         @endforeach
                     </select>
                 </div>

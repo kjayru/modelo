@@ -211,148 +211,148 @@
     <h3>Horario</h3>
    
     <div class="form-group">
-        <label for="nombre" class="col-sm-1 control-label" ></label>
-        <div class="col-sm-10">
-            <ul class="list-unstyled listhorario">
+            <label for="nombre" class="col-sm-1 control-label" ></label>
+            <div class="col-sm-10">
+                <ul class="list-unstyled listhorario">
 
-                
- <!--/lunes-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[0]->id }}" rel=" {{ @$scort->schedulescorts[0]->id }}" @if(@in_array($horarios[0]->id ,$sc)) checked @endif>
-                            {{$horarios[0]->name}}
-                            
-                        </label>
-                        @if(@in_array($horarios[0]->id ,$sc))
-                        @php  $valor = \App\ScheduleScort::valores(1);
-                        @endphp
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
- <!--/martes-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[1]->id }}" rel=" {{ @$scort->schedulescorts[1]->id }}" @if(@in_array($horarios[1]->id ,$sc)) checked @endif>
-                            {{$horarios[1]->name}}
-                            
-                        </label>
-                        @if(@in_array($horarios[1]->id ,$sc))
-                        @php  $valor = \App\ScheduleScort::valores(2);
-                        @endphp
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
- <!--/miercoles-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[2]->id }}" rel=" {{ @$scort->schedulescorts[2]->id }}" @if(@in_array($horarios[2]->id ,$sc)) checked @endif>
-                            {{$horarios[2]->name}}
-                            
-                        </label>
-
-                        @if(@in_array($horarios[2]->id ,$sc))
-
-                        @php  $valor = \App\ScheduleScort::valores(3);
-                        @endphp
-
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
                     
-                    </li>
- <!--/jueves-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[3]->id }}" rel=" {{ @$scort->schedulescorts[3]->id }}" @if(@in_array($horarios[3]->id ,$sc)) checked @endif>
-                            {{$horarios[3]->name}}
-                            
-                        </label>
-                        @if(@in_array($horarios[3]->id ,$sc))
-                        @php  $valor = \App\ScheduleScort::valores(4);
-                        @endphp
-                        
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
- <!--/viernes-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[4]->id }}" rel=" {{ @$scort->schedulescorts[4]->id }}" @if(@in_array($horarios[4]->id ,$sc)) checked @endif>
-                            {{$horarios[4]->name}}
-                            
-                        </label>
-                        @if(@in_array($horarios[4]->id ,$sc))
-                        @php  $valor = \App\ScheduleScort::valores(5);
-                        @endphp
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
- <!--/sabado-->
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[5]->id }}" rel=" {{ @$scort->schedulescorts[5]->id }}" @if(@in_array($horarios[5]->id ,$sc)) checked @endif>
-                            {{$horarios[5]->name}}
-                            
-                        </label>
-                        
-                        @if(@in_array($horarios[5]->id ,$sc))
-                        @php  $valor = \App\ScheduleScort::valores(6);
-                        @endphp
-                        
-                        
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
-                        
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
- <!--/domingo-->
+                <!--/lunes-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[0]->id }}" rel=" {{ @$scort->schedulescorts[0]->id }}" @if(@in_array($horarios[0]->id ,$sc)) checked @endif>
+                                {{$horarios[0]->name}}
+                                
+                            </label>
+                            @if(@in_array($horarios[0]->id ,$sc))
+                            @php  $valor = \App\ScheduleScort::valores(1);
+                            @endphp
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                <!--/martes-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[1]->id }}" rel=" {{ @$scort->schedulescorts[1]->id }}" @if(@in_array($horarios[1]->id ,$sc)) checked @endif>
+                                {{$horarios[1]->name}}
+                                
+                            </label>
+                            @if(@in_array($horarios[1]->id ,$sc))
+                            @php  $valor = \App\ScheduleScort::valores(2);
+                            @endphp
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                <!--/miercoles-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[2]->id }}" rel=" {{ @$scort->schedulescorts[2]->id }}" @if(@in_array($horarios[2]->id ,$sc)) checked @endif>
+                                {{$horarios[2]->name}}
+                                
+                            </label>
 
-                    <li class="hlist">
-                        <label for="">
-                            <input type="checkbox" name="schedule_id[]" value="{{ $horarios[6]->id }}" rel=" {{ @$scort->schedulescorts[6]->id }}" @if(@in_array($horarios[6]->id ,$sc)) checked @endif>
-                            {{$horarios[6]->name}}
+                            @if(@in_array($horarios[2]->id ,$sc))
+
+                            @php  $valor = \App\ScheduleScort::valores(3);
+                            @endphp
+
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        
+                        </li>
+                <!--/jueves-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[3]->id }}" rel=" {{ @$scort->schedulescorts[3]->id }}" @if(@in_array($horarios[3]->id ,$sc)) checked @endif>
+                                {{$horarios[3]->name}}
+                                
+                            </label>
+                            @if(@in_array($horarios[3]->id ,$sc))
+                            @php  $valor = \App\ScheduleScort::valores(4);
+                            @endphp
                             
-                        </label>
-                       
-                        @if(@in_array($horarios[6]->id ,$sc))
-                      
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                <!--/viernes-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[4]->id }}" rel=" {{ @$scort->schedulescorts[4]->id }}" @if(@in_array($horarios[4]->id ,$sc)) checked @endif>
+                                {{$horarios[4]->name}}
+                                
+                            </label>
+                            @if(@in_array($horarios[4]->id ,$sc))
+                            @php  $valor = \App\ScheduleScort::valores(5);
+                            @endphp
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                <!--/sabado-->
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[5]->id }}" rel=" {{ @$scort->schedulescorts[5]->id }}" @if(@in_array($horarios[5]->id ,$sc)) checked @endif>
+                                {{$horarios[5]->name}}
+                                
+                            </label>
+                            
+                            @if(@in_array($horarios[5]->id ,$sc))
+                            @php  $valor = \App\ScheduleScort::valores(6);
+                            @endphp
+                            
+                            
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                <!--/domingo-->
+
+                        <li class="hlist">
+                            <label for="">
+                                <input type="checkbox" name="schedule_id[]" value="{{ $horarios[6]->id }}" rel=" {{ @$scort->schedulescorts[6]->id }}" @if(@in_array($horarios[6]->id ,$sc)) checked @endif>
+                                {{$horarios[6]->name}}
+                                
+                            </label>
                         
-                        @php  $valor = \App\ScheduleScort::valores(7);
-                        @endphp
-                        <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
-                        @else
+                            @if(@in_array($horarios[6]->id ,$sc))
                         
-                        <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
-                        <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
-                        @endif
-                    </li>
-               
-            </ul>
-        </div>
-</div>
+                            
+                            @php  $valor = \App\ScheduleScort::valores(7);
+                            @endphp
+                            <input type="text" class="form-control" name="inicio[]" value="{{ @$valor['inicio'] }}" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="{{ @$valor['final'] }}" placeholder="Final" >
+                            @else
+                            
+                            <input type="text" class="form-control" name="inicio[]" value="" placeholder="Inicio" >
+                            <input type="text" class="form-control" name="final[]" value="" placeholder="Final" >
+                            @endif
+                        </li>
+                
+                </ul>
+            </div>
+    </div>
 
     <h3>Filtros</h3>
 

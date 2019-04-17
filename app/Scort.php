@@ -9,7 +9,7 @@ class Scort extends Model
     protected $fillable = [
         'user_id','package_id','region_id','name','telefono','nacionalidad',
         'etnia','edad','talla','peso','medidas','description','costohora',
-        'entrevista','estacionamiento','experiencia','status'
+        'entrevista','estacionamiento','cover','experiencia','status',
     ];
     public function user(){
         return $this->belongsTo('App\User');

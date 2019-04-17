@@ -223,16 +223,16 @@ Route::group(['prefix' => 'admin'],function(){
      Route::get('services/create','admin\ServiceController@create')->name('services.create')
      ->middleware('permission:services.create');
  
-     Route::get('services/{video}/edit','admin\ServiceController@edit')->name('services.edit')
+     Route::get('services/{service}/edit','admin\ServiceController@edit')->name('services.edit')
      ->middleware('permission:services.edit');
  
-     Route::put('services/{video}','admin\ServiceController@update')->name('services.update')
+     Route::put('services/{service}','admin\ServiceController@update')->name('services.update')
      ->middleware('permission:services.edit');
  
-     Route::get('services/{video}','admin\ServiceController@show')->name('services.show')
+     Route::get('services/{service}','admin\ServiceController@show')->name('services.show')
      ->middleware('permission:services.show');
  
-     Route::delete('services/{video}','admin\ServiceController@destroy')->name('services.destroy')
+     Route::delete('services/{service}','admin\ServiceController@destroy')->name('services.destroy')
      ->middleware('permission:services.destroy');
 
 
@@ -383,6 +383,7 @@ Route::group(['prefix' => 'admin'],function(){
 Route::get('/','Front\HomeController@index')->name('front.admin');
 
 Route::get('/{lugar}/contacto','Front\HomeController@contacto')->name('front.contacto');
+Route::post('/contacto','Front\HomeController@sendcontacto')->name('front.postcontacto');
 Route::get('/{lugar}/anunciate','Front\HomeController@anunciate')->name('front.anunciate');
 
 Route::get('/{lugar}','Front\HomeController@lugar')->name('front.lugar');
@@ -391,4 +392,4 @@ Route::get('/{lugar}/{packete}','Front\HomeController@filtropack')->name('front.
 
 Route::post('/getfiltro','front\HomeController@getFiltro');
 
-Route::post('/getbuscar','front\HomeController@getBuscar');
+Route::post('/search','front\HomeController@search')->name('front.search');;

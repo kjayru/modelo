@@ -76,3 +76,4 @@ $(".filtro").on('click',function(e){
 		}
 	});
 });
+

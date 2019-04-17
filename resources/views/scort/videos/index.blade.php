@@ -33,11 +33,11 @@
           <div class="box-body">
              
              @if(($limite-$conteo)>0)
-                <a href="{{ route('migaleria.create') }}" class="btn btn-primary pull-right btn-new-gallery" >Crear</a>
+                <a href="{{ route('mivideo.create') }}" class="btn btn-primary pull-right btn-new-video" >Crear</a>
              @endif
             <div class="post">
               @if($paquete == 1)
-              <p>Puedes cargar 5 videos con tu paquete actual</p>
+              <p>Puedes cargar 1 video con tu paquete actual</p>
               @endif
               @if($paquete == 2)
                

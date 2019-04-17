@@ -12,17 +12,6 @@
   </ol>
 
 
-      @if(session('info'))
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="alert alert-success">
-                          {{ session('info')}}
-                      </div>
-                  </div>
-              </div>
-          </div>
-      @endif
 
 </section>              
 <section class="content"> 
@@ -30,11 +19,11 @@
 <div class="row">
 
     @if(session('info'))
-    <div class="alert alert-danger">
+    <div class="alert alert-success">
         <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+           
+                <li> {{ session('info')}}</li>
+           
         </ul>
     </div>
     @endif
@@ -106,8 +95,8 @@
                       </span>
                   </div>
                   </td>
-                  <td width="10"><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
-                  <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
+                  <td width="10"><a class="btn btn-xs btn-primary btn-servicio-edit" href="#" data-id="{{ $servicio->id }}">Editar</a></td>
+                  <td><a class="btn btn-xs btn-danger btn-servicio-delete" href="#" data-toggle="modal" data-target="#deluser" data-id="{{ $servicio->id }}">Borrar</a></td>
                 </tr>
               @endforeach
               </tbody>
@@ -148,8 +137,8 @@
                       </span>
                   </div>
                   </td>
-                  <td width="10"><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
-                  <td><a class="btn btn-xs btn-danger" href="#" data-id="{{ $region->id }}">Borrar</a></td>
+                  <td width="10"><a class="btn btn-xs btn-primary btn-caracter-edit" href="#" data-id="{{ $caracter->id }}">Editar</a></td>
+                  <td><a class="btn btn-xs btn-danger btn-caracter-delete" href="#" data-toggle="modal" data-target="#deluser" data-id="{{ $caracter->id }}">Borrar</a></td>
                 </tr>
               @endforeach
               </tbody>
@@ -175,7 +164,7 @@
     <div class="modal-content">
 
 
-          <form class="deleterole" action="/admin/roles/delete" method="POST">
+          <form class="deleteconf" action="/admin/roles/delete" method="POST">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
@@ -233,5 +222,42 @@
     <!-- /.modal-dialog -->
   </div>
 
+
+  <!--- modal editar-->
+<div class="modal  fade in" id="modal-editar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="" class="form-horizontal" method="POST" id="fr-editar">
+        @csrf
+        <input type="hidden" name="id">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+          <h4 class="modal-title">Default Modal</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label class="col-md-2" for="name">Nombre</label>
+              <div class="col-md-10">
+                 <input  class=" form-control"type="text" name="name" id="name" required>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
   <!-- /.content -->
+
+
+
+</div>
 @endsection

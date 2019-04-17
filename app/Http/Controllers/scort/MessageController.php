@@ -4,11 +4,13 @@ namespace App\Http\Controllers\scort;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Conversation;
 use App\Message;
 use App\Scort;
 use App\Mail\Mensaje;
 use App\Mail\MensajeScort;
+
 use Illuminate\Support\Facades\Mail;
 class MessageController extends Controller
 {
@@ -23,7 +25,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('scort.mensaje.index');
+        $id = Auth::id(); 
+        $scort = Scort::where('user_id',$id)->first();
+        $foto_profile = $scort->cover;
+        return view('scort.mensaje.index',['foto_profile'=>$foto_profile]);
     }
 
 

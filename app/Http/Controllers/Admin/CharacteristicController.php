@@ -54,7 +54,9 @@ class CharacteristicController extends Controller
      */
     public function show($id)
     {
-        //
+        $caracter = Characteristic::find($id);
+
+        return response()->json($caracter);
     }
 
     /**
@@ -75,9 +77,12 @@ class CharacteristicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request,$id){
+
+        $caracter = Characteristic::find($id);
+        $caracter->name = $request->name;
+        $caracter->save();
+        return back()->with('info','Caracteristica actualizado');
     }
 
     /**
@@ -88,6 +93,7 @@ class CharacteristicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Characteristic::find($id)->delete();
+        return back()->with('info','Caracteristica eliminada Eliminado');
     }
 }

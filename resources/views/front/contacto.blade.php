@@ -299,11 +299,21 @@
     </div>
 </section>
 
-
+@if(session('info'))
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                {{ session('info')}}
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 <section class="section is-contact" id="form">
     <div class="section-content">
         <div class="container">
-            <form method="POST" action="/contacto" accept-charset="UTF-8" name="form" class="form-validate form-ajax" id="contactForm" novalidate="novalidate" role="form">
+            <form method="POST" action="/contacto" accept-charset="UTF-8" name="form"  role="form">
                @csrf
                 <div class="title">
                     <h2 class="line">Complete el formulario y comuniquese con nosotros</h2></div>
@@ -311,25 +321,25 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="name" class="control-label required" aria-required="true">Nombres</label>
-                            <input class="form-control" placeholder="Nombre completo" required="" name="name" type="text" value="" id="name">
+                            <input class="form-control" placeholder="Nombre completo" required="" name="name" type="text" value="" id="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label required" aria-required="true">Email</label>
-                            <input class="form-control" placeholder="Ingresa tu correo electrónico" required="" name="email" type="email" value="" id="email">
+                            <input class="form-control" placeholder="Ingresa tu correo electrónico" required="" name="email" type="email" value="" id="email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="control-label required" aria-required="true">Teléfono</label>
-                            <input class="form-control" placeholder="Teléfono fijo o Whatsapp" required="" name="phone" type="text" value="" id="phone">
+                            <input class="form-control" placeholder="Teléfono fijo o Whatsapp" required="" name="phone" type="text" value="" id="phone" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="subject" class="control-label required" aria-required="true">Asunto</label>
-                            <input class="form-control" placeholder="Asunto" required="" name="subject" type="text" value="" id="subject">
+                            <input class="form-control" placeholder="Asunto" required="" name="subject" type="text" value="" id="subject" required>
                         </div>
                         <div class="form-group">
                             <label for="message" class="control-label required" aria-required="true">Mensaje</label>
-                            <textarea class="form-control" placeholder="Escribe tu mensaje aquí" required="" name="message" cols="50" rows="10" id="message"></textarea>
+                            <textarea class="form-control" placeholder="Escribe tu mensaje aquí" required="" name="message" cols="50" rows="10" id="message" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -341,16 +351,16 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <div id="gRecaptcha" class="g-recaptcha">
+                    <!--<div id="gRecaptcha" class="g-recaptcha">
                         <div style="width: 304px; height: 78px;">
                             <div>
                                 <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdpwksUAAAAAPkGhM3pjOuhBD-tSLnP-vKU_Im5&amp;co=aHR0cHM6Ly9zYW50aWFnby5lbHNpbGVuY2lvLmNsOjQ0Mw..&amp;hl=es&amp;v=v1551681158638&amp;size=normal&amp;cb=40dv1ttrlvzj" role="presentation" name="a-svhelvjqlokn" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" width="304" height="78" frameborder="0"></iframe>
                             </div>
                             <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-button">
-                        <button type="submit" class="button" disabled="">Enviar</button>
+                        <button type="submit" class="button">Enviar</button>
                     </div>
                 </div>
             </form>

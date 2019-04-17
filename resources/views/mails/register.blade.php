@@ -3,7 +3,7 @@
 
 Hola {{ $nombre }}, {{ $mensaje }}, para iniciar  dirijase a esta url para acceder y cargar su información<br>
 
-@component('mail::button', ['url' => {{env('APP_URL')}}.'/admin'])
+@component('mail::button', ['url' => 'http://escort.com.pe/admin'])
 Ingresar
 @endcomponent
 

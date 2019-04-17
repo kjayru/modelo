@@ -8,7 +8,7 @@ use App\Region;
 use App\Scort;
 use App\Schedule;
 use App\Package;
-
+use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     public function index(){
@@ -81,47 +81,87 @@ class HomeController extends Controller
   
         $filtro = $request->filtro;
 
-        //if($filtro=='video'){
+        
             $result = Scort::where('region_id',$ciudad->id)
             ->whereHas('filters',function($query) use ($filtro)
             {
                 $query->where('name', $filtro); 
             })->with('galleries')->get();
-        //}
-       /* if($filtro=='cara'){
-            $result = Scort::where('region_id',$ciudad->id)
-            ->whereHas('filters',function($query)
-            {
-                $query->whereIn('filter_id', [2]); 
-            })->get();
-        }
-        if($filtro=='experiencia'){
-            $result = Scort::where('region_id',$ciudad->id)
-            ->whereHas('filters',function($query)
-            {
-                $query->whereIn('filter_id', [3]); 
-            })->get();
-        }
-        if($filtro=='disponible'){
-            $result = Scort::where('region_id',$ciudad->id)
-            ->whereHas('filters',function($query)
-            {
-                $query->whereIn('filter_id', [4]); 
-            })->get();
-        }
-
-        if($filtro=='promocion'){
-            $result = Scort::where('region_id',$ciudad->id)
-            ->whereHas('filters',function($query)
-            {
-                $query->whereIn('filter_id', [5]); 
-            })->get();
-        }*/
+     
 
         return response()->json($result);
     }
 
-    public function getBuscar(Request $request){
+    public function search(Request $request){
+        
+        $regions = Region::where('status',2)->get();
+        $region = Region::where('name',$request->lugar)->first();   
+        $region_id = $region->id;
+        $lugar = $request->lugar;
+        $mensaje = "";
+        $packages = Package::all();
+        //por nombre
+        $scorts = Scort::where('region_id',$region_id)->where('name','like','%'.$request->buscar.'%')->get();
+       
+        if(count($scorts)==0){
+           //por edad
+          
+           $scorts = Scort::where('region_id',$region_id)->where('edad',$request->buscar)->get();
+          
+           if(count($scorts)==0){
+                //por cabello
+                $scorts = Scort::where('region_id',$region_id)->where('etnia','like','%'.$request->buscar.'%')->get();
+                
+                if(count($scorts)==0){
+                    //por lugar
+                    
+                    $ciudad = Region::where('name','like','%'.$request->buscar.'%')->first();  
+                    if(!empty($ciudad)){ 
+                        $ciudad_id = $ciudad->id;
+                        $scorts = Scort::where('region_id',$ciudad_id)->where('status',2)->get();
 
+                            if(count($scorts)==0){
+                                $mensaje="No se tiene resultado se su busqueda.";
+                            }else{
+                                $lugar = $ciudad->name;
+                            }
+
+                    }else{
+
+
+                        $mensaje="Lo sentimos, no se tiene resultado se su busqueda.";
+                    }
+                }
+           }
+        }
+       
+        return view('front.busqueda',['mensaje'=>$mensaje,'lugar'=>$lugar,'scorts'=>$scorts,'regions'=>$regions,'region'=>$region,'packages'=>$packages]);
+
+    }
+    
+
+    public function sendcontacto(Request $request){
+       
+        try {
+            //mensaje administrador
+           $mensaje = $request->mensaje;
+           $data = [
+               'name'   => $request->name,
+               'email'  => $request->email,
+               'phone'  => $request->phone,
+               'subject' => $request->subject,
+               'message' => $request->message
+           ];
+           Mail::to('escortpe@gmail.com')
+           ->send(new Mensaje($data));
+
+           $success = true;
+
+       } catch ( Swift_TransportException $e) {
+           echo $e->getMessage();
+       $success = false;
+       }
+
+       return back()->with('info','Mensaje Enviado satisfactoriamente');
     }
 }

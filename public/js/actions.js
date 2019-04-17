@@ -92,3 +92,7 @@ $(".filtro").on('click',function(e){
 		}
 	});
 });
+
+$(".cities-mov").click(function(){
+	$(this).toggleClass('open-menu-cities');
+});

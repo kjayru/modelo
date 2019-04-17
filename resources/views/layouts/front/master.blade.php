@@ -29,14 +29,22 @@
         </div>
     </div>
     <div id="floating-search">
-        <p class="plus"> <span class="box"> <span class="bar top"></span> <span class="bar middle"></span> <span class="bar bottom"></span> </span>
-        </p> <span><i class="fa fa-search"></i></span></div>
+        <p class="plus">
+             <span class="box">
+                  <span class="bar top"></span> 
+                  <span class="bar middle"></span> 
+                  <span class="bar bottom"></span>
+             </span>
+        </p> <span><i class="fa fa-search"></i></span>
+    </div>
+
     <div id="container-search">
         <div class="container-search-overview"></div>
         <div class="container-search-background">
             <div class="title">
                 <h2>Encuentra tu <span>experiencia </span></h2></div>
-            <form id="form-search-mobile">
+            <form id="form-search-mobile" action="{{ route('front.search') }}" method="POST">
+                @csrf
                 <input name="q" autocomplete="off" class="search-object" type="text" placeholder="Buscar" place="Nombre, Edad, Ubicación, Color de pelo, etc">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -111,12 +119,16 @@
                                         @endif
                                     </ul>
                                 </div>
-                                <div class="cities" id="selectorInterior">
+                                <div class="cities cities-mov" id="selectorInterior">
                                     <ul>
                                         <li> <span>{{ @$lugar }}</span>
                                             <ul>
                                                 <li class="city-active"> <a class="select-city" href="">Ciudad</a></li>
-                                                
+                                                @if(!empty($region))
+                                                @foreach(@$regions as $region)
+                                                <li> <a class="select-city" href="/{{ $region->name }}">{{@$region->name}}</a></li>
+                                                @endforeach  
+                                                @endif 
                                             </ul>
                                         </li>
                                     </ul>
@@ -174,7 +186,7 @@
                                 <ul>
                                     @if(!empty($packages))
                                     @foreach($packages as $pack)
-                                    <li> <a href="/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
+                                    <li> <a href="/{{ @$lugar }}/{{ $pack->name }}">{{strtoupper($pack->name) }}</a></li>
                                     @endforeach 
                                     @endif
                                 </ul>

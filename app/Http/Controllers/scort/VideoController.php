@@ -25,6 +25,9 @@ class VideoController extends Controller
     public function index()
     {
         $id = Auth::id();  
+        $scort = Scort::where('user_id',$id)->first();
+        $foto_profile = $scort->cover;
+
         $user = User::find($id);
         $videos = Video::Where('scort_id',$user->scort->id)->OrderBy('id','desc')->get();
 
@@ -39,7 +42,7 @@ class VideoController extends Controller
         
         $conteo = Video::Where('scort_id',$user->scort->id)->count();
 
-        return view('scort.videos.index',['videos'=>$videos,'paquete'=>$paquete,'limite'=>$limite,'conteo'=>$conteo]);
+        return view('scort.videos.index',['videos'=>$videos,'paquete'=>$paquete,'limite'=>$limite,'conteo'=>$conteo,'foto_profile'=>$foto_profile]);
 
     }
 
@@ -50,7 +53,13 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        $id = Auth::id();  
+        $scort = Scort::where('user_id',$id)->first();
+        $scort_id = $scort->id;
+
+        $contador = Video::where('scort_id',$scort_id)->count();
+
+        return view('scort.videos.create',['scort_id'=>$scort_id,'scorts'=>$scort,'contador'=>$contador]);
     }
 
     /**
