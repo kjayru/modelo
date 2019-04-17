@@ -2,11 +2,11 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Videos
+        Perfil
     </h1>
     <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Video</li>
+        <li class="active">Perfil</li>
         
     </ol>
         @if(session('info'))
@@ -40,7 +40,7 @@
    
     <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">REGISTROS</h3>
+      <h3 class="box-title">Datos de perfil</h3>
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
           <i class="fa fa-minus"></i></button>
@@ -61,7 +61,7 @@
                                         <label for="name" class="col-sm-2 control-label" >Foto panel</label>
   
                                     <div class="col-sm-10">
-                                            <input type="file" accept="image/png, image/jpeg" name="fotopanel" class="form-control preimage" id="photos" value="{{ @$scort->cover  }}" placeholder="Cover" multiple required>
+                                            <input type="file" accept="image/png, image/jpeg" name="fotopanel" class="form-control preimage" id="photos" value="{{ @$scort->cover  }}" placeholder="Cover">
                                             
                                             <div class="preview col-sm-10 col-sm-offset-2">
                                                 @if(!empty(@$scort->cover))
@@ -394,34 +394,7 @@
                             </div>
                     </div>
                 
-                    <h3>Filtros</h3>
-                
-                    <div class="form-group">
-                            <label for="nombre" class="col-sm-1 control-label" ></label>
-                            <div class="col-sm-10">
-                                <ul class="list-unstyled">
                     
-                                    @foreach($filters as $k => $fil)
-                                        <li>
-                                            <label for="">
-                                                <input type="checkbox" name="filters[]" value="{{ $fil->id }}" rel=" {{ @$scort->filters[$k]->id }}" @if(@in_array($fil->id ,$fl)) checked @endif>
-                                               @if($fil->name=='video')
-                                                Con video
-                                               @elseif($fil->name=='cara')
-                                                Cara visible
-                                                @elseif($fil->name=='experiencia')
-                                                Con experiencia
-                                                @elseif($fil->name=='disponible')
-                                                Disponible
-                                                @elseif($fil->name=='promocion')
-                                                En promoción
-                                                @endif
-                                            </label>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                    </div>
 
                     
                           <!-- /.box-body -->

@@ -65,20 +65,20 @@ class ProfileController extends Controller
             $horarios = Schedule::all();
 
 
-            $schedulers=[];
+        $schedulers=[];
             
     
-                foreach($scort->schedulescorts as $scheduler){
-                $schedulers[] =  $scheduler->schedule_id;
-                }
-                if(count($schedulers)>0){
-                    $sc = $schedulers;
-                }else{
-                    $sc = 0;
-                }
-            
+        foreach($scort->schedulescorts as $scheduler){
+        $schedulers[] =  $scheduler->schedule_id;
+        }
+        if(count($schedulers)>0){
+            $sc = $schedulers;
+        }else{
+            $sc = 0;
+        }
     
-            $filtro=[];
+    
+           /* $filtro=[];
             foreach($scort->filters as $fill){
                 $filtro[] =  $fill->id;
             }
@@ -86,9 +86,9 @@ class ProfileController extends Controller
                  $fl = $filtro;
             }else{
                 $fl = 0;
-            }
+            }*/
 
-        return view('scort.perfil.index',['scort'=>$scort,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'sv'=>$sv,'cr'=>$cr,'horarios'=>$horarios,'sc'=>$sc,'filters'=>$filters,'fl'=>$fl,'foto_profile'=>$foto_profile]);
+        return view('scort.perfil.index',['scort'=>$scort,'regions'=>$regions,'services'=>$services,'caracteristicas'=>$caracteristicas,'sv'=>$sv,'cr'=>$cr,'horarios'=>$horarios,'sc'=>$sc,'foto_profile'=>$foto_profile]);
     }
 
     public function update(Request $request, $id)
@@ -96,13 +96,9 @@ class ProfileController extends Controller
         if($request->hasFile('fotopanel')){
             $cover = $request->file('fotopanel')->store('profiles');
           
-         }else{
-             $cover="";
          }
         
-        $scort = Scort::where('id',$id)->update([
-            
-            
+        $scort = Scort::where('id',$id)->update([   
             'region_id'=> $request->region_id,
             'name' => $request->name,
             'telefono' => $request->telefono,
@@ -118,13 +114,39 @@ class ProfileController extends Controller
             'estacionamiento' =>$request->estacionamiento,
             'experiencia' => $request->experiencia,
             'status' => $request->status,
-            'cover'=> $cover 
+           
             ]);
+
+        
                 
         $scort = Scort::find($id);
+       
         $scort->services()->sync($request->get('services'));
         $scort->characteristics()->sync($request->get('characteristics'));  
+        if($request->hasFile('fotopanel')){
+            $scort->cover =  $cover;
+            $scort->save();
+        }
 
+        $dias = count($request->get('inicio'));
+        
+        ScheduleScort::where('scort_id',$id)->delete();
+
+        for($i=0; $i<7; $i++){
+            
+            if(isset($request->schedule_id[$i])){
+                $idem = $request->schedule_id[$i];
+                $key = $idem-1;
+
+                $horario = new ScheduleScort();
+                $horario->scort_id = $id;             
+                $horario->schedule_id = $request->schedule_id[$i];               
+                $horario->inicio = $request->inicio[$key];
+                $horario->final = $request->final[$key];
+                $horario->save();
+            }
+           
+        }
         
 
         return redirect()->route('profiles.index');
