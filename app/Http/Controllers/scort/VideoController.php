@@ -53,7 +53,13 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        $id = Auth::id();  
+        $scort = Scort::where('user_id',$id)->first();
+        $scort_id = $scort->id;
+
+        $contador = Video::where('scort_id',$scort_id)->count();
+
+        return view('scort.videos.create',['scort_id'=>$scort_id,'scorts'=>$scort,'contador'=>$contador]);
     }
 
     /**
