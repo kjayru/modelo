@@ -42,7 +42,7 @@
                                     <li>{{ $scort->edad }} años</li>
                                     <li>{{ $scort->talla}} </li>
                                     <li>{{ $scort->peso}} kg</li>
-                                    <li> {{ $scort->medidas }}cm</li>
+                                    <li> {{ $scort->medidas }} cm</li>
                                 </ul>
                             </div>
                             <div class="tags"> 

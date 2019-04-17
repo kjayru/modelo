@@ -119,12 +119,16 @@
                                         @endif
                                     </ul>
                                 </div>
-                                <div class="cities" id="selectorInterior">
+                                <div class="cities cities-mov" id="selectorInterior">
                                     <ul>
                                         <li> <span>{{ @$lugar }}</span>
                                             <ul>
                                                 <li class="city-active"> <a class="select-city" href="">Ciudad</a></li>
-                                                
+                                                @if(!empty($region))
+                                                @foreach(@$regions as $region)
+                                                <li> <a class="select-city" href="/{{ $region->name }}">{{@$region->name}}</a></li>
+                                                @endforeach  
+                                                @endif 
                                             </ul>
                                         </li>
                                     </ul>
