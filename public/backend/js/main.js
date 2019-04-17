@@ -329,3 +329,12 @@ $(document).on('change','.preimage',function(e){
     console.log(output);
     output.attr('src',URL.createObjectURL(e.target.files[0]));
 })
+
+
+$(document).on('click','.btn-delete-mivideo',function(){
+    let id = $(this).data('id');
+    let url = "/admin/mivideo/"+id;
+    $(".deletegal").attr('action',url);
+    $("#id").val(id);
+   
+});

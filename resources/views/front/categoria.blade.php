@@ -291,8 +291,7 @@
                     <div class="title-box">
                         <h1 class="line">ESCORTS VIP</h1>
                         <div class="paragraph">
-                            <p>Mujeres que ofrecen servicios de compañía por
-                                <br> $100.000 o más (US149 and more)</p>
+                            <p>Mujeres que ofrecen servicios de compañía 
                         </div>
                     </div>
                 </div>
@@ -323,17 +322,7 @@
                 <button class="icon"></button>
             </div>
             <input type="hidden" name="params" value="">
-            <ul class="dropdown-menu" id="mobile_dropdown">
-                <li><a href="Trigueña">Trigueña<span>Apariencia</span></a></li>
-                <li><a href="Ojos Castaños">Ojos Castaños<span>Apariencia</span></a></li>
-                <li><a href="Contextura Delgada">Contextura Delgada<span>Apariencia</span></a></li>
-                <li><a href="Busto Grande">Busto Grande<span>Apariencia</span></a></li>
-                <li><a href="Cola Grande">Cola Grande<span>Apariencia</span></a></li>
-                <li><a href="Depilación Full">Depilación Full<span>Apariencia</span></a></li>
-                <li><a href="No Fuma">No Fuma<span>Varios</span></a></li>
-                <li><a href="Besos">Besos<span>Servicios</span></a></li>
-                <li><a href="Oral Natural">Oral Natural<span>Servicios</span></a></li>
-            </ul>
+            
         </form>
         <div class="tags" id="mobile_tags"></div>
     </div>
@@ -347,21 +336,40 @@
             <div id="grid-data" class="row">
                 <!---->
                 <div class="grid isotope">
-                    <article class="article-escort grid-item isotope-item is-single is-load">
-                        <figure>
-                            <div class="inner">
-                                <div class="girl bg">
-                                    <a href="/escorts-premium/barbie-5be33f2f5a647" class="image background-image-loaded image-loaded" style="background-image: url(&quot;//escl-prod.imgix.net/6e9c0b14-27ed-4c59-b122-3fb951316384?auto=enhance%2Cformat%2Ccompress&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;fp-z=1.02&amp;h=421&amp;ixlib=php-1.2.1&amp;w=302&amp;s=394b3fc2cf5de27e7edc8fb2f3bee15a&quot;);">
-                                        <picture><img role="image" src="//escl-prod.imgix.net/6e9c0b14-27ed-4c59-b122-3fb951316384?auto=enhance%2Cformat%2Ccompress&amp;crop=focalpoint&amp;fit=crop&amp;fp-x=0.5&amp;fp-y=0.5&amp;fp-z=1.02&amp;h=421&amp;ixlib=php-1.2.1&amp;w=302&amp;s=394b3fc2cf5de27e7edc8fb2f3bee15a" alt="Barbie"></picture>
-                                    </a> <i aria-hidden="true" class="fa fa-video-camera video"></i></div>
-                                <figcaption>
-                                    <p></p>
-                                    <p><a href="/escorts-premium/barbie-5be33f2f5a647"><span class="brown">BARBIE</span> <span class="brown number">19</span>, Escort Premium de Apariencia Caucásica, Ubicada en Escuela Militar. Servicio de 1:00 hora por <span class="brown number">$80.000</span></a></p>
-                                    <p></p>
-                                </figcaption>
-                            </div>
-                        </figure>
-                    </article>
+
+                    @foreach($scorts as $key => $scort)
+                        <article data-order="{{@$scort->id}}" class="article-escort grid-item isotope-item is-big is-load">
+                            <figure>
+                                <div class="inner">
+                                    <div class="girl bg">
+                                        <a href="{{ @$region->name }}/{{ @$scort->id}}/{{ @$scort->name}}" target="_top" class="image background-image-loaded image-loaded" style="background-image:(@if(empty($scort->galleries[0]->thumb)) '/assets/no-foto.jpg'  @else '/storage/galeria/thumb/{{@$scort->galleries[0]->thumb }}' @endif)">
+                                            <picture>
+                                                @if(empty($scort->galleries[0]->thumb))
+                                                <img role="image" src="/assets/no-foto.jpg" class="img-responsive" alt="{{@$scort->name}}">
+                                                @else 
+                                                    <img role="image" src="/storage/galeria/thumb/{{ @$scort->galleries[0]->thumb }}" alt="{{@$scort->name}}">
+                                                @endif
+                                            </picture>
+                                        </a> <i aria-hidden="true" class="fa fa-video-camera video"></i></div>
+                                    <figcaption>
+                                        <p></p>
+                                            <p>
+                                                <a href="#">
+                                                    <i aria-hidden="true" class="fa fa-circle" style="display: none;"></i>
+                                                    <span>
+                                                        <span class="brown">{{ @$scort->name }}</span> 
+                                                        <span class="brown number">{{ @$scort->edad }},</span>
+                                                        Escort {{ $scort->package->name }} de Apariencia {{ @$scort->etnia}}, Ubicada en {{ @$region->name }}. Servicio de 1:00 hora por 
+                                                        <span class="brown number">${{ @$scort->costohora }}</span>
+                                                    </span>
+                                                </a>
+                                            </p>
+                                        <p></p>
+                                    </figcaption>
+                                </div>
+                            </figure>
+                        </article>
+                    @endforeach
                     
                     
                 </div>

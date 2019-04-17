@@ -243,6 +243,25 @@
                                     </div>
                                 </div>
                                 <div class="photoswipe" id="lightgallery">
+                                   
+                                    @foreach(@$scort->videos as $vid)
+                                      @if($vid->status == 2)
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-iframe="true" data-src="/{{$vid->path}}"> 
+                                            <article class="article-media animate is-video animate-in"> 
+                                                <figure itemprop="associatedMedia" itemtype="http://schema.org/ImageObject"> 
+                                                    <a class="image" href="/{{$vid->path}}" id="flowplayer-{{$vid->id}}"> 
+                                                        <picture style="background-image:url('/{{ @$scort->cover }}')"> 
+                                                            <img src="/{{ @$scort->cover }}"> 
+                                                            <img src="/{{ @$scort->cover }}"  class="transparent"> 
+                                                        </picture> 
+                                                    </a> 
+                                                </figure> 
+                                            </article>
+
+                                        </div>
+                                      @endif
+                                    @endforeach
+
                                     @foreach($scort->galleries as $gal)                                
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-src="/storage/{{$gal->photo}}" >
                                             <article class="article-media animate animate-in"   style="animation-delay: 0.2s;">
@@ -261,18 +280,7 @@
                                         </div>
                                     @endforeach   
                                 </div>
-                               <!-- <div class="videos">
-
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 lightgallery imageContainer" data-iframe="true" data-src="/video?code=28e5ca2d-ccc7-481f-9407-1dd766195320">
-                                            <article class="article-media animate is-video">
-                                                <figure itemprop="associatedMedia" itemtype="http://schema.org/ImageObject">
-                                                    <a class="image" href="https://www.elsilencio.cl/video?code=28e5ca2d-ccc7-481f-9407-1dd766195320" id="flowplayer-28e5ca2d-ccc7-481f-9407-1dd766195320">
-                                                        <picture style="background-image:url(https://cdn.flowplayer.com/667ef98e-c3ed-4e2d-9391-dece3e3fc135/i/v-i-28e5ca2d-ccc7-481f-9407-1dd766195320-1.jpg)"> <img src="https://cdn.flowplayer.com/667ef98e-c3ed-4e2d-9391-dece3e3fc135/i/v-i-28e5ca2d-ccc7-481f-9407-1dd766195320-1.jpg"> <img src="https://santiago.elsilencio.cl/images/media-transparent.png" alt="" class="transparent"> </picture>
-                                                    </a>
-                                                </figure>
-                                            </article>
-                                        </div>
-                                </div>-->
+                              
                             </div>
                         </div>
                     </section>

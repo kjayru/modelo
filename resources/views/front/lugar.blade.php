@@ -26,6 +26,7 @@
                 <div class="container">
                     <div id="grid-data" class="row">
                         <div class="grid isotope">
+                            
                             @foreach($scorts as $key => $scort)
                                 <article data-order="{{@$scort->id}}" class="article-escort grid-item isotope-item is-big is-load">
                                     <figure>
@@ -64,4 +65,6 @@
                 </div>
             </div>
     </section>
+    <!--/videos-->
+
 @endsection

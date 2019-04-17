@@ -52,8 +52,30 @@ class HomeController extends Controller
         $regions = Region::where('status',2)->get();
         $region = Region::where('name',$lugar)->first();  
         $packages = Package::all();
+        $region_id = $region->id;
+        $scorts = Scort::where('region_id',$region_id)->get();
 
-        return view('front.categoria',['region'=>$region,'regions'=>$regions,'packages'=>$packages,'lugar'=>$lugar]);
+      
+        if($packete=="Premium"){
+            foreach($scorts as $scort){
+                if($scort->package_id==1){
+                    $result[] = $scort;
+                }
+            }
+           
+        }
+        else if($packete=="Free"){
+            foreach($scorts as $scort){
+                if($scort->package_id==2){
+                    $result[] = $scort;
+                }
+            }
+        }else{
+            $result="";
+        }
+
+
+        return view('front.categoria',['region'=>$region,'regions'=>$regions,'packages'=>$packages,'lugar'=>$lugar,'scorts'=>$result]);
     }
 
     public function contacto($lugar){

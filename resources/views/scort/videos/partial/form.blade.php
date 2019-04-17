@@ -22,6 +22,7 @@
 </div>
 <!-- /.box-body -->
 <div class="box-footer">
-
+    @if($contador<1)
     <button type="submit" class="btn btn-info pull-right">Guardar</button>
+    @endif
 </div>

@@ -64,10 +64,12 @@ class VideoController extends Controller
         
         $carga = false;
 
+       
+
         switch ($scort->package->id) {
             case 1:
             //1 video
-            if($num_photos<2){
+            if($num_videos<2){
                $carga = true;
              }
             break;
@@ -87,7 +89,7 @@ class VideoController extends Controller
                     
                     $video = $file->store('videos');
             
-                    Video::create([
+                   $cargavideo =  Video::create([
                         'scort_id' => $request->scort_id,
                         'path' => $video,
                         
@@ -96,9 +98,12 @@ class VideoController extends Controller
                 
             }
         }else{
+
+            
             return redirect()->route('videos.index')
                     ->with('info','No tiene permitido cargar mas videos'); 
         }
+       
         return redirect()->route('videos.index')
                         ->with('info','El video se ha cargado con exito'); 
     }

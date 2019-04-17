@@ -70,7 +70,57 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
+
+        $scort = Scort::find($request->scort_id);
+
+        //contamos numero de videos 
+        $num_videos = Video::where('scort_id',$request->scort_id)->count();
+       
+        $carga = false;
+
+        switch ($scort->package->id) {
+            case 1:
+            //1 video
+            if($num_videos<2){
+                $carga = true;
+             }
+            break;
+            case 2:
+            //ningun video
+                $carga = false;
+            
+            break;
+            
+        }
+        
+        if($carga){
+        $file = $request->file('video');
+       
+            if(!empty($file))
+            {
+                
+                //foreach ($files as $file) {
+                    
+                    $video = $file->store('videos');
+            
+                   $result= Video::create([
+                        'scort_id' => $request->scort_id,
+                        'path' => $video,
+                        
+                    ]);
+                //}
+               
+            }
+        }else{
+            return redirect()->route('mivideo.index')
+                    ->with('info','No tiene permitido cargar mas videos'); 
+        }
+        return redirect()->route('mivideo.index')
+                        ->with('info','El video se ha cargado con exito'); 
+
+
     }
 
     /**
@@ -115,6 +165,9 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Video::find($id)->delete();
+        return redirect()->route('mivideo.index')
+                        ->with('info','El video se ha elminado exito'); 
     }
 }
