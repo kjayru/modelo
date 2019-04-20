@@ -100,6 +100,10 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::get('configurations/region/{config}','admin\ConfigurationController@showregion')->name('configurations.showregion')
     ->middleware('permission:configurations.show');
+
+    Route::put('configurations/region/{config}','admin\ConfigurationController@regionUpdate')->name('configurations.regionupdate')
+    ->middleware('permission:configurations.edit');
+    
     
     //scorts
     Route::post('scorts/store','admin\ScortController@store')->name('scorts.store')

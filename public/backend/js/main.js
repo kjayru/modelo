@@ -356,7 +356,7 @@ $(".btn-edit-region").on('click',function(e){
             
             $("#modal-editar").modal('show');
             $("#modal-editar .modal-title").html("Editar Región");
-            $("#fr-editar").attr("action","/admin/configurations/updateRegion/"+id);
+            $("#fr-editar").attr("action","/admin/configurations/region/"+id);
 		}
 	});
 });
