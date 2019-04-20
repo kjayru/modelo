@@ -97,7 +97,7 @@
                             <div class="info">
                                 <ul>
                                     <li class="pretitle">&nbsp;</li>
-                                    <li class="value">$ {{ $scort->costohora }} <small>por 1 hora</small></li>
+                                    <li class="value">S/ {{ $scort->costohora }} <small>por 1 hora</small></li>
                                     <li class="comment">&nbsp;</li>
                                 </ul>
                             </div>
@@ -107,8 +107,10 @@
                             <div class="info">
                                 <ul>
                                     <li class="comment">&nbsp;</li>
-                                    <li title="El Golf" class="value">El Golf</li>
-                                    <li class="pretitle">Tengo estacionamiento.</li>
+                                    <li title="{{ $scort->estacionamiento}}" class="value">{{ $scort->estacionamiento}}</li>
+                                    <li class="pretitle">
+                                        @if(!empty($scort->estacionamiento)) Tengo estacionamiento @endif
+                                    </li>
                                 </ul>
                             </div>
                         </div>

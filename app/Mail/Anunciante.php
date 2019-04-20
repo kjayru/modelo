@@ -29,7 +29,7 @@ class Anunciante extends Mailable
     public function build()
     {
         return $this->markdown('mails.anunciante')
-        ->from('support@modelos.com')
+        ->from('admin@escort.com.pe')
         ->subject("Correo enviado desde anunciante")
         ->with([
             'name'    => $this->data['name'],

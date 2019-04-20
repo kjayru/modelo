@@ -312,9 +312,9 @@
                     <article class="ad-info animate animate-in">
                         <h3 class="line">ANUNCIO PREMIUN</h3>
                         <div class="tags">
-                            <span class="number">30</span> Días <span class="number">$00.000</span><span> | </span>
-                            <span class="number">15</span> Días <span class="number">$00.000</span> <span> | </span>
-                            <span class="number">7</span> Días <span class="number">$00.000</span></div>
+                            <span class="number">30</span> Días <span class="number">S/00.000</span><span> | </span>
+                            <span class="number">15</span> Días <span class="number">S/00.000</span> <span> | </span>
+                            <span class="number">7</span> Días <span class="number">S/00.000</span></div>
                         <ul>
                             <li>Fotografía de portada de tamaño <b>pequeño</b>.</li>
                             <li>Listado en <b><span class="number">3</span>er</b> grupo de portada y categoría.</li>
@@ -332,9 +332,9 @@
                     <article class="ad-info animate animate-in" style="animation-delay: 0.2s;">
                         <h3 class="line">ANUNCIO FREE</h3>
                         <div class="tags">
-                            <span class="number">30</span> Días <span class="number">$00.000</span> <span> | </span>
-                            <span class="number">15</span> Días <span class="number">$00.000</span> <span> | </span>
-                            <span class="number">7</span> Días <span class="number">$00.000</span></div>
+                            <span class="number">30</span> Días <span class="number">S/00.000</span> <span> | </span>
+                            <span class="number">15</span> Días <span class="number">S/00.000</span> <span> | </span>
+                            <span class="number">7</span> Días <span class="number">S/00.000</span></div>
                         <ul>
                             <li>Fotografía de portada de tamaño <b>mediano</b>.</li>
                             <li>Listado en <b>2do</b> grupo de portada y categoría.</li>
@@ -367,8 +367,8 @@
                         <h3 class="line">LAS CATEGORÍAS SE BASAN <br>EN LOS SIGUIENTES CRITERIOS</h3>
                         <ul class="no-style">
                            
-                            <li><b>Escort Premium</b>: Acompañante con una tarifa entre <span class="number">$00.000 y $0.000</span> por hora.</li>
-                            <li><b>Escort Free</b>: Acompañante con una tarifa entre <span class="number">$00.000 y $00.000</span> por hora.</li>
+                            <li><b>Escort Premium</b>: Acompañante con una tarifa entre <span class="number">S/00.000 y S/0.000</span> por hora.</li>
+                            <li><b>Escort Free</b>: Acompañante con una tarifa entre <span class="number">S/00.000 y S/00.000</span> por hora.</li>
                             
                         </ul>
                         <blockquote> (<span class="number">*</span>) Categoría disponible solo en anuncio Premium, requisitos especiales en entrevista.</blockquote>

@@ -30,7 +30,7 @@ class Register extends Mailable
     public function build()
     {
         return $this->markdown('mails.register')
-        ->from("support@modelos.com")
+        ->from("admin@escort.com.pe")
         ->subject("Alta en el sistema Modelos Perú")
         ->with([
             'nombre' => $this->data['name'],

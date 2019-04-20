@@ -29,7 +29,7 @@ class Contacto extends Mailable
     public function build()
     {
         return $this->markdown('mails.contacto')
-        ->from('support@modelos.com')
+        ->from('admin@escort.com.pe')
         ->subject($this->data['subject'])
         ->with([
             'name'    => $this->data['name'],

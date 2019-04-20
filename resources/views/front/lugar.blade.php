@@ -50,7 +50,7 @@
                                                                 <span class="brown">{{ @$scort->name }}</span> 
                                                                 <span class="brown number">{{ @$scort->edad }},</span>
                                                                 Escort {{ $scort->package->name }} de Apariencia {{ @$scort->etnia}}, Ubicada en {{ @$region->name }}. Servicio de 1:00 hora por 
-                                                                <span class="brown number">${{ @$scort->costohora }}</span>
+                                                                <span class="brown number">S/{{ @$scort->costohora }}</span>
                                                             </span>
                                                         </a>
                                                     </p>

@@ -29,7 +29,7 @@ class Mensaje extends Mailable
     public function build()
     {
         return $this->markdown('mails.mensaje')
-        ->from('support@modelos.com')
+        ->from('admin@escort.com.pe')
         ->subject($this->data['asunto'])
         ->with([
             'nombre' => $this->data['name'],
