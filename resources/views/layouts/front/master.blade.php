@@ -5,6 +5,7 @@
     <meta name="charset" content="utf-8">
     <meta name="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">   
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css?v={{uniqid()}}">
     <link rel="stylesheet" href="/css/main.css?v={{uniqid()}}">
     <link type="text/css" rel="stylesheet" href="/bower_components/lightgallery/dist/css/lightgallery.min.css" /> 

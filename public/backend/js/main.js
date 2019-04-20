@@ -171,7 +171,7 @@ $(document).on('change','.estado-galeria',function(){
 $(document).on('change','.estado-region',function(){
     let id = $(this).data('id');
     let status = $(this).data('status');
-    let token = $(".deleterole input[name='_token']").val();
+    let token =  $('meta[name="csrf-token"]').attr('content');
     let estado ='';
     if(status == 2){
         estado = 1;
@@ -197,7 +197,7 @@ $(document).on('change','.estado-region',function(){
 $(document).on('change','.estado-caracter',function(){
     let id = $(this).data('id');
     let status = $(this).data('status');
-    let token = $(".deleterole input[name='_token']").val();
+    let token =  $('meta[name="csrf-token"]').attr('content');
     let estado ='';
     if(status == 2){
         estado = 1;
@@ -223,7 +223,7 @@ $(document).on('change','.estado-caracter',function(){
 $(document).on('change','.estado-servicio',function(){
     let id = $(this).data('id');
     let status = $(this).data('status');
-    let token = $(".deleterole input[name='_token']").val();
+    let token = $('meta[name="csrf-token"]').attr('content');
     let estado ='';
     if(status == 2){
         estado = 1;
