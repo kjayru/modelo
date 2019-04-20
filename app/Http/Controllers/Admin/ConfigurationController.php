@@ -64,7 +64,8 @@ class ConfigurationController extends Controller
         $region->name  = $request->name;
         $region->save();
 
-        return response()->json($region);
+        return  redirect()->route('configurations.index')
+                    ->with('info','se actualizo la región'); 
     }
 
     //edit service

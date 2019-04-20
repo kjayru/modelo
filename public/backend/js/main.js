@@ -350,7 +350,7 @@ $(".btn-edit-region").on('click',function(e){
 		type:"GET",
 		dataType:"json",
 		success:function(response){
-            console.log(response)
+            
             $("#fr-editar input[name='id']").val(response.id);
             $("#fr-editar input[name='name']").val(response.name);
             
