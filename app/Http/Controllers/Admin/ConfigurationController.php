@@ -53,6 +53,11 @@ class ConfigurationController extends Controller
         return response()->json($servicio);
     }
 
+    public function showregion($id){
+        $region = Region::find($id);
+
+        return response()->json($region);
+    }
     //edit service
 
     //edit caracteristica

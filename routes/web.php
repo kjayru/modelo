@@ -96,6 +96,11 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::put('configurations/updateServicio/{config}','admin\ConfigurationController@updateServicio')->name('configurations.updateservice')
     ->middleware('permission:configurations.edit');
+
+
+    Route::get('configurations/region/{config}','admin\ConfigurationController@showregion')->name('configurations.showregion')
+    ->middleware('permission:configurations.show');
+    
     //scorts
     Route::post('scorts/store','admin\ScortController@store')->name('scorts.store')
     ->middleware('permission:scorts.create');

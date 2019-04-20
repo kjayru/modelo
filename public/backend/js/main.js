@@ -338,3 +338,25 @@ $(document).on('click','.btn-delete-mivideo',function(){
     $("#id").val(id);
    
 });
+
+
+$(".btn-edit-region").on('click',function(e){
+	e.preventDefault();
+	let id = $(this).data('id');
+	let token = $('meta[name="csrf-token"]').attr('content');
+	let datasend = ({'_token':token,'id':id,':method':'GET'});
+	$.ajax({
+		url:"/admin/configurations/region/"+id,
+		type:"GET",
+		dataType:"json",
+		success:function(response){
+            console.log(response)
+            $("#fr-editar input[name='id']").val(response.id);
+            $("#fr-editar input[name='name']").val(response.name);
+            
+            $("#modal-editar").modal('show');
+            $("#modal-editar .modal-title").html("Editar Región");
+            $("#fr-editar").attr("action","/admin/configurations/updateRegion/"+id);
+		}
+	});
+});

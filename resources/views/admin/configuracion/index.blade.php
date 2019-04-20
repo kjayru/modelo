@@ -54,7 +54,7 @@
                       </span>
                   </div>
                   </td>
-                  <td><a class="btn btn-xs btn-primary" href="#" data-id="{{ $region->id }}">Editar</a></td>
+                  <td><a class="btn btn-xs btn-primary btn-edit-region" href="#" data-id="{{ $region->id }}">Editar</a></td>
                 </tr>
               @endforeach
               </tbody>
